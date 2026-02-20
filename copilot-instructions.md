@@ -1,0 +1,1 @@
+C:/Users/web/Documents/Dev-Website/rosetta/rosetta-shopify/rosetta-custom/AGENTS.md
