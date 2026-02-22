@@ -13,38 +13,45 @@
       </h2>
     </div>
 
-    <!-- Product Grid -->
-    <div class="collections-grid">
-      {% if section.settings.collection != blank %}
-        {% assign selected_collection = collections[section.settings.collection] %}
-        {% for product in selected_collection.products limit: section.settings.products_to_show %}
-          
-          <div class="collection-item">
-            <a href="{{ product.url }}">
-              <div class="collection-image">
-                <img 
-                  src="{{ product.featured_image | image_url: width: 800 }}" 
-                  alt="{{ product.title }}"
-                  loading="lazy">
+    {% for block in section.blocks %}
+      {% assign selected_collection = collections[block.settings.collection] %}
+
+      {% if selected_collection != blank %}
+
+        <div class="collection-block" {{ block.shopify_attributes }}>
+
+          <div class="collections-grid">
+            {% for product in selected_collection.products limit: block.settings.products_to_show %}
+              
+              <div class="collection-item">
+                <a href="{{ product.url }}">
+                  <div class="collection-image">
+                    <img 
+                      src="{{ product.featured_image | image_url: width: 800 }}" 
+                      alt="{{ product.title }}"
+                      loading="lazy">
+                  </div>
+                  <div class="collection-info">
+                    <h3>{{ product.title }}</h3>
+                  </div>
+                </a>
               </div>
-              <div class="collection-info">
-                <h3>{{ product.title }}</h3>
-              </div>
-            </a>
+
+            {% endfor %}
           </div>
 
-        {% endfor %}
-      {% endif %}
-    </div>
+          {% if section.settings.button_label != blank %}
+            <div class="collections-button">
+              <a href="{{ selected_collection.url }}" class="btn-luxury">
+                {{ section.settings.button_label }}
+              </a>
+            </div>
+          {% endif %}
 
-    <!-- Button -->
-    {% if section.settings.button_label != blank %}
-      <div class="collections-button">
-        <a href="{{ selected_collection.url }}" class="btn-luxury">
-          {{ section.settings.button_label }}
-        </a>
-      </div>
-    {% endif %}
+        </div>
+
+      {% endif %}
+    {% endfor %}
 
   </div>
 
@@ -92,15 +99,14 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
+  margin-bottom: 40px;
 }
 
 .collection-item {
   cursor: pointer;
-  transition: transform 0.4s ease;
 }
 
 .collection-image {
-  position: relative;
   aspect-ratio: 1/1;
   overflow: hidden;
   margin-bottom: 16px;
@@ -128,7 +134,7 @@
 /* Button */
 .collections-button {
   text-align: center;
-  margin-top: 60px;
+  margin-bottom: 100px;
 }
 
 .btn-luxury {
@@ -192,29 +198,41 @@
       "default": "2025 NEW COLLECTION"
     },
     {
-      "type": "collection",
-      "id": "collection",
-      "label": "Select Collection"
-    },
-    {
-      "type": "range",
-      "id": "products_to_show",
-      "label": "Number of products",
-      "min": 4,
-      "max": 12,
-      "step": 1,
-      "default": 8
-    },
-    {
       "type": "text",
       "id": "button_label",
       "label": "Button Label",
       "default": "View All Collection"
     }
   ],
+  "blocks": [
+    {
+      "type": "collection_block",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "range",
+          "id": "products_to_show",
+          "label": "Number of products",
+          "min": 4,
+          "max": 12,
+          "step": 1,
+          "default": 8
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
   "presets": [
     {
-      "name": "Home Collections"
+      "name": "Home Collections",
+      "blocks": [
+        { "type": "collection_block" }
+      ]
     }
   ]
 }
