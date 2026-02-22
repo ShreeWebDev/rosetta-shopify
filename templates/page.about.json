@@ -9,12 +9,32 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "page",
+    "hero": {
+      "type": "about-hero",
+      "settings": {}
+    },
+    "history": {
+      "type": "about-history",
+      "settings": {}
+    },
+    "savoir": {
+      "type": "about-savoir-faire",
+      "settings": {}
+    },
+    "visionary": {
+      "type": "about-visionary",
+      "settings": {}
+    },
+    "family": {
+      "type": "about-family",
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "hero",
+    "history",
+    "savoir",
+    "visionary",
+    "family"
   ]
 }
