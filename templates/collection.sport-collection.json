@@ -9,12 +9,44 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "collection",
+    "hero": {
+      "type": "collection-hero-sport",
+      "settings": {}
+    },
+    "intro": {
+      "type": "collection-intro-text",
+      "settings": {}
+    },
+    "block1": {
+      "type": "collection-split-block",
+      "settings": {}
+    },
+    "block2": {
+      "type": "collection-split-block",
+      "settings": {
+        "reverse_layout": true
+      }
+    },
+    "banner": {
+      "type": "collection-full-banner",
+      "settings": {}
+    },
+    "feature": {
+      "type": "collection-feature-highlight",
+      "settings": {}
+    },
+    "discover": {
+      "type": "collection-discover-products",
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "hero",
+    "intro",
+    "block1",
+    "block2",
+    "banner",
+    "feature",
+    "discover"
   ]
 }
