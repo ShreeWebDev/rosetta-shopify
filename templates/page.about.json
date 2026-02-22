@@ -11,15 +11,27 @@
   "sections": {
     "hero": {
       "type": "about-hero",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/imgi_10_full-width-jewellery-uER-pP_t.jpg",
+        "subheading": "EST. 1993",
+        "heading": "THE HOUSE OF ROSETTA",
+        "text": "Where tradition meets modernity in the heart of Dubai"
+      }
     },
     "history": {
       "type": "about-history",
-      "settings": {}
+      "settings": {
+        "heading": "A Legacy of Elegance",
+        "text": "The story of Rosetta begins with a vision to create jewellery that transcends time. From our humble beginnings in the vibrant souks of Dubai to becoming a beacon of high jewellery, our journey has been paved with diamonds and dedication.<br><br>\n\nEvery piece tells a story of heritage, meticulously crafted to celebrate the unique beauty of the wearer. We honor the traditions of the past while embracing the innovation of the future.",
+        "image": "shopify://shop_images/showcase-ear-ring_c9a43adc-600e-4b79-a25a-dc8cae2e81ad.png"
+      }
     },
     "savoir": {
       "type": "about-savoir-faire",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem.jpg",
+        "heading": "EXCEPTIONAL CRAFTSMANSHIP"
+      }
     },
     "visionary": {
       "type": "about-visionary",
