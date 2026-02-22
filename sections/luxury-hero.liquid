@@ -1,22 +1,27 @@
 <section class="luxury-hero">
 
   <!-- Background Video -->
-  <video 
+  <video
     class="hero-video"
-    autoplay 
-    muted 
-    loop 
+    autoplay
+    muted
+    loop
     playsinline>
     <source src="{{ section.settings.video_url }}" type="video/mp4">
   </video>
 
-  <!-- Overlay -->
+  <!-- Dark Gradient Overlay -->
   <div class="hero-overlay"></div>
 
   <!-- Content -->
   <div class="hero-content">
-    <h1>{{ section.settings.heading }}</h1>
-    <p>{{ section.settings.subtext }}</p>
+    <h1 class="hero-heading">
+      {{ section.settings.heading }}
+    </h1>
+
+    <p class="hero-subtext">
+      {{ section.settings.subtext }}
+    </p>
 
     {% if section.settings.button_label != blank %}
       <a href="{{ section.settings.button_link }}" class="hero-btn">
@@ -27,8 +32,10 @@
 
 </section>
 
+
 {% stylesheet %}
 
+/* ===== HERO WRAPPER ===== */
 .luxury-hero {
   position: relative;
   height: 100vh;
@@ -36,74 +43,117 @@
   overflow: hidden;
 }
 
+/* ===== VIDEO ===== */
 .hero-video {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
+/* ===== OVERLAY ===== */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.15)
+  );
 }
 
+/* ===== CONTENT ===== */
 .hero-content {
   position: absolute;
-  bottom: 120px;   /* bottom positioning */
+  bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  color: white;
+  color: #ffffff;
   width: 100%;
   padding: 0 20px;
   z-index: 2;
+  animation: fadeUp 1.2s ease forwards;
 }
 
-.hero-content h1 {
+/* ===== HEADING ===== */
+.hero-heading {
+  font-family: 'Cormorant Garamond', serif;
   font-size: 72px;
+  letter-spacing: 0.2em;
+  font-weight: 300;
   margin-bottom: 20px;
 }
 
-.hero-content p {
-  margin-bottom: 30px;
+/* ===== SUBTEXT ===== */
+.hero-subtext {
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
-  letter-spacing: 3px;
+  letter-spacing: 0.3em;
+  font-weight: 300;
+  margin-bottom: 30px;
+  opacity: 0.85;
 }
 
+/* ===== BUTTON ===== */
 .hero-btn {
-  border: 1px solid white;
-  padding: 14px 40px;
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 48px;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: transparent;
+  color: #ffffff;
   text-decoration: none;
-  letter-spacing: 3px;
-  transition: 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .hero-btn:hover {
-  background: white;
-  color: black;
+  background: #ffffff;
+  color: #000000;
 }
 
-/* Mobile */
+/* ===== FADE ANIMATION ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 40px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-heading {
+    font-size: 56px;
+  }
+}
 
 @media (max-width: 768px) {
-
-  .hero-content h1 {
-    font-size: 32px;
-    letter-spacing: 4px;
+  .hero-content {
+    bottom: 70px;
   }
 
-  .hero-content p {
+  .hero-heading {
+    font-size: 34px;
+    letter-spacing: 0.15em;
+  }
+
+  .hero-subtext {
     font-size: 12px;
   }
-
 }
 
 {% endstylesheet %}
+
 
 {% schema %}
 {
