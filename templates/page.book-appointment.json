@@ -11,7 +11,18 @@
   "sections": {
     "main": {
       "type": "book-appointment-luxury",
-      "settings": {}
+      "settings": {
+        "left_image": "shopify://shop_images/showcase-Necklaces.png",
+        "left_overlay_heading": "Unrivaled Elegance",
+        "left_overlay_subtext": "Experience the artistry of Rosetta in a private setting dedicated to your desires.",
+        "concierge_label": "CONCIERGE SERVICE",
+        "main_heading": "Book an Appointment",
+        "intro_text": "Select a time to visit one of our boutiques or request a virtual consultation.",
+        "personal_details_heading": "PERSONAL DETAILS",
+        "button_label": "Confirm Booking",
+        "privacy_text": "We respect your privacy.",
+        "privacy_link": ""
+      }
     }
   },
   "order": [
