@@ -1,0 +1,14 @@
+<section class="full-banner">
+  {% if section.settings.banner_image %}
+    <img src="{{ section.settings.banner_image | image_url: width: 2000 }}">
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Full Width Banner",
+  "settings": [
+    { "type": "image_picker", "id": "banner_image", "label": "Banner Image" }
+  ]
+}
+{% endschema %}
