@@ -1,56 +1,158 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
-  </div>
+<footer class="luxury-footer">
 
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
+  <div class="footer-wrapper">
 
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
+    <!-- Brand -->
+    <h2 class="footer-logo">
+      {{ section.settings.brand_name }}
+    </h2>
+
+    <span class="footer-subtitle">
+      {{ section.settings.brand_tagline }}
+    </span>
+
+    <!-- Menu 1 -->
+    {% if section.settings.menu_1 != blank %}
+      <div class="footer-menu">
+        {% for link in linklists[section.settings.menu_1].links %}
+          <a href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        {% endfor %}
+      </div>
     {% endif %}
+
+    <!-- Menu 2 -->
+    {% if section.settings.menu_2 != blank %}
+      <div class="footer-menu">
+        {% for link in linklists[section.settings.menu_2].links %}
+          <a href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Address -->
+    <p class="footer-address">
+      {{ section.settings.address }}
+    </p>
+
   </div>
+
 </footer>
 
+
 {% stylesheet %}
-  footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
+
+.luxury-footer {
+  background: #8B5CF6;
+  color: #ffffff;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.footer-wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  letter-spacing: 0.3em;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+
+.footer-subtitle {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  margin-bottom: 60px;
+  opacity: 0.8;
+}
+
+.footer-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px 40px;
+  margin-bottom: 40px;
+}
+
+.footer-menu a {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  color: #ffffff;
+  transition: opacity 0.3s ease;
+}
+
+.footer-menu a:hover {
+  opacity: 0.6;
+}
+
+.footer-address {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .luxury-footer {
+    padding: 70px 0;
   }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
+
+  .footer-logo {
+    font-size: 26px;
   }
-  footer .footer__links,
-  footer .footer__payment {
-    display: flex;
-    gap: 1rem;
+
+  .footer-subtitle {
+    margin-bottom: 40px;
   }
+}
+
 {% endstylesheet %}
+
 
 {% schema %}
 {
-  "name": "t:general.footer",
+  "name": "Luxury Footer",
   "settings": [
     {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Name",
+      "default": "ROSETTA"
     },
     {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "t:labels.show_payment_icons",
-      "default": true
+      "type": "text",
+      "id": "brand_tagline",
+      "label": "Brand Tagline",
+      "default": "FINE JEWELLERY"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Footer Menu 1"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Footer Menu 2"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "C. DE FERNANDO VI, 5, 28004 DUBAI, UAE"
     }
   ]
 }
