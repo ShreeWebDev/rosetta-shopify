@@ -1,0 +1,23 @@
+<section class="discover-products">
+  <h2>{{ section.settings.heading }}</h2>
+
+  <div class="discover-grid">
+    {% for product in collection.products limit: 2 %}
+      <div class="discover-item">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | image_url: width: 800 }}">
+          <h4>{{ product.title }}</h4>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discover Products",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Discover" }
+  ]
+}
+{% endschema %}
