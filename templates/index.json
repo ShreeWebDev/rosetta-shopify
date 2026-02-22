@@ -103,6 +103,7 @@
         "showcase_item_XLBDrM": {
           "type": "showcase_item",
           "settings": {
+            "image": "shopify://shop_images/showcase-Necklaces_7b2b32f0-a81f-469f-a48c-98e38654e5c7.png",
             "category": "Necklaces",
             "title": "Diamond Necklace",
             "link": ""
@@ -111,24 +112,36 @@
         "showcase_item_pp6JAY": {
           "type": "showcase_item",
           "settings": {
-            "category": "Necklaces",
-            "title": "Diamond Necklace",
+            "image": "shopify://shop_images/showcase-ear-ring_c9a43adc-600e-4b79-a25a-dc8cae2e81ad.png",
+            "category": "Earrings",
+            "title": "Ruby Earrings",
             "link": ""
           }
         },
         "showcase_item_f6NXHJ": {
           "type": "showcase_item",
           "settings": {
-            "category": "Necklaces",
-            "title": "Diamond Necklace",
+            "image": "shopify://shop_images/imgi_12_showcase-3-B460clHm.jpg",
+            "category": "Rings",
+            "title": "Statement Rings",
             "link": ""
           }
         },
         "showcase_item_WrCece": {
           "type": "showcase_item",
           "settings": {
-            "category": "Necklaces",
-            "title": "Diamond Necklace",
+            "image": "shopify://shop_images/imgi_13_showcase-4-CzMOgt7o.jpg",
+            "category": "Bracelets",
+            "title": "Diamond Bracelet",
+            "link": ""
+          }
+        },
+        "showcase_item_3cXwTz": {
+          "type": "showcase_item",
+          "settings": {
+            "image": "shopify://shop_images/showcase-Emerald.jpg",
+            "category": "Emerald",
+            "title": "Emerald Collection",
             "link": ""
           }
         }
@@ -137,7 +150,8 @@
         "showcase_item_XLBDrM",
         "showcase_item_pp6JAY",
         "showcase_item_f6NXHJ",
-        "showcase_item_WrCece"
+        "showcase_item_WrCece",
+        "showcase_item_3cXwTz"
       ],
       "name": "Featured Showcase",
       "settings": {
@@ -149,6 +163,7 @@
       "type": "book-appointment",
       "name": "Book Appointment",
       "settings": {
+        "background_image": "shopify://shop_images/imgi_15_appointment-bg-L6pDFhqu.jpg",
         "subtitle": "Exclusive Experience",
         "heading": "BOOK YOUR PRIVATE APPOINTMENT",
         "text": "Experience the pinnacle of luxury with a private consultation at our boutique.",
