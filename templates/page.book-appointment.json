@@ -10,32 +10,11 @@
 {
   "sections": {
     "main": {
-      "type": "page",
+      "type": "book-appointment-luxury",
       "settings": {}
-    },
-    "contact_luxury_J8tGEq": {
-      "type": "contact-luxury",
-      "name": "Luxury Contact Page",
-      "settings": {
-        "left_image": "shopify://shop_images/showcase-Necklaces.png",
-        "left_overlay_heading": "Timeless Connection",
-        "left_overlay_subtext": "We are here to assist you with every inquiry.",
-        "client_services_label": "CLIENT SERVICES",
-        "main_heading": "Contact Us",
-        "intro_text": "Whether for a consultation, a specific piece, or general inquiries, our team is at your disposal.",
-        "headquarters_title": "Headquarters",
-        "address": "C. de Fernando VI, 5\n28004 Dubai, UAE",
-        "phone": "+971 4 123 4567",
-        "email": "concierge@rosetta.com",
-        "opening_hours_title": "Opening Hours",
-        "opening_hours": "Monday - Saturday\n10:00 AM - 8:00 PM\nSunday\n11:00 AM - 6:00 PM",
-        "form_heading": "Send a Message",
-        "button_label": "Send Message"
-      }
     }
   },
   "order": [
-    "main",
-    "contact_luxury_J8tGEq"
+    "main"
   ]
 }
