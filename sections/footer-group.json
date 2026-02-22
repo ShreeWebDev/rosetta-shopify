@@ -14,8 +14,11 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "menu": "",
-        "show_payment_icons": true
+        "brand_name": "ROSETTA",
+        "brand_tagline": "FINE JEWELLERY",
+        "menu_1": "footer",
+        "menu_2": "",
+        "address": "C. DE FERNANDO VI, 5, 28004 DUBAI, UAE"
       }
     }
   },
