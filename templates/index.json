@@ -67,12 +67,22 @@
     },
     "home_collections_KYNfU3": {
       "type": "home-collections",
+      "blocks": {
+        "collection_block_EfxpgE": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "frontpage",
+            "products_to_show": 4
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_EfxpgE"
+      ],
       "name": "Home Collections",
       "settings": {
         "subtitle": "Exclusive Pieces",
         "heading": "2025 NEW COLLECTION",
-        "collection": "",
-        "products_to_show": 8,
         "button_label": "View All Collection"
       }
     },
