@@ -119,6 +119,44 @@
         "posts_to_show": 3,
         "button_label": "View All News"
       }
+    },
+    "instagram_scroll_8UQYDL": {
+      "type": "instagram-scroll",
+      "blocks": {
+        "instagram_image_xDAbkN": {
+          "type": "instagram_image",
+          "settings": {}
+        },
+        "instagram_image_9KhgKF": {
+          "type": "instagram_image",
+          "settings": {}
+        },
+        "instagram_image_ndUFXE": {
+          "type": "instagram_image",
+          "settings": {}
+        },
+        "instagram_image_hBAExt": {
+          "type": "instagram_image",
+          "settings": {}
+        },
+        "instagram_image_BEdRWt": {
+          "type": "instagram_image",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "instagram_image_xDAbkN",
+        "instagram_image_9KhgKF",
+        "instagram_image_ndUFXE",
+        "instagram_image_hBAExt",
+        "instagram_image_BEdRWt"
+      ],
+      "name": "Instagram Scroll",
+      "settings": {
+        "subtitle": "Connect",
+        "heading": "INSTAGRAM @ROSETTA",
+        "instagram_link": ""
+      }
     }
   },
   "order": [
@@ -128,6 +166,7 @@
     "craftsmanship_Az6Mnp",
     "featured_showcase_FDQEAd",
     "book_appointment_anVYp3",
-    "home_blog_card_prFJnN"
+    "home_blog_card_prFJnN",
+    "instagram_scroll_8UQYDL"
   ]
 }
