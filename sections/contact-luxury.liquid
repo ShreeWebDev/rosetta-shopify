@@ -1,0 +1,222 @@
+<section class="contact-luxury">
+
+  <div class="contact-wrapper">
+
+    <!-- LEFT IMAGE -->
+    <div class="contact-image">
+      {% if section.settings.left_image %}
+        <img src="{{ section.settings.left_image | image_url: width: 1600 }}" alt="">
+      {% endif %}
+      <div class="contact-overlay-text">
+        <h2>{{ section.settings.left_overlay_heading }}</h2>
+        <p>{{ section.settings.left_overlay_subtext }}</p>
+      </div>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="contact-content">
+
+      <!-- Header -->
+      <span class="contact-label">
+        {{ section.settings.client_services_label }}
+      </span>
+
+      <h1 class="contact-heading">
+        {{ section.settings.main_heading }}
+      </h1>
+
+      <p class="contact-intro">
+        {{ section.settings.intro_text }}
+      </p>
+
+      <!-- Info Grid -->
+      <div class="contact-info-grid">
+
+        <div>
+          <h4>{{ section.settings.headquarters_title }}</h4>
+          <p>{{ section.settings.address }}</p>
+          <p>{{ section.settings.phone }}</p>
+          <p>{{ section.settings.email }}</p>
+        </div>
+
+        <div>
+          <h4>{{ section.settings.opening_hours_title }}</h4>
+          <p>{{ section.settings.opening_hours }}</p>
+        </div>
+
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form-wrapper">
+        <h4 class="form-title">
+          {{ section.settings.form_heading }}
+        </h4>
+
+        {% form 'contact' %}
+          
+          <div class="form-row">
+            <input type="text" name="contact[name]" placeholder="Full Name">
+            <input type="email" name="contact[email]" placeholder="Email Address">
+          </div>
+
+          <input type="text" name="contact[subject]" placeholder="Subject">
+
+          <textarea name="contact[body]" rows="5" placeholder="Message"></textarea>
+
+          <button type="submit" class="contact-btn">
+            {{ section.settings.button_label }}
+          </button>
+
+        {% endform %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+.contact-luxury {
+  background: #f4f4f4;
+}
+
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.contact-image {
+  position: relative;
+}
+
+.contact-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-overlay-text {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  color: white;
+}
+
+.contact-overlay-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+}
+
+.contact-overlay-text p {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+}
+
+/* Right side */
+.contact-content {
+  padding: 120px 80px;
+}
+
+.contact-label {
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  font-family: 'Inter', sans-serif;
+}
+
+.contact-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  margin: 20px 0;
+}
+
+.contact-intro {
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 50px;
+  max-width: 500px;
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.contact-info-grid h4 {
+  font-family: 'Cormorant Garamond', serif;
+  margin-bottom: 15px;
+}
+
+.contact-form-wrapper input,
+.contact-form-wrapper textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 12px 0;
+  margin-bottom: 25px;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.contact-btn {
+  background: #b28a4a;
+  color: white;
+  padding: 14px 40px;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+}
+
+@media(max-width:900px){
+  .contact-wrapper{
+    grid-template-columns:1fr;
+  }
+  .contact-content{
+    padding:60px 30px;
+  }
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Luxury Contact Page",
+  "settings": [
+    { "type": "image_picker", "id": "left_image", "label": "Left Image" },
+    { "type": "text", "id": "left_overlay_heading", "label": "Left Overlay Heading", "default": "Timeless Connection" },
+    { "type": "text", "id": "left_overlay_subtext", "label": "Left Overlay Subtext", "default": "We are here to assist you with every inquiry." },
+
+    { "type": "text", "id": "client_services_label", "label": "Client Services Label", "default": "CLIENT SERVICES" },
+    { "type": "text", "id": "main_heading", "label": "Main Heading", "default": "Contact Us" },
+    { "type": "textarea", "id": "intro_text", "label": "Intro Text", "default": "Whether for a consultation, a specific piece, or general inquiries, our team is at your disposal." },
+
+    { "type": "text", "id": "headquarters_title", "label": "Headquarters Title", "default": "Headquarters" },
+    { "type": "textarea", "id": "address", "label": "Address", "default": "C. de Fernando VI, 5\n28004 Dubai, UAE" },
+    { "type": "text", "id": "phone", "label": "Phone", "default": "+971 4 123 4567" },
+    { "type": "text", "id": "email", "label": "Email", "default": "concierge@rosetta.com" },
+
+    { "type": "text", "id": "opening_hours_title", "label": "Opening Hours Title", "default": "Opening Hours" },
+    { "type": "textarea", "id": "opening_hours", "label": "Opening Hours", "default": "Monday - Saturday\n10:00 AM - 8:00 PM\nSunday\n11:00 AM - 6:00 PM" },
+
+    { "type": "text", "id": "form_heading", "label": "Form Heading", "default": "Send a Message" },
+    { "type": "text", "id": "button_label", "label": "Button Label", "default": "Send Message" }
+  ],
+  "presets": [
+    { "name": "Luxury Contact Page" }
+  ]
+}
+{% endschema %}
