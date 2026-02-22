@@ -1,68 +1,131 @@
-<section class="luxury-split">
+<section id="collections" class="luxury-split">
 
-  <div class="split-left">
+  <div class="split-wrapper">
 
-    <!-- Product Grid -->
-    <div class="product-grid">
-      {% for product in collections[section.settings.collection].products limit: 2 %}
-        <div class="product-card">
-          <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}">
+    <div class="split-grid">
+
+      <!-- LEFT SIDE -->
+      <div class="split-left">
+
+        <!-- 2x2 COLLECTION GRID -->
+        <div class="collection-grid">
+
+          {% for block in section.blocks %}
+            <div class="collection-item" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                <img 
+                  src="{{ block.settings.image | image_url: width: 800 }}" 
+                  alt="{{ block.settings.title }}"
+                  loading="lazy">
+              {% endif %}
+              <div class="collection-overlay"></div>
+            </div>
+          {% endfor %}
+
         </div>
-      {% endfor %}
+
+        <!-- TEXT CONTENT -->
+        <div class="split-text">
+          <h3>{{ section.settings.heading }}</h3>
+          <p>{{ section.settings.text }}</p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE LARGE IMAGE -->
+      <div class="split-right">
+        {% if section.settings.right_image != blank %}
+          <img 
+            src="{{ section.settings.right_image | image_url: width: 1600 }}"
+            alt="Luxury collection">
+        {% endif %}
+      </div>
+
     </div>
 
-    <!-- Text Content -->
-    <div class="split-text">
-      <h2>{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.text }}</p>
-    </div>
-
-  </div>
-
-  <!-- Right Image -->
-  <div class="split-right">
-    <img src="{{ section.settings.right_image | image_url: width: 1500 }}" alt="Collection Image">
   </div>
 
 </section>
 
+
 {% stylesheet %}
 
+/* ===== SECTION ===== */
 .luxury-split {
+  padding: 120px 0;
+  background: var(--color-background);
+}
+
+.split-wrapper {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.split-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 90vh;
+  gap: 80px;
+  align-items: center;
 }
 
-.split-left {
-  padding: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.product-grid {
+/* ===== LEFT ===== */
+.collection-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
 }
 
-.product-card img {
+.collection-item {
+  position: relative;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.collection-item img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.8s ease;
 }
 
-.split-text h2 {
-  font-size: 28px;
-  letter-spacing: 4px;
+.collection-item:hover img {
+  transform: scale(1.08);
+}
+
+.collection-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  transition: background 0.5s ease;
+}
+
+.collection-item:hover .collection-overlay {
+  background: rgba(0,0,0,0.08);
+}
+
+/* ===== TEXT ===== */
+.split-text h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  letter-spacing: 0.12em;
   margin-bottom: 20px;
 }
 
 .split-text p {
-  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
   line-height: 1.8;
-  color: #666;
+  max-width: 520px;
+}
+
+/* ===== RIGHT IMAGE ===== */
+.split-right {
+  position: relative;
+  min-height: 600px;
+  overflow: hidden;
 }
 
 .split-right img {
@@ -71,34 +134,48 @@
   object-fit: cover;
 }
 
-/* Responsive */
-
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .luxury-split {
+
+  .split-grid {
     grid-template-columns: 1fr;
+    gap: 60px;
   }
 
   .split-right {
-    order: -1;
-    height: 400px;
+    min-height: 500px;
   }
 
-  .split-left {
-    padding: 40px 20px;
+}
+
+@media (max-width: 768px) {
+
+  .luxury-split {
+    padding: 80px 0;
   }
+
+  .collection-grid {
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .split-text h3 {
+    font-size: 20px;
+  }
+
+  .split-text p {
+    font-size: 14px;
+  }
+
 }
 
 {% endstylesheet %}
+
 
 {% schema %}
 {
   "name": "Luxury Collection Split",
   "settings": [
-    {
-      "type": "collection",
-      "id": "collection",
-      "label": "Select Collection"
-    },
     {
       "type": "text",
       "id": "heading",
@@ -108,18 +185,43 @@
     {
       "type": "textarea",
       "id": "text",
-      "label": "Paragraph",
+      "label": "Paragraph Text",
       "default": "Each Rosetta Fine Jewellery collection tells a story — of grace, strength, and timeless allure."
     },
     {
       "type": "image_picker",
       "id": "right_image",
-      "label": "Right Side Image"
+      "label": "Right Large Image"
     }
   ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Collection Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Alt Text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
   "presets": [
     {
-      "name": "Luxury Collection Split"
+      "name": "Luxury Collection Split",
+      "blocks": [
+        { "type": "collection_item" },
+        { "type": "collection_item" },
+        { "type": "collection_item" },
+        { "type": "collection_item" }
+      ]
     }
   ]
 }
