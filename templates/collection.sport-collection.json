@@ -11,33 +11,59 @@
   "sections": {
     "hero": {
       "type": "collection-hero-sport",
-      "settings": {}
+      "settings": {
+        "hero_image": "shopify://shop_images/imgi_10_full-width-jewellery-uER-pP_t.jpg",
+        "subtitle": "CHAPTER",
+        "title": "1932",
+        "caption": "ALLURE CÉLESTE NECKLACE"
+      }
     },
     "intro": {
       "type": "collection-intro-text",
-      "settings": {}
+      "settings": {
+        "heading": "Collection 1932",
+        "text": "The House’s Fine Jewellery Creation Studio draws inspiration for a new story from the modernity of the Bijoux de Diamants collection, imagined in 1932 by Gabrielle Chanel. While the original Bijoux de Diamants collection consisted almost entirely of diamonds, a concentration of pure light, Collection 1932 honours coloured stones, including the sapphire, blue like the night of the Allure Céleste necklace. By playing with the past to shape the future, the Fine Jewellery Creation Studio imagines pieces inspired by the perpetual motion of the stars that follow the free-flowing movement of the body."
+      }
     },
     "block1": {
       "type": "collection-split-block",
-      "settings": {}
+      "settings": {
+        "reverse_layout": false,
+        "image": "shopify://shop_images/imgi_16_blog-1-DWs9qvMG.jpg",
+        "heading": "High Jewellery Savoir‑Faire",
+        "text": "From the initial sketch to the search for exceptional gemstones and the final production by artisans, each piece is the culmination of extraordinarily precise handcrafted work."
+      }
     },
     "block2": {
       "type": "collection-split-block",
       "settings": {
-        "reverse_layout": true
+        "reverse_layout": true,
+        "image": "shopify://shop_images/imgi_12_showcase-3-B460clHm.jpg",
+        "heading": "55.55-Carat Sapphire",
+        "text": "A masterpiece made up of diamonds and an exceptional sapphire, blue like the night."
       }
     },
     "banner": {
       "type": "collection-full-banner",
-      "settings": {}
+      "settings": {
+        "banner_image": "shopify://shop_images/imgi_15_appointment-bg-L6pDFhqu.jpg"
+      }
     },
     "feature": {
       "type": "collection-feature-highlight",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/imgi_10_full-width-jewellery-uER-pP_t.jpg",
+        "heading": "HALOS",
+        "text": "Each halo of this transformable piece can be detached and worn as a brooch.",
+        "button_label": "Book Appointment",
+        "button_link": ""
+      }
     },
     "discover": {
       "type": "collection-discover-products",
-      "settings": {}
+      "settings": {
+        "heading": "Discover"
+      }
     }
   },
   "order": [
