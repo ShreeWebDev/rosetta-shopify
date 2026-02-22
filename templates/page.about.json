@@ -30,7 +30,11 @@
       "type": "about-savoir-faire",
       "settings": {
         "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem.jpg",
-        "heading": "EXCEPTIONAL CRAFTSMANSHIP"
+        "label": "THE VISIONARY",
+        "heading": "EXCEPTIONAL CRAFTSMANSHIP",
+        "quote": "Jewellery is not just an accessory; it is an emotion, a memory, a legacy passed down through generations.",
+        "author_name": "ROSETTA FOUNDER",
+        "author_title": "Creative Director"
       }
     },
     "visionary": {
@@ -39,7 +43,11 @@
     },
     "family": {
       "type": "about-family",
-      "settings": {}
+      "settings": {
+        "heading": "Family, heritage & expertise.",
+        "text": "<p>First generation jewellers who embrace the craft of fine jewellery making, refined with quality-driven designs, a sense of ceremonial significance, and warm human values that celebrate devotion and generational loyalty.<br/><br/>A family-led approach rooted in trust ensures every creation reflects sincerity and timeless elegance.</p>",
+        "image": "shopify://shop_images/imgi_16_blog-1-DWs9qvMG.jpg"
+      }
     }
   },
   "order": [
