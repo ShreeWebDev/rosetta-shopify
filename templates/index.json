@@ -187,23 +187,33 @@
       "blocks": {
         "instagram_image_xDAbkN": {
           "type": "instagram_image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/imgi_8_product-earrings-2-CFgLYs6d.jpg"
+          }
         },
         "instagram_image_9KhgKF": {
           "type": "instagram_image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/imgi_24_photo-1535632066927-ab7c9ab60908.jpg"
+          }
         },
         "instagram_image_ndUFXE": {
           "type": "instagram_image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/imgi_22_photo-1602173574767-37ac01994b2a.jpg"
+          }
         },
         "instagram_image_hBAExt": {
           "type": "instagram_image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/imgi_19_photo-1599643478518-a784e5dc4c8f.jpg"
+          }
         },
         "instagram_image_BEdRWt": {
           "type": "instagram_image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/imgi_7_product-necklace-2-BccKYz68_1.jpg"
+          }
         }
       },
       "block_order": [
