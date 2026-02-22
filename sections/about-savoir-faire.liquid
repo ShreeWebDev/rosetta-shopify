@@ -1,0 +1,81 @@
+<section class="about-section">
+
+  <div class="about-grid">
+
+    <div class="about-text">
+      <span class="about-label">OUR HISTORY</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+
+    <div class="about-image">
+      <img src="{{ section.settings.image | image_url: width: 1200 }}">
+    </div>
+
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+.about-section {
+  padding:140px 0;
+  background:#f4f4f4;
+}
+
+.about-grid {
+  width:90%;
+  max-width:1300px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:100px;
+  align-items:center;
+  direction: rtl;
+}
+
+.about-label {
+  font-family:'Inter', sans-serif;
+  font-size:11px;
+  letter-spacing:0.4em;
+  opacity:0.6;
+}
+
+.about-text h2 {
+  font-family:'Cormorant Garamond', serif;
+  font-size:40px;
+  margin:25px 0;
+  letter-spacing:0.1em;
+  direction: ltr;
+}
+
+.about-text p {
+  font-family:'Inter', sans-serif;
+  line-height:1.9;
+  font-size:14px;
+  direction: ltr;
+}
+
+.about-image img {
+  width:100%;
+  object-fit:cover;
+  direction: ltr;
+}
+
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr;gap:40px;direction: rtl;}
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About History",
+  "settings": [
+    { "type": "text", "id": "heading", "default": "A Legacy of Elegance", "label": "Heading" },
+    { "type": "textarea", "id": "text", "default": "The story of Rosetta began...", "label": "text"},
+    { "type": "image_picker", "id": "image","label": "image" }
+  ],
+  "presets":[{ "name":"About History"}]
+}
+{% endschema %}
