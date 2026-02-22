@@ -9,15 +9,11 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
-    },
     "luxury_hero_TJ6BE7": {
       "type": "luxury-hero",
       "name": "Luxury Video Hero",
       "settings": {
-        "video_url": "",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/8771059feaa8429cb3833c403689de50.mp4",
         "heading": "TIMELESS ELEGANCE",
         "subtext": "DISCOVER THE ART OF REFINED LUXURY",
         "button_label": "EXPLORE COLLECTIONS",
@@ -35,7 +31,6 @@
     }
   },
   "order": [
-    "main",
     "luxury_hero_TJ6BE7",
     "luxury_collection_split_HB6Dw9"
   ]
