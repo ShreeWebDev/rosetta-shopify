@@ -106,7 +106,7 @@
             "image": "shopify://shop_images/showcase-Necklaces_7b2b32f0-a81f-469f-a48c-98e38654e5c7.png",
             "category": "Necklaces",
             "title": "Diamond Necklace",
-            "link": ""
+            "link": "shopify://collections/necklaces"
           }
         },
         "showcase_item_pp6JAY": {
@@ -115,7 +115,7 @@
             "image": "shopify://shop_images/showcase-ear-ring_c9a43adc-600e-4b79-a25a-dc8cae2e81ad.png",
             "category": "Earrings",
             "title": "Ruby Earrings",
-            "link": ""
+            "link": "shopify://collections/ear-rings"
           }
         },
         "showcase_item_f6NXHJ": {
@@ -124,7 +124,7 @@
             "image": "shopify://shop_images/imgi_12_showcase-3-B460clHm.jpg",
             "category": "Rings",
             "title": "Statement Rings",
-            "link": ""
+            "link": "shopify://collections/rings"
           }
         },
         "showcase_item_WrCece": {
@@ -133,7 +133,7 @@
             "image": "shopify://shop_images/imgi_13_showcase-4-CzMOgt7o.jpg",
             "category": "Bracelets",
             "title": "Diamond Bracelet",
-            "link": ""
+            "link": "shopify://collections/bracelets"
           }
         },
         "showcase_item_3cXwTz": {
@@ -142,7 +142,7 @@
             "image": "shopify://shop_images/showcase-Emerald.jpg",
             "category": "Emerald",
             "title": "Emerald Collection",
-            "link": ""
+            "link": "shopify://collections/emerald"
           }
         }
       },
