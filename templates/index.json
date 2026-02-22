@@ -24,15 +24,110 @@
       "type": "luxury-collection-split",
       "name": "Luxury Collection Split",
       "settings": {
-        "collection": "",
         "heading": "DISCOVER THE LATEST COLLECTIONS",
         "text": "Each Rosetta Fine Jewellery collection tells a story — of grace, strength, and timeless allure.",
         "right_image": "shopify://shop_images/EARRING_000171.png"
+      }
+    },
+    "home_collections_KYNfU3": {
+      "type": "home-collections",
+      "name": "Home Collections",
+      "settings": {
+        "subtitle": "Exclusive Pieces",
+        "heading": "2025 NEW COLLECTION",
+        "collection": "",
+        "products_to_show": 8,
+        "button_label": "View All Collection"
+      }
+    },
+    "craftsmanship_Az6Mnp": {
+      "type": "craftsmanship",
+      "name": "Craftsmanship Banner",
+      "settings": {
+        "heading": "THE ART OF CRAFTSMANSHIP",
+        "subtext": "Where tradition meets innovation",
+        "button_label": "About Us",
+        "button_link": ""
+      }
+    },
+    "featured_showcase_FDQEAd": {
+      "type": "featured-showcase",
+      "blocks": {
+        "showcase_item_XLBDrM": {
+          "type": "showcase_item",
+          "settings": {
+            "category": "Necklaces",
+            "title": "Diamond Necklace",
+            "link": ""
+          }
+        },
+        "showcase_item_pp6JAY": {
+          "type": "showcase_item",
+          "settings": {
+            "category": "Necklaces",
+            "title": "Diamond Necklace",
+            "link": ""
+          }
+        },
+        "showcase_item_f6NXHJ": {
+          "type": "showcase_item",
+          "settings": {
+            "category": "Necklaces",
+            "title": "Diamond Necklace",
+            "link": ""
+          }
+        },
+        "showcase_item_WrCece": {
+          "type": "showcase_item",
+          "settings": {
+            "category": "Necklaces",
+            "title": "Diamond Necklace",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "showcase_item_XLBDrM",
+        "showcase_item_pp6JAY",
+        "showcase_item_f6NXHJ",
+        "showcase_item_WrCece"
+      ],
+      "name": "Featured Showcase",
+      "settings": {
+        "subtitle": "Featured",
+        "heading": "SHOWCASE"
+      }
+    },
+    "book_appointment_anVYp3": {
+      "type": "book-appointment",
+      "name": "Book Appointment",
+      "settings": {
+        "subtitle": "Exclusive Experience",
+        "heading": "BOOK YOUR PRIVATE APPOINTMENT",
+        "text": "Experience the pinnacle of luxury with a private consultation at our boutique.",
+        "button_label": "BOOK AN APPOINTMENT",
+        "button_link": ""
+      }
+    },
+    "home_blog_card_prFJnN": {
+      "type": "home-blog-card",
+      "name": "Home Blog Section",
+      "settings": {
+        "subtitle": "Stories & Insights",
+        "heading": "LATEST NEWS & EVENTS",
+        "blog": "",
+        "posts_to_show": 3,
+        "button_label": "View All News"
       }
     }
   },
   "order": [
     "luxury_hero_TJ6BE7",
-    "luxury_collection_split_HB6Dw9"
+    "luxury_collection_split_HB6Dw9",
+    "home_collections_KYNfU3",
+    "craftsmanship_Az6Mnp",
+    "featured_showcase_FDQEAd",
+    "book_appointment_anVYp3",
+    "home_blog_card_prFJnN"
   ]
 }
