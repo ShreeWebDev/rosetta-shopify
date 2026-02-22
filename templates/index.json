@@ -177,7 +177,7 @@
       "settings": {
         "subtitle": "Stories & Insights",
         "heading": "LATEST NEWS & EVENTS",
-        "blog": "",
+        "blog": "news",
         "posts_to_show": 3,
         "button_label": "View All News"
       }
