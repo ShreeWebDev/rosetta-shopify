@@ -1,0 +1,126 @@
+<section class="luxury-split">
+
+  <div class="split-left">
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+      {% for product in collections[section.settings.collection].products limit: 2 %}
+        <div class="product-card">
+          <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}">
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Text Content -->
+    <div class="split-text">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+
+  </div>
+
+  <!-- Right Image -->
+  <div class="split-right">
+    <img src="{{ section.settings.right_image | image_url: width: 1500 }}" alt="Collection Image">
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+.luxury-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+}
+
+.split-left {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.split-text h2 {
+  font-size: 28px;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+.split-text p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #666;
+}
+
+.split-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .luxury-split {
+    grid-template-columns: 1fr;
+  }
+
+  .split-right {
+    order: -1;
+    height: 400px;
+  }
+
+  .split-left {
+    padding: 40px 20px;
+  }
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Luxury Collection Split",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "DISCOVER THE LATEST COLLECTIONS"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Paragraph",
+      "default": "Each Rosetta Fine Jewellery collection tells a story — of grace, strength, and timeless allure."
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Side Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Collection Split"
+    }
+  ]
+}
+{% endschema %}
