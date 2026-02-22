@@ -12,9 +12,21 @@
     "main": {
       "type": "hello-world",
       "settings": {}
+    },
+    "luxury_hero_TJ6BE7": {
+      "type": "luxury-hero",
+      "name": "Luxury Video Hero",
+      "settings": {
+        "video_url": "",
+        "heading": "TIMELESS ELEGANCE",
+        "subtext": "DISCOVER THE ART OF REFINED LUXURY",
+        "button_label": "EXPLORE COLLECTIONS",
+        "button_link": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "luxury_hero_TJ6BE7"
   ]
 }
