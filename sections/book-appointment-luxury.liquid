@@ -1,0 +1,227 @@
+<section class="book-luxury">
+
+  <div class="book-wrapper">
+
+    <!-- LEFT IMAGE -->
+    <div class="book-image">
+      {% if section.settings.left_image %}
+        <img src="{{ section.settings.left_image | image_url: width: 1600 }}" alt="">
+      {% endif %}
+      <div class="book-overlay">
+        <h2>{{ section.settings.left_overlay_heading }}</h2>
+        <p>{{ section.settings.left_overlay_subtext }}</p>
+      </div>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="book-content">
+
+      <span class="book-label">
+        {{ section.settings.concierge_label }}
+      </span>
+
+      <h1 class="book-heading">
+        {{ section.settings.main_heading }}
+      </h1>
+
+      <p class="book-intro">
+        {{ section.settings.intro_text }}
+      </p>
+
+      <h4 class="form-section-title">
+        {{ section.settings.personal_details_heading }}
+      </h4>
+
+      {% form 'contact' %}
+
+        <div class="form-row">
+          <input type="text" name="contact[first_name]" placeholder="First Name">
+          <input type="text" name="contact[last_name]" placeholder="Last Name">
+        </div>
+
+        <div class="form-row">
+          <input type="email" name="contact[email]" placeholder="Email Address">
+          <input type="tel" name="contact[phone]" placeholder="Phone Number">
+        </div>
+
+        <div class="form-row">
+          <input type="date" name="contact[preferred_date]">
+          <input type="time" name="contact[preferred_time]">
+        </div>
+
+        <select name="contact[boutique]">
+          <option>Select a boutique near you</option>
+          <option>Dubai</option>
+          <option>Abu Dhabi</option>
+          <option>Virtual Consultation</option>
+        </select>
+
+        <textarea name="contact[special_request]" rows="4" placeholder="Special Requests"></textarea>
+
+        <button type="submit" class="book-btn">
+          {{ section.settings.button_label }}
+        </button>
+
+        <p class="privacy-text">
+          <a href="{{ section.settings.privacy_link }}">
+            {{ section.settings.privacy_text }}
+          </a>
+        </p>
+
+      {% endform %}
+
+    </div>
+
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+.book-luxury {
+  background: #f4f4f4;
+}
+
+.book-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.book-image {
+  position: relative;
+}
+
+.book-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-overlay {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  color: white;
+}
+
+.book-overlay h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.book-overlay p {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+/* RIGHT SIDE */
+
+.book-content {
+  padding: 120px 80px;
+}
+
+.book-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.book-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  margin: 20px 0;
+}
+
+.book-intro {
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 50px;
+  max-width: 500px;
+}
+
+.form-section-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.book-content input,
+.book-content select,
+.book-content textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 12px 0;
+  margin-bottom: 30px;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+}
+
+.book-btn {
+  background: #b28a4a;
+  color: white;
+  padding: 14px 40px;
+  border: none;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.privacy-text {
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+.privacy-text a {
+  color: #666;
+  text-decoration: none;
+}
+
+@media(max-width: 900px){
+  .book-wrapper{
+    grid-template-columns: 1fr;
+  }
+  .book-content{
+    padding:60px 30px;
+  }
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Luxury Book Appointment",
+  "settings": [
+    { "type": "image_picker", "id": "left_image", "label": "Left Image" },
+    { "type": "text", "id": "left_overlay_heading", "label": "Left Overlay Heading", "default": "Unrivaled Elegance" },
+    { "type": "text", "id": "left_overlay_subtext", "label": "Left Overlay Subtext", "default": "Experience the artistry of Rosetta in a private setting dedicated to your desires." },
+
+    { "type": "text", "id": "concierge_label", "label": "Concierge Label", "default": "CONCIERGE SERVICE" },
+    { "type": "text", "id": "main_heading", "label": "Main Heading", "default": "Book an Appointment" },
+    { "type": "textarea", "id": "intro_text", "label": "Intro Text", "default": "Select a time to visit one of our boutiques or request a virtual consultation." },
+
+    { "type": "text", "id": "personal_details_heading", "label": "Personal Details Heading", "default": "PERSONAL DETAILS" },
+
+    { "type": "text", "id": "button_label", "label": "Button Label", "default": "Confirm Booking" },
+
+    { "type": "text", "id": "privacy_text", "label": "Privacy Text", "default": "We respect your privacy." },
+    { "type": "url", "id": "privacy_link", "label": "Privacy Link" }
+  ],
+  "presets": [
+    { "name": "Luxury Book Appointment" }
+  ]
+}
+{% endschema %}
