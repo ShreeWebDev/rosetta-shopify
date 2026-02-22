@@ -23,10 +23,20 @@
         "button_label": "EXPLORE COLLECTIONS",
         "button_link": ""
       }
+    },
+    "luxury_collection_split_HB6Dw9": {
+      "type": "luxury-collection-split",
+      "name": "Luxury Collection Split",
+      "settings": {
+        "collection": "",
+        "heading": "DISCOVER THE LATEST COLLECTIONS",
+        "text": "Each Rosetta Fine Jewellery collection tells a story — of grace, strength, and timeless allure."
+      }
     }
   },
   "order": [
     "main",
-    "luxury_hero_TJ6BE7"
+    "luxury_hero_TJ6BE7",
+    "luxury_collection_split_HB6Dw9"
   ]
 }
