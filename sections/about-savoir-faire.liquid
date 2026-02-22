@@ -1,15 +1,36 @@
-<section class="about-section">
+<section class="about-savoir">
 
-  <div class="about-grid">
+  <div class="about-savoir-wrapper">
 
-    <div class="about-text">
-      <span class="about-label">OUR HISTORY</span>
-      <h2>{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.text }}</p>
+    <!-- Image -->
+    <div class="about-savoir-image">
+      {% if section.settings.image != blank %}
+        <img 
+          src="{{ section.settings.image | image_url: width: 1200 }}"
+          alt="{{ section.settings.heading }}">
+      {% endif %}
     </div>
 
-    <div class="about-image">
-      <img src="{{ section.settings.image | image_url: width: 1200 }}">
+    <!-- Content -->
+    <div class="about-savoir-content">
+
+      <span class="about-label">
+        {{ section.settings.label }}
+      </span>
+
+      <h2 class="about-heading">
+        {{ section.settings.heading }}
+      </h2>
+
+      <p class="about-quote">
+        {{ section.settings.quote }}
+      </p>
+
+      <div class="about-author">
+        <strong>{{ section.settings.author_name }}</strong>
+        <span>{{ section.settings.author_title }}</span>
+      </div>
+
     </div>
 
   </div>
@@ -18,64 +39,132 @@
 
 {% stylesheet %}
 
-.about-section {
-  padding:140px 0;
-  background:#f4f4f4;
+.about-savoir {
+  padding: 160px 0;
+  background: #f4f4f4;
 }
 
-.about-grid {
-  width:90%;
-  max-width:1300px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:100px;
-  align-items:center;
-  direction: rtl;
+.about-savoir-wrapper {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 120px;
+  align-items: center;
 }
 
+/* IMAGE */
+.about-savoir-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* CONTENT */
 .about-label {
-  font-family:'Inter', sans-serif;
-  font-size:11px;
-  letter-spacing:0.4em;
-  opacity:0.6;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  display: block;
+  margin-bottom: 20px;
 }
 
-.about-text h2 {
-  font-family:'Cormorant Garamond', serif;
-  font-size:40px;
-  margin:25px 0;
-  letter-spacing:0.1em;
-  direction: ltr;
+.about-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  letter-spacing: 0.12em;
+  margin-bottom: 40px;
 }
 
-.about-text p {
-  font-family:'Inter', sans-serif;
-  line-height:1.9;
-  font-size:14px;
-  direction: ltr;
+.about-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  max-width: 520px;
 }
 
-.about-image img {
-  width:100%;
-  object-fit:cover;
-  direction: ltr;
+.about-author strong {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.2em;
+  font-size: 13px;
+  margin-bottom: 6px;
 }
 
-@media(max-width:768px){
-  .about-grid{grid-template-columns:1fr;gap:40px;direction: rtl;}
+.about-author span {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .about-savoir-wrapper {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .about-heading {
+    font-size: 32px;
+  }
+
+  .about-quote {
+    font-size: 18px;
+  }
 }
 
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "About History",
+  "name": "About Savoir-Faire",
   "settings": [
-    { "type": "text", "id": "heading", "default": "A Legacy of Elegance", "label": "Heading" },
-    { "type": "textarea", "id": "text", "default": "The story of Rosetta began...", "label": "text"},
-    { "type": "image_picker", "id": "image","label": "image" }
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Left Image"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Top Label",
+      "default": "THE VISIONARY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "A WORD FROM THE FOUNDER"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote Text",
+      "default": "Jewellery is not just an accessory; it is an emotion, a memory, a legacy passed down through generations."
+    },
+    {
+      "type": "text",
+      "id": "author_name",
+      "label": "Author Name",
+      "default": "ROSETTA FOUNDER"
+    },
+    {
+      "type": "text",
+      "id": "author_title",
+      "label": "Author Title",
+      "default": "Creative Director"
+    }
   ],
-  "presets":[{ "name":"About History"}]
+  "presets": [
+    {
+      "name": "About Savoir-Faire"
+    }
+  ]
 }
 {% endschema %}
