@@ -22,10 +22,46 @@
     },
     "luxury_collection_split_HB6Dw9": {
       "type": "luxury-collection-split",
+      "blocks": {
+        "collection_item_qJLdeM": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/product-ring.png",
+            "title": "Ring"
+          }
+        },
+        "collection_item_68TTyw": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/product-ear-ring-1.png",
+            "title": "Ear Ring"
+          }
+        },
+        "collection_item_pwF8D3": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/product-ear-ring-2.png",
+            "title": "Ear Ring 2"
+          }
+        },
+        "collection_item_Kr7HTJ": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/product-ear-ring-3.png",
+            "title": "Ear Ring 3"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_qJLdeM",
+        "collection_item_68TTyw",
+        "collection_item_pwF8D3",
+        "collection_item_Kr7HTJ"
+      ],
       "name": "Luxury Collection Split",
       "settings": {
         "heading": "DISCOVER THE LATEST COLLECTIONS",
-        "text": "Each Rosetta Fine Jewellery collection tells a story — of grace, strength, and timeless allure.",
+        "text": "Each Rosetta Fine Jewellery collection tells a story — of grace, strength, and timeless allure. From delicate everyday diamonds to statement masterpieces, every design reflects the art of refined luxury.",
         "right_image": "shopify://shop_images/EARRING_000171.png"
       }
     },
