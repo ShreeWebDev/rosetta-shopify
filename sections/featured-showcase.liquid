@@ -11,7 +11,6 @@
     </div>
   </div>
 
-  <!-- AUTO SCROLL WRAPPER -->
   <div class="showcase-wrapper">
     <div class="showcase-track">
 
@@ -19,7 +18,7 @@
         <div class="showcase-item" {{ block.shopify_attributes }}>
           <a href="{{ block.settings.link }}">
             <div class="showcase-image">
-              {% if block.settings.image != blank %}
+              {% if block.settings.image %}
                 <img 
                   src="{{ block.settings.image | image_url: width: 1200 }}"
                   alt="{{ block.settings.title }}"
@@ -40,12 +39,11 @@
         </div>
       {% endfor %}
 
-      <!-- DUPLICATE FOR INFINITE LOOP -->
       {% for block in section.blocks %}
         <div class="showcase-item">
           <a href="{{ block.settings.link }}">
             <div class="showcase-image">
-              {% if block.settings.image != blank %}
+              {% if block.settings.image %}
                 <img 
                   src="{{ block.settings.image | image_url: width: 1200 }}"
                   alt="{{ block.settings.title }}"
@@ -71,27 +69,18 @@
 
 </section>
 
-
 {% stylesheet %}
 
-/* SECTION */
 .featured-showcase {
   padding: 120px 0;
   background: #ffffff;
   overflow: hidden;
 }
 
-/* HEADER */
 .showcase-header {
   width: 90%;
   max-width: 1400px;
   margin: 0 auto 60px auto;
-}
-
-.showcase-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
 }
 
 .showcase-subtitle {
@@ -106,17 +95,13 @@
 .showcase-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 40px;
-  letter-spacing: 0.1em;
   font-weight: 300;
 }
 
-/* WRAPPER */
 .showcase-wrapper {
   overflow: hidden;
-  position: relative;
 }
 
-/* TRACK */
 .showcase-track {
   display: flex;
   gap: 30px;
@@ -124,21 +109,16 @@
   animation: autoScroll 35s linear infinite;
 }
 
-/* PAUSE ON HOVER */
 .showcase-wrapper:hover .showcase-track {
   animation-play-state: paused;
 }
 
-/* ITEM */
 .showcase-item {
   flex-shrink: 0;
   width: 320px;
-  cursor: pointer;
 }
 
-/* IMAGE */
 .showcase-image {
-  position: relative;
   aspect-ratio: 3/4;
   overflow: hidden;
   margin-bottom: 20px;
@@ -155,68 +135,70 @@
   transform: scale(1.08);
 }
 
-.showcase-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.4),
-    rgba(0,0,0,0.1),
-    rgba(0,0,0,0)
-  );
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.showcase-item:hover .showcase-overlay {
-  opacity: 1;
-}
-
-/* INFO */
-.showcase-category {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  opacity: 0.6;
-}
-
-.showcase-product-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 300;
-  margin-top: 6px;
-}
-
-/* AUTO SCROLL ANIMATION */
 @keyframes autoScroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .showcase-item {
-    width: 260px;
-  }
-
-  .showcase-title {
-    font-size: 32px;
-  }
-}
-
-@media (max-width: 768px) {
-  .featured-showcase {
-    padding: 80px 0;
-  }
-
-  .showcase-item {
-    width: 220px;
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 {% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Featured Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Featured"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SHOWCASE"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "showcase_item",
+      "name": "Showcase Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "Necklaces"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Diamond Necklace"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Showcase",
+      "blocks": [
+        { "type": "showcase_item" },
+        { "type": "showcase_item" },
+        { "type": "showcase_item" },
+        { "type": "showcase_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
