@@ -1,0 +1,218 @@
+<section class="book-appointment">
+
+  <!-- Background -->
+  {% if section.settings.background_image != blank %}
+    <div class="appointment-bg">
+      <img 
+        src="{{ section.settings.background_image | image_url: width: 2000 }}"
+        alt="Private jewellery consultation">
+      <div class="appointment-overlay"></div>
+    </div>
+  {% endif %}
+
+  <!-- Content Wrapper -->
+  <div class="appointment-wrapper">
+    <div class="appointment-card">
+
+      <span class="appointment-subtitle">
+        {{ section.settings.subtitle }}
+      </span>
+
+      <h2 class="appointment-heading">
+        {{ section.settings.heading }}
+      </h2>
+
+      <p class="appointment-text">
+        {{ section.settings.text }}
+      </p>
+
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="appointment-btn">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+
+</section>
+
+
+{% stylesheet %}
+
+/* SECTION */
+.book-appointment {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* BACKGROUND */
+.appointment-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.appointment-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.appointment-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0)
+  );
+}
+
+/* WRAPPER */
+.appointment-wrapper {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 8%;
+}
+
+/* CARD */
+.appointment-card {
+  background: #ffffff;
+  padding: 60px;
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+/* TEXT STYLES */
+.appointment-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.appointment-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  margin-bottom: 30px;
+}
+
+.appointment-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* BUTTON */
+.appointment-btn {
+  display: block;
+  width: 100%;
+  padding: 16px 0;
+  background: #000000;
+  color: #ffffff;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.appointment-btn:hover {
+  background: transparent;
+  color: #000;
+  border: 1px solid #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .appointment-wrapper {
+    justify-content: center;
+  }
+
+  .appointment-card {
+    padding: 40px;
+  }
+
+  .appointment-heading {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .book-appointment {
+    min-height: 80vh;
+  }
+
+  .appointment-wrapper {
+    padding: 0 5%;
+  }
+
+  .appointment-card {
+    padding: 30px;
+  }
+}
+
+{% endstylesheet %}
+
+
+{% schema %}
+{
+  "name": "Book Appointment",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Exclusive Experience"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "BOOK YOUR PRIVATE APPOINTMENT"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description Text",
+      "default": "Experience the pinnacle of luxury with a private consultation at our boutique."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "BOOK AN APPOINTMENT"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Book Appointment"
+    }
+  ]
+}
+{% endschema %}
