@@ -90,6 +90,7 @@
       "type": "craftsmanship",
       "name": "Craftsmanship Banner",
       "settings": {
+        "background_image": "shopify://shop_images/imgi_10_full-width-jewellery-uER-pP_t.jpg",
         "heading": "THE ART OF CRAFTSMANSHIP",
         "subtext": "Where tradition meets innovation",
         "button_label": "About Us",
