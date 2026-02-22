@@ -13,29 +13,25 @@
       "type": "page",
       "settings": {}
     },
-    "contact_luxury_eqeA8B": {
-      "type": "contact-luxury",
-      "name": "Luxury Contact Page",
+    "book_appointment_luxury_bEBgpc": {
+      "type": "book-appointment-luxury",
+      "name": "Luxury Book Appointment",
       "settings": {
-        "left_image": "shopify://shop_images/showcase-Necklaces.png",
-        "left_overlay_heading": "Timeless Connection",
-        "left_overlay_subtext": "We are here to assist you with every inquiry.",
-        "client_services_label": "CLIENT SERVICES",
-        "main_heading": "Contact Us",
-        "intro_text": "Whether for a consultation, a specific piece, or general inquiries, our team is at your disposal.",
-        "headquarters_title": "Headquarters",
-        "address": "C. de Fernando VI, 5\n28004 Dubai, UAE",
-        "phone": "+971 4 123 4567",
-        "email": "concierge@rosetta.com",
-        "opening_hours_title": "Opening Hours",
-        "opening_hours": "Monday - Saturday\n10:00 AM - 8:00 PM\nSunday\n11:00 AM - 6:00 PM",
-        "form_heading": "Send a Message",
-        "button_label": "Send Message"
+        "left_image": "shopify://shop_images/EARRING_000171.png",
+        "left_overlay_heading": "Unrivaled Elegance",
+        "left_overlay_subtext": "Experience the artistry of Rosetta in a private setting dedicated to your desires.",
+        "concierge_label": "CONCIERGE SERVICE",
+        "main_heading": "Book an Appointment",
+        "intro_text": "Select a time to visit one of our boutiques or request a virtual consultation.",
+        "personal_details_heading": "PERSONAL DETAILS",
+        "button_label": "Confirm Booking",
+        "privacy_text": "We respect your privacy.",
+        "privacy_link": ""
       }
     }
   },
   "order": [
     "main",
-    "contact_luxury_eqeA8B"
+    "book_appointment_luxury_bEBgpc"
   ]
 }
