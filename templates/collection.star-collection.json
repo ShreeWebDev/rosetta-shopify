@@ -61,11 +61,90 @@
         "heading": "THE THEMATIC COLLECTIONS",
         "text": "With each of the exceptional collections of the Rosetta Fine Jewellery Creation Studio, there is an endless quest for beauty. Blending knowledge and innovative creativity with the world of fabrics that inspires it, and exploring the savoir-faire of housing precious stones, each collection unveils a unique perspective on jewellery, celebrating elegance and styles of its very own."
       }
+    },
+    "star_collection_image_list_ddDVHW": {
+      "type": "star-collection-image-list",
+      "blocks": {
+        "image_item_pNiDmE": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/imgi_24_photo-1535632066927-ab7c9ab60908.jpg",
+            "link": ""
+          }
+        },
+        "image_item_FFRVJg": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/imgi_7_product-necklace-2-BccKYz68_1.jpg",
+            "link": ""
+          }
+        },
+        "image_item_aQdJcW": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/imgi_23_photo-1605100804763-247f67b3557e.jpg",
+            "link": ""
+          }
+        },
+        "image_item_JAaH6j": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/imgi_21_photo-1603561596112-0a132b757442.jpg",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_item_pNiDmE",
+        "image_item_FFRVJg",
+        "image_item_aQdJcW",
+        "image_item_JAaH6j"
+      ],
+      "name": "Star Collection Image List",
+      "settings": {
+        "heading": "LES SIGNATURES DE ROSETTA",
+        "text": "More than just iconic jewels, these are distinct signatures rooted in the DNA of the House. Whether it is the pearl or the camellia, the lion or the comet, Rosetta Fine Jewellery and High Jewellery creations celebrate these precious emblems. Maison symbols forever present, with a new gust of youth, forms and materials, constantly renewed, these collections each tell their own story of an eternal allure.",
+        "button_label": "Discover",
+        "button_link": ""
+      }
+    },
+    "star_collection_product_discover_Wi3anh": {
+      "type": "star-collection-product-discover",
+      "blocks": {
+        "product_item_zzAUnR": {
+          "type": "product_item",
+          "settings": {
+            "product": "ear-ring-4",
+            "custom_title": "BIJOUX DE DIAMANTS",
+            "text": "In 1932, Rosetta Fine Jewellery created Bijoux de Diamants, the world's first High Jewellery collection.",
+            "button_label": "Discover"
+          }
+        },
+        "product_item_X6yThP": {
+          "type": "product_item",
+          "settings": {
+            "product": "ear-ring-3",
+            "custom_title": "THE SAVOIR-FAIRE OF ROSETTA HIGH JEWELLERY",
+            "text": "Rosetta High Jewellery epitomises traditions of excellence and savoir-faire.",
+            "button_label": "Discover"
+          }
+        }
+      },
+      "block_order": [
+        "product_item_zzAUnR",
+        "product_item_X6yThP"
+      ],
+      "name": "Star Collection Product Discover",
+      "settings": {
+        "heading": "ROSETTA HIGH JEWELLERY"
+      }
     }
   },
   "order": [
     "star_collection_editorial_hero_xKMqzi",
     "main",
-    "star_collection_list_Dr3APL"
+    "star_collection_list_Dr3APL",
+    "star_collection_image_list_ddDVHW",
+    "star_collection_product_discover_Wi3anh"
   ]
 }
