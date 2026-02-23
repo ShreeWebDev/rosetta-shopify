@@ -11,25 +11,84 @@
   "sections": {
     "hero": {
       "type": "star-dark-collection-hero-intro",
-      "settings": {}
+      "settings": {
+        "subtitle": "Collection",
+        "title": "1932",
+        "text": "The House’s Fine Jewellery Creation Studio draws inspiration from modernity and celestial elegance.",
+        "desc_title": "The Allure Céleste Necklace",
+        "desc_text": "A High Jewellery creation that is like a journey into the heart of light."
+      }
     },
-    "list": {
-      "type": "star-collection-list",
-      "settings": {}
+    "star_dark_collection_text_section_KHmcnc": {
+      "type": "star-dark-collection-text-section",
+      "name": "Star Dark Text Section",
+      "settings": {
+        "quote": "While the original Bijoux de Diamants collection consisted almost entirely of diamonds, a concentration of pure light, Collection 1932 honours coloured stones.",
+        "button_label": "See the film",
+        "button_link": ""
+      }
     },
-    "images": {
-      "type": "star-collection-image-list",
-      "settings": {}
+    "star_dark_collection_image_2_9JN9cm": {
+      "type": "star-dark-collection-image-2",
+      "name": "Star Dark Image 02",
+      "settings": {
+        "heading": "A COLLECTION BORN UNDER A LUCKY STAR"
+      }
     },
-    "products": {
-      "type": "star-collection-product-discover",
-      "settings": {}
+    "star_dark_collection_image_3_9MiHny": {
+      "type": "star-dark-collection-image-3",
+      "name": "Star Dark Closeup 03",
+      "settings": {
+        "title": "STAR",
+        "text": "An icon of the creative universe.",
+        "tooltip_text": "Each halo of this transformable piece can be detached and worn as a brooch."
+      }
+    },
+    "star_dark_collection_image_4_mPWVpq": {
+      "type": "star-dark-collection-image-4",
+      "name": "Star Dark Closeup 04",
+      "settings": {
+        "title": "SUN",
+        "text": "A precious interpretation of the sun.",
+        "tooltip_text": "With its detachable central line of diamonds that transforms into a bracelet."
+      }
+    },
+    "star_dark_collection_discover_Edcwrc": {
+      "type": "star-dark-collection-discover",
+      "blocks": {
+        "collection_item_EGGibt": {
+          "type": "collection_item",
+          "settings": {
+            "title": "Collection Title",
+            "link": "",
+            "button_label": "Discover"
+          }
+        },
+        "collection_item_FqqVMk": {
+          "type": "collection_item",
+          "settings": {
+            "title": "Collection Title",
+            "link": "",
+            "button_label": "Discover"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_EGGibt",
+        "collection_item_FqqVMk"
+      ],
+      "name": "Star Dark Discover",
+      "settings": {
+        "heading": "Discover"
+      }
     }
   },
   "order": [
     "hero",
-    "list",
-    "images",
-    "products"
+    "star_dark_collection_text_section_KHmcnc",
+    "star_dark_collection_image_2_9JN9cm",
+    "star_dark_collection_image_3_9MiHny",
+    "star_dark_collection_image_4_mPWVpq",
+    "star_dark_collection_discover_Edcwrc"
   ]
 }
