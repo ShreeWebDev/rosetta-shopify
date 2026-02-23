@@ -1,0 +1,194 @@
+<section class="star-dark-discover">
+
+  <div class="star-dark-discover-container">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="star-dark-discover-heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div class="star-dark-discover-grid">
+
+      {% for block in section.blocks %}
+        <div class="star-dark-discover-item" {{ block.shopify_attributes }}>
+
+          <a href="{{ block.settings.link }}">
+
+            <div class="star-dark-discover-media">
+              {% if block.settings.image != blank %}
+                <img 
+                  src="{{ block.settings.image | image_url: width: 2000 }}"
+                  alt="{{ block.settings.title }}"
+                  loading="lazy">
+              {% endif %}
+            </div>
+
+            <div class="star-dark-discover-content">
+              <h3>{{ block.settings.title }}</h3>
+
+              {% if block.settings.button_label != blank %}
+                <span class="star-dark-discover-btn">
+                  {{ block.settings.button_label }}
+                </span>
+              {% endif %}
+            </div>
+
+          </a>
+
+        </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+.star-dark-discover {
+  background: #0b1a3a;
+  color: #ffffff;
+  padding: 140px 0;
+}
+
+.star-dark-discover-container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.star-dark-discover-heading {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  letter-spacing: 0.25em;
+  font-weight: 300;
+  margin-bottom: 80px;
+}
+
+/* Grid */
+
+.star-dark-discover-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+}
+
+/* Item */
+
+.star-dark-discover-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.star-dark-discover-media {
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.star-dark-discover-media img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.8s ease;
+}
+
+.star-dark-discover-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Content */
+
+.star-dark-discover-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  letter-spacing: 0.12em;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.star-dark-discover-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 4px;
+  transition: opacity 0.3s ease;
+}
+
+.star-dark-discover-item:hover .star-dark-discover-btn {
+  opacity: 0.7;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+  .star-dark-discover-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .star-dark-discover-heading {
+    font-size: 32px;
+  }
+
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Star Dark Discover",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Discover"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Discover Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collection Title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Collection Link"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Discover"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Star Dark Discover",
+      "blocks": [
+        { "type": "collection_item" },
+        { "type": "collection_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
