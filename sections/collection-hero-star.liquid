@@ -30,3 +30,87 @@
   </div>
 
 </section>
+
+{% stylesheet %}
+
+.star-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #06132a; /* fallback dark blue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.star-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.star-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 14, 40, 0.7),
+    rgba(4, 14, 40, 0.85)
+  );
+}
+
+.star-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;
+  animation: fadeLuxury 1.8s ease forwards;
+}
+
+.star-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.star-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(60px, 8vw, 120px);
+  font-weight: 300;
+  margin: 20px 0;
+  letter-spacing: 0.08em;
+}
+
+.star-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  opacity: 0.85;
+}
+
+/* Luxury fade animation */
+@keyframes fadeLuxury {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media(max-width:768px){
+  .star-title{
+    font-size: 48px;
+  }
+}
+
+{% endstylesheet %}
