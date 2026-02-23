@@ -1,0 +1,194 @@
+<section class="star-collection-list">
+
+  <div class="star-collection-wrapper">
+
+    <!-- LEFT SIDE -->
+    <div class="star-left">
+
+      <h2 class="star-heading">
+        {{ section.settings.heading }}
+      </h2>
+
+      <p class="star-text">
+        {{ section.settings.text }}
+      </p>
+
+      <ul class="star-list">
+        {% for block in section.blocks %}
+          <li 
+            class="star-item" 
+            data-image="{{ block.settings.image | image_url: width: 1200 }}"
+            {{ block.shopify_attributes }}
+          >
+            <a href="{{ block.settings.link }}">
+              {{ block.settings.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
+    </div>
+
+    <!-- RIGHT SIDE IMAGE -->
+    <div class="star-right">
+      <img id="star-preview-image"
+           src="{% if section.blocks.size > 0 %}{{ section.blocks.first.settings.image | image_url: width: 1200 }}{% endif %}"
+           alt="">
+    </div>
+
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+.star-collection-list {
+  background: #0b0f18;
+  color: white;
+  padding: 140px 0;
+}
+
+.star-collection-wrapper {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+/* LEFT */
+
+.star-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  letter-spacing: 0.15em;
+  margin-bottom: 30px;
+}
+
+.star-text {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.8;
+  color: #cfcfcf;
+  margin-bottom: 60px;
+  max-width: 550px;
+}
+
+.star-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.star-item {
+  margin-bottom: 22px;
+}
+
+.star-item a {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #888;
+  transition: 0.3s ease;
+}
+
+.star-item a:hover {
+  color: white;
+}
+
+/* RIGHT */
+
+.star-right img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+}
+
+/* Responsive */
+
+@media(max-width: 900px) {
+  .star-collection-wrapper {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+{% endstylesheet %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const items = document.querySelectorAll(".star-item");
+  const preview = document.getElementById("star-preview-image");
+
+  items.forEach(item => {
+    item.addEventListener("mouseenter", function(){
+      const img = this.getAttribute("data-image");
+      if(img){
+        preview.style.opacity = 0;
+        setTimeout(() => {
+          preview.src = img;
+          preview.style.opacity = 1;
+        }, 200);
+      }
+    });
+  });
+
+});
+</script>
+
+{% schema %}
+{
+  "name": "Star Collection List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "THE THEMATIC COLLECTIONS"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Paragraph"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Collection Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Preview Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Star Collection List",
+      "blocks": [
+        { "type": "collection_item" },
+        { "type": "collection_item" },
+        { "type": "collection_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
