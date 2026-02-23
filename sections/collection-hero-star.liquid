@@ -1,0 +1,32 @@
+<section class="star-hero">
+
+  {% if section.settings.hero_image %}
+    <img 
+      src="{{ section.settings.hero_image | image_url: width: 2400 }}" 
+      alt=""
+      class="star-hero-bg">
+  {% endif %}
+
+  <div class="star-hero-overlay"></div>
+
+  <div class="star-hero-content">
+
+    {% if section.settings.label != blank %}
+      <span class="star-label">
+        {{ section.settings.label }}
+      </span>
+    {% endif %}
+
+    <h1 class="star-title">
+      {{ section.settings.title }}
+    </h1>
+
+    {% if section.settings.subtitle != blank %}
+      <p class="star-subtitle">
+        {{ section.settings.subtitle }}
+      </p>
+    {% endif %}
+
+  </div>
+
+</section>
