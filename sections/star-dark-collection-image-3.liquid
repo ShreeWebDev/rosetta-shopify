@@ -198,3 +198,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 </script>
+
+{% schema %}
+{
+  "name": "Star Dark Closeup 03",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "STAR"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "An icon of the creative universe."
+    },
+    {
+      "type": "textarea",
+      "id": "tooltip_text",
+      "label": "Tooltip Text",
+      "default": "Each halo of this transformable piece can be detached and worn as a brooch."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Star Dark Closeup 03"
+    }
+  ]
+}
+{% endschema %}
