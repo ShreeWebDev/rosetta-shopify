@@ -1,0 +1,187 @@
+<section class="star-hero-intro">
+
+  <!-- TOP TEXT BLOCK -->
+  <div class="star-hero-top">
+    <div class="star-container">
+      <div class="star-hero-content">
+        <span class="star-subtitle">
+          {{ section.settings.subtitle }}
+        </span>
+
+        <h1 class="star-title">
+          {{ section.settings.title }}
+        </h1>
+
+        <p class="star-text">
+          {{ section.settings.text }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN IMAGE -->
+  <div class="star-hero-media">
+    {% if section.settings.hero_image != blank %}
+      <img 
+        src="{{ section.settings.hero_image | image_url: width: 2500 }}"
+        alt="{{ section.settings.title }}"
+        loading="eager">
+    {% endif %}
+  </div>
+
+  <!-- BOTTOM DESCRIPTION -->
+  <div class="star-hero-description">
+    <div class="star-container">
+      <h2 class="star-description-title">
+        {{ section.settings.desc_title }}
+      </h2>
+
+      <p class="star-description-text">
+        {{ section.settings.desc_text }}
+      </p>
+    </div>
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+.star-hero-intro {
+  background: #071633; /* Deep luxury blue */
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* Container */
+.star-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Top Text */
+.star-hero-top {
+  padding: 120px 0 60px;
+  text-align: center;
+}
+
+.star-subtitle {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.star-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  margin-bottom: 30px;
+}
+
+.star-text {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+/* Hero Image */
+.star-hero-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Bottom Description */
+.star-hero-description {
+  padding: 120px 0;
+  text-align: center;
+}
+
+.star-description-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+}
+
+.star-description-text {
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .star-title {
+    font-size: 48px;
+  }
+
+  .star-hero-top {
+    padding: 80px 0 40px;
+  }
+
+  .star-hero-description {
+    padding: 80px 0;
+  }
+
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Star Dark Hero Intro",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title",
+      "default": "1932"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Top Paragraph",
+      "default": "The House’s Fine Jewellery Creation Studio draws inspiration from modernity and celestial elegance."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "desc_title",
+      "label": "Bottom Title",
+      "default": "The Allure Céleste Necklace"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_text",
+      "label": "Bottom Paragraph",
+      "default": "A High Jewellery creation that is like a journey into the heart of light."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Star Collection Hero Intro"
+    }
+  ]
+}
+{% endschema %}
