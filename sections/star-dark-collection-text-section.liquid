@@ -1,0 +1,159 @@
+<section class="star-dark-text-section">
+
+  <!-- Background Image -->
+  <div class="star-dark-text-media">
+    {% if section.settings.bg_image != blank %}
+      <img 
+        src="{{ section.settings.bg_image | image_url: width: 2500 }}" 
+        alt=""
+        loading="lazy">
+    {% endif %}
+    <div class="star-dark-overlay"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="star-dark-text-content">
+    <div class="star-dark-container">
+      
+      {% if section.settings.quote != blank %}
+        <p class="star-dark-quote">
+          {{ section.settings.quote }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.button_label != blank %}
+        <div class="star-dark-cta">
+          <a href="{{ section.settings.button_link }}" class="star-dark-btn">
+            {{ section.settings.button_label }}
+          </a>
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+.star-dark-text-section {
+  position: relative;
+  background: #0b1a3a;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.star-dark-text-media {
+  position: relative;
+  height: 80vh;
+  min-height: 600px;
+}
+
+.star-dark-text-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.star-dark-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(11,26,58,0.7),
+    rgba(11,26,58,0.5),
+    rgba(11,26,58,0.8)
+  );
+}
+
+.star-dark-text-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.star-dark-container {
+  max-width: 900px;
+}
+
+.star-dark-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: 40px;
+}
+
+.star-dark-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1px solid #ffffff;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.4s ease;
+}
+
+.star-dark-btn:hover {
+  background: #ffffff;
+  color: #0b1a3a;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .star-dark-text-media {
+    height: 60vh;
+  }
+
+  .star-dark-quote {
+    font-size: 18px;
+  }
+
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Star Dark Text Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote Text",
+      "default": "While the original Bijoux de Diamants collection consisted almost entirely of diamonds, a concentration of pure light, Collection 1932 honours coloured stones."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "See the film"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Star Dark Text Section"
+    }
+  ]
+}
+{% endschema %}
