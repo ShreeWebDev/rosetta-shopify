@@ -188,3 +188,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 </script>
+
+{% schema %}
+{
+  "name": "Star Dark Closeup Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "MOON"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "The solar system’s most mysterious celestial body."
+    },
+    {
+      "type": "textarea",
+      "id": "tooltip_text",
+      "label": "Tooltip Text",
+      "default": "Among the round diamonds, an oval sapphire of exceptional weight."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Star Dark Closeup Image"
+    }
+  ]
+}
+{% endschema %}
