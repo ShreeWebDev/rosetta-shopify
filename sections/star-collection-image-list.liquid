@@ -1,0 +1,171 @@
+<section class="star-image-list">
+
+  <div class="star-image-container">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="star-image-heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <p class="star-image-text">
+        {{ section.settings.text }}
+      </p>
+    {% endif %}
+
+    <div class="star-image-grid">
+      {% for block in section.blocks %}
+        <div class="star-image-item" {{ block.shopify_attributes }}>
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}">
+          {% endif %}
+
+            {% if block.settings.image %}
+              <img 
+                src="{{ block.settings.image | image_url: width: 800 }}" 
+                alt="">
+            {% endif %}
+
+          {% if block.settings.link != blank %}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.button_label != blank %}
+      <div class="star-image-button">
+        <a href="{{ section.settings.button_link }}">
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+.star-image-list {
+  padding: 140px 0;
+  background: #f5f5f3;
+}
+
+.star-image-container {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.star-image-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  letter-spacing: 0.15em;
+  margin-bottom: 30px;
+}
+
+.star-image-text {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.8;
+  max-width: 800px;
+  margin-bottom: 70px;
+  color: #555;
+}
+
+.star-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 25px;
+  margin-bottom: 70px;
+}
+
+.star-image-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.star-image-item:hover img {
+  transform: scale(1.05);
+}
+
+.star-image-button a {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid #000;
+  padding-bottom: 6px;
+  color: #000;
+}
+
+@media(max-width:768px){
+  .star-image-heading{
+    font-size: 30px;
+  }
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Star Collection Image",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "LES SIGNATURES DE ROSETTA"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Paragraph"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Discover"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_item",
+      "name": "Image Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Optional Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Star Collection Image List",
+      "blocks": [
+        { "type": "image_item" },
+        { "type": "image_item" },
+        { "type": "image_item" },
+        { "type": "image_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
