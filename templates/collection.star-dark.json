@@ -9,12 +9,27 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "collection",
+    "hero": {
+      "type": "star-dark-collection-hero-intro",
+      "settings": {}
+    },
+    "list": {
+      "type": "star-collection-list",
+      "settings": {}
+    },
+    "images": {
+      "type": "star-collection-image-list",
+      "settings": {}
+    },
+    "products": {
+      "type": "star-collection-product-discover",
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "hero",
+    "list",
+    "images",
+    "products"
   ]
 }
