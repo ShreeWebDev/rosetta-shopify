@@ -1,14 +1,45 @@
-<section class="full-banner">
-  {% if section.settings.banner_image %}
-    <img src="{{ section.settings.banner_image | image_url: width: 2000 }}">
+<section class="sport-full-banner">
+
+  {% if section.settings.image %}
+    <img 
+      src="{{ section.settings.image | image_url: width: 2000 }}" 
+      alt="">
   {% endif %}
+
 </section>
+
+{% stylesheet %}
+
+.sport-full-banner {
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.sport-full-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media(max-width:768px){
+  .sport-full-banner{
+    height: 50vh;
+  }
+}
+
+{% endstylesheet %}
 
 {% schema %}
 {
-  "name": "Full Width Banner",
+  "name": "Collection Full Banner",
   "settings": [
-    { "type": "image_picker", "id": "banner_image", "label": "Banner Image" }
+    { "type": "image_picker", "id": "image", "label": "Banner Image" }
+  ],
+  "presets": [
+    {
+      "name": "Collection Full Banner"
+    }
   ]
 }
 {% endschema %}
