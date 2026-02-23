@@ -1,0 +1,200 @@
+<section class="star-dark-closeup-03">
+
+  <!-- Image -->
+  <div class="star-dark-closeup-03-media">
+
+    {% if section.settings.image != blank %}
+      <img 
+        src="{{ section.settings.image | image_url: width: 3000 }}"
+        alt="{{ section.settings.title }}"
+        loading="lazy">
+    {% endif %}
+
+    <div class="star-dark-closeup-03-overlay"></div>
+
+    <!-- Tooltip Button -->
+    <button class="star-dark-tooltip-btn-03" type="button">
+      +
+    </button>
+
+    <!-- Tooltip -->
+    <div class="star-dark-tooltip-03">
+      <div class="star-dark-tooltip-inner-03">
+        <p>{{ section.settings.tooltip_text }}</p>
+        <button class="star-dark-tooltip-close-03" type="button">
+          Close
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Content -->
+  <div class="star-dark-closeup-03-content">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.text }}</p>
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+.star-dark-closeup-03 {
+  background: #0b1a3a;
+  color: #ffffff;
+  padding-bottom: 120px;
+  position: relative;
+}
+
+.star-dark-closeup-03-media {
+  position: relative;
+  height: 85vh;
+  min-height: 650px;
+  overflow: hidden;
+}
+
+.star-dark-closeup-03-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.star-dark-closeup-03-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(11,26,58,0.5),
+    rgba(11,26,58,0.3),
+    rgba(11,26,58,0.85)
+  );
+}
+
+/* Tooltip Button */
+
+.star-dark-tooltip-btn-03 {
+  position: absolute;
+  top: 45%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.star-dark-tooltip-btn-03:hover {
+  background: #ffffff;
+  color: #0b1a3a;
+}
+
+/* Tooltip */
+
+.star-dark-tooltip-03 {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.75);
+}
+
+.star-dark-tooltip-03.active {
+  display: flex;
+}
+
+.star-dark-tooltip-inner-03 {
+  background: #0b1a3a;
+  padding: 40px;
+  max-width: 600px;
+  text-align: center;
+  border: 1px solid #ffffff;
+}
+
+.star-dark-tooltip-inner-03 p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.star-dark-tooltip-close-03 {
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+}
+
+/* Content */
+
+.star-dark-closeup-03-content {
+  max-width: 800px;
+  margin: 100px auto 0 auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.star-dark-closeup-03-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  letter-spacing: 0.2em;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.star-dark-closeup-03-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .star-dark-closeup-03-media {
+    height: 65vh;
+  }
+
+  .star-dark-tooltip-btn-03 {
+    left: 50%;
+  }
+
+  .star-dark-closeup-03-content h2 {
+    font-size: 22px;
+  }
+
+}
+
+{% endstylesheet %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const btn = document.querySelector(".star-dark-tooltip-btn-03");
+  const tooltip = document.querySelector(".star-dark-tooltip-03");
+  const close = document.querySelector(".star-dark-tooltip-close-03");
+
+  if(btn){
+    btn.addEventListener("click", function(){
+      tooltip.classList.add("active");
+    });
+  }
+
+  if(close){
+    close.addEventListener("click", function(){
+      tooltip.classList.remove("active");
+    });
+  }
+
+});
+</script>
