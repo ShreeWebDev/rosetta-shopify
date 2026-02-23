@@ -81,11 +81,21 @@
       "settings": {
         "heading": "Discover"
       }
+    },
+    "star_dark_collection_image_1_8WhWQx": {
+      "type": "star-dark-collection-image-1",
+      "name": "Star Dark Closeup Image",
+      "settings": {
+        "title": "MOON",
+        "text": "The solar system’s most mysterious celestial body.",
+        "tooltip_text": "Among the round diamonds, an oval sapphire of exceptional weight."
+      }
     }
   },
   "order": [
     "hero",
     "star_dark_collection_text_section_KHmcnc",
+    "star_dark_collection_image_1_8WhWQx",
     "star_dark_collection_image_2_9JN9cm",
     "star_dark_collection_image_3_9MiHny",
     "star_dark_collection_image_4_mPWVpq",
