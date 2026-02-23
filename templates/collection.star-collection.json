@@ -9,12 +9,63 @@
  */
 {
   "sections": {
+    "star_collection_editorial_hero_xKMqzi": {
+      "type": "star-collection-editorial-hero",
+      "name": "Star Editorial Hero",
+      "settings": {
+        "label": "ROSETTA HIGH JEWELLERY",
+        "heading": "AN ALLURE IN MOTION",
+        "text": "From the original creativity of the Rosetta Fine Jewellery Creation Studio to the search for exceptional gemstones, right to its artisanal production by the Precious Objects art of Rosetta jewellery reflects the culmination of a rigorous hand-crafted work. Jewellery designed to express the emotions of those who wear them according to Rosetta."
+      }
+    },
     "main": {
       "type": "collection",
+      "disabled": true,
       "settings": {}
+    },
+    "star_collection_list_Dr3APL": {
+      "type": "star-collection-list",
+      "blocks": {
+        "collection_item_xjXq86": {
+          "type": "collection_item",
+          "settings": {
+            "title": "Ring",
+            "link": "shopify://collections/rings",
+            "image": "shopify://shop_images/imgi_6_product-ring-2-B2gdGl0v.jpg"
+          }
+        },
+        "collection_item_jAPRKB": {
+          "type": "collection_item",
+          "settings": {
+            "title": "Ear Ring",
+            "link": "shopify://collections/ear-rings",
+            "image": "shopify://shop_images/imgi_8_product-earrings-2-CFgLYs6d.jpg"
+          }
+        },
+        "collection_item_8cj9Ej": {
+          "type": "collection_item",
+          "settings": {
+            "title": "Necklaces",
+            "link": "shopify://collections/necklaces",
+            "image": "shopify://shop_images/imgi_18_photo-1515562141207-7a88fb7ce338.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_xjXq86",
+        "collection_item_jAPRKB",
+        "collection_item_8cj9Ej"
+      ],
+      "name": "Star Collection List",
+      "settings": {
+        "heading": "THE THEMATIC COLLECTIONS",
+        "text": "With each of the exceptional collections of the Rosetta Fine Jewellery Creation Studio, there is an endless quest for beauty. Blending knowledge and innovative creativity with the world of fabrics that inspires it, and exploring the savoir-faire of housing precious stones, each collection unveils a unique perspective on jewellery, celebrating elegance and styles of its very own."
+      }
     }
   },
   "order": [
-    "main"
+    "star_collection_editorial_hero_xKMqzi",
+    "main",
+    "star_collection_list_Dr3APL"
   ]
 }
