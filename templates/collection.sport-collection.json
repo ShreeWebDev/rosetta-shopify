@@ -12,10 +12,10 @@
     "hero": {
       "type": "collection-hero-sport",
       "settings": {
-        "hero_image": "shopify://shop_images/imgi_10_full-width-jewellery-uER-pP_t.jpg",
-        "subtitle": "CHAPTER",
-        "title": "1932",
-        "caption": "ALLURE CÉLESTE NECKLACE"
+        "image": "shopify://shop_images/4.webp",
+        "label": "COLLECTION",
+        "heading": "1932",
+        "subheading": "ALLURE CÉLESTE NECKLACE"
       }
     },
     "intro": {
@@ -29,7 +29,7 @@
       "type": "collection-split-block",
       "settings": {
         "reverse_layout": false,
-        "image": "shopify://shop_images/imgi_16_blog-1-DWs9qvMG.jpg",
+        "image": "shopify://shop_images/sport-collection-2.webp",
         "heading": "High Jewellery Savoir‑Faire",
         "text": "From the initial sketch to the search for exceptional gemstones and the final production by artisans, each piece is the culmination of extraordinarily precise handcrafted work."
       }
@@ -38,7 +38,7 @@
       "type": "collection-split-block",
       "settings": {
         "reverse_layout": true,
-        "image": "shopify://shop_images/imgi_12_showcase-3-B460clHm.jpg",
+        "image": "shopify://shop_images/sport-collection-1.webp",
         "heading": "55.55-Carat Sapphire",
         "text": "A masterpiece made up of diamonds and an exceptional sapphire, blue like the night."
       }
@@ -46,13 +46,13 @@
     "banner": {
       "type": "collection-full-banner",
       "settings": {
-        "image": "shopify://shop_images/imgi_10_full-width-jewellery-uER-pP_t.jpg"
+        "image": "shopify://shop_images/sport-collection-banner.webp"
       }
     },
     "feature": {
       "type": "collection-feature-highlight",
       "settings": {
-        "image": "shopify://shop_images/imgi_10_full-width-jewellery-uER-pP_t.jpg",
+        "image": "shopify://shop_images/sport-collection-3.webp",
         "heading": "HALOS",
         "text": "Each halo of this transformable piece can be detached and worn as a brooch.",
         "button_label": "Book Appointment",
