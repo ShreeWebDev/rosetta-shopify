@@ -24,6 +24,7 @@
       "type": "star-dark-collection-text-section",
       "name": "Star Dark Text Section",
       "settings": {
+        "bg_image": "shopify://shop_images/imgi_17_1731941906683-videodesktopjpg_1620x2880_317532ce-d03e-45ea-b769-7ebeb7e2747f.jpg",
         "quote": "While the original Bijoux de Diamants collection consisted almost entirely of diamonds, a concentration of pure light, Collection 1932 honours coloured stones.",
         "button_label": "See the film",
         "button_link": ""
