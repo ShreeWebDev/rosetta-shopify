@@ -15,6 +15,7 @@
         "subtitle": "Collection",
         "title": "1932",
         "text": "The House’s Fine Jewellery Creation Studio draws inspiration from modernity and celestial elegance.",
+        "hero_image": "shopify://shop_images/11.webp",
         "desc_title": "The Allure Céleste Necklace",
         "desc_text": "A High Jewellery creation that is like a journey into the heart of light."
       }
@@ -28,10 +29,21 @@
         "button_link": ""
       }
     },
+    "star_dark_collection_image_1_8WhWQx": {
+      "type": "star-dark-collection-image-1",
+      "name": "Star Dark Closeup Image",
+      "settings": {
+        "image": "shopify://shop_images/ROSETTA_FINE_JEW_19NOV25_000130.webp",
+        "title": "MOON",
+        "text": "The solar system’s most mysterious celestial body.",
+        "tooltip_text": "Among the round diamonds, an oval sapphire of exceptional weight."
+      }
+    },
     "star_dark_collection_image_2_9JN9cm": {
       "type": "star-dark-collection-image-2",
       "name": "Star Dark Image 02",
       "settings": {
+        "image": "shopify://shop_images/ROSETTA_FINE_JEW_19NOV25_0001301.webp",
         "heading": "A COLLECTION BORN UNDER A LUCKY STAR"
       }
     },
@@ -39,6 +51,7 @@
       "type": "star-dark-collection-image-3",
       "name": "Star Dark Closeup 03",
       "settings": {
+        "image": "shopify://shop_images/ROSETTA_FINE_JEW_19NOV25_0001302.webp",
         "title": "STAR",
         "text": "An icon of the creative universe.",
         "tooltip_text": "Each halo of this transformable piece can be detached and worn as a brooch."
@@ -48,6 +61,7 @@
       "type": "star-dark-collection-image-4",
       "name": "Star Dark Closeup 04",
       "settings": {
+        "image": "shopify://shop_images/ROSETTA_FINE_JEW_19NOV25_000130.webp",
         "title": "SUN",
         "text": "A precious interpretation of the sun.",
         "tooltip_text": "With its detachable central line of diamonds that transforms into a bracelet."
@@ -59,6 +73,7 @@
         "collection_item_EGGibt": {
           "type": "collection_item",
           "settings": {
+            "image": "shopify://shop_images/product-ear-ring-2.png",
             "title": "Collection Title",
             "link": "",
             "button_label": "Discover"
@@ -67,6 +82,7 @@
         "collection_item_FqqVMk": {
           "type": "collection_item",
           "settings": {
+            "image": "shopify://shop_images/product-ring.png",
             "title": "Collection Title",
             "link": "",
             "button_label": "Discover"
@@ -80,15 +96,6 @@
       "name": "Star Dark Discover",
       "settings": {
         "heading": "Discover"
-      }
-    },
-    "star_dark_collection_image_1_8WhWQx": {
-      "type": "star-dark-collection-image-1",
-      "name": "Star Dark Closeup Image",
-      "settings": {
-        "title": "MOON",
-        "text": "The solar system’s most mysterious celestial body.",
-        "tooltip_text": "Among the round diamonds, an oval sapphire of exceptional weight."
       }
     }
   },
