@@ -14,7 +14,10 @@
     "header": {
       "type": "header",
       "settings": {
-        "menu": "main-menu"
+        "menu": "main-menu",
+        "logo_image": "shopify://shop_images/Untitled.png",
+        "logo_text": "ROSETTA",
+        "logo_subtext": "FINE JEWELLERY"
       }
     }
   },
