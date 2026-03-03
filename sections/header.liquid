@@ -100,10 +100,12 @@
 
 /* LOGO */
 .logo-image {
-  max-width: 190px;
+  max-width: 240px; /* ✅ Updated as per your debug */
+  width: 100%;      /* ✅ Added to fix the 0px collapse issue */
   height: auto;
   display: block;
-  transition: 0.4s ease;
+  margin: 0 auto;   /* ✅ Center alignment */
+  transition: all 0.4s ease;
   filter: brightness(0) invert(1);
 }
 
