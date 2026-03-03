@@ -2,63 +2,60 @@
 
   <div class="header-inner">
 
-    <!-- Left -->
     <div class="header-left">
-      <button class="mobile-toggle" id="mobileToggle">
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <a href="#" class="icon-btn search-btn">
+      <a href="{{ routes.search_url }}" class="icon-btn search-btn">
         {{ 'icon-search.svg' | inline_asset_content }}
       </a>
     </div>
 
-    <!-- Center Logo -->
     <div class="header-logo">
       <a href="{{ routes.root_url }}" class="logo-link">
-        <img 
-          src="https://cdn.shopify.com/s/files/1/0668/0202/4491/files/rfj_logo.svg?v=1772525135"
-          alt="{{ shop.name }}"
-          class="logo-image"
-          loading="lazy">
+        {% if section.settings.logo != blank %}
+          {{ section.settings.logo | image_url: width: 400 | image_tag: class: 'logo-image', loading: 'lazy', alt: shop.name }}
+        {% else %}
+          <img 
+            src="https://cdn.shopify.com/s/files/1/0668/0202/4491/files/rfj_logo.svg?v=1772525135"
+            alt="{{ shop.name }}"
+            class="logo-image"
+            loading="lazy">
+        {% endif %}
       </a>
     </div>
 
-    <!-- Right -->
     <div class="header-right">
-
       {% if shop.customer_accounts_enabled %}
-      <a href="{{ routes.account_url }}" class="icon-btn">
-        {{ 'icon-account.svg' | inline_asset_content }}
-      </a>
+        <a href="{{ routes.account_url }}" class="icon-btn">
+          {{ 'icon-account.svg' | inline_asset_content }}
+        </a>
       {% endif %}
 
       <a href="{{ routes.cart_url }}" class="icon-btn">
         {{ 'icon-cart.svg' | inline_asset_content }}
       </a>
-
     </div>
 
   </div>
 
-  <!-- Desktop Nav -->
   <nav class="desktop-nav">
     <ul>
       {% for link in section.settings.menu.links %}
-      <li>
-        <a href="{{ link.url }}">{{ link.title }}</a>
-      </li>
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
       {% endfor %}
     </ul>
   </nav>
 
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
       {% for link in section.settings.menu.links %}
-      <a href="{{ link.url }}">{{ link.title }}</a>
+        <a href="{{ link.url }}">{{ link.title }}</a>
       {% endfor %}
     </div>
   </div>
@@ -66,7 +63,6 @@
 </header>
 
 {% stylesheet %}
-
 /* Remove Shopify wrapper background */
 .shopify-section-group-header-group {
   background: transparent !important;
@@ -81,8 +77,8 @@
   z-index: 100;
   transition: all 0.4s ease;
   background: transparent;
-  padding-top: 15px;   /* ✅ add this */
-  padding-bottom: 15px; /* optional */
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 /* Layout */
@@ -90,7 +86,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px; /* remove vertical padding */
+  padding: 0 40px;
+  position: relative; /* ✅ Fixed: Keep inner content above mobile menu */
+  z-index: 10;
 }
 
 .header-left,
@@ -101,7 +99,6 @@
 }
 
 /* LOGO */
-/* Transparent header → WHITE logo */
 .logo-image {
   max-width: 190px;
   height: auto;
@@ -110,7 +107,6 @@
   filter: brightness(0) invert(1);
 }
 
-/* When scrolled / hovered → WHITE BG + BLACK logo */
 .luxury-header.scrolled,
 .luxury-header.hovered {
   background: white;
@@ -156,22 +152,36 @@
   font-size: 13px;
   letter-spacing: 2px;
   color: black;
+  text-transform: uppercase;
 }
 
 /* Hamburger */
 .mobile-toggle {
   display: none;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 20;
 }
 
 .mobile-toggle span {
-  width: 20px;
-  height: 1px;
+  width: 22px;
+  height: 2px;
   background: currentColor;
+  transition: all 0.3s ease; /* ✅ Added for X animation */
+}
+
+/* Hamburger to X Animation */
+.mobile-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.mobile-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.mobile-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Mobile Menu */
@@ -183,11 +193,14 @@
   align-items: center;
   justify-content: center;
   transform: translateY(-100%);
-  transition: 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); /* Smoother animation */
+  z-index: 5; /* ✅ Fixed: Stays behind header-inner */
+  visibility: hidden;
 }
 
 .mobile-menu.active {
   transform: translateY(0);
+  visibility: visible;
 }
 
 .mobile-menu-inner {
@@ -202,29 +215,30 @@
   letter-spacing: 3px;
   text-decoration: none;
   color: black;
+  text-transform: uppercase;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none !important; /* ✅ Prevents mobile menu issues on desktop */
+  }
+}
 
+@media (max-width: 768px) {
   .desktop-nav {
     display: none;
   }
-
   .mobile-toggle {
     display: flex;
   }
-
   .header-inner {
     padding: 15px 20px;
   }
-
   .logo-image {
     max-width: 140px;
   }
-
 }
-
 {% endstylesheet %}
 
 <script>
@@ -234,6 +248,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const toggle = document.getElementById("mobileToggle");
   const mobileMenu = document.getElementById("mobileMenu");
 
+  // Scroll effect
   document.addEventListener("scroll", function() {
     if (window.scrollY > 50) {
       header.classList.add("scrolled");
@@ -242,6 +257,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  // Desktop Hover Dropdown
   header.addEventListener("mouseenter", function() {
     if (window.innerWidth > 768) {
       header.classList.add("hovered");
@@ -252,8 +268,19 @@ document.addEventListener("DOMContentLoaded", function() {
     header.classList.remove("hovered");
   });
 
+  // Mobile Menu Toggle
   toggle.addEventListener("click", function() {
     mobileMenu.classList.toggle("active");
+    toggle.classList.toggle("active"); // Animates Hamburger to X
+    
+    // ✅ Locks body scroll when menu is open
+    if (mobileMenu.classList.contains("active")) {
+      document.body.style.overflow = "hidden";
+      header.classList.add("scrolled"); // Ensure header is white when menu opens
+    } else {
+      document.body.style.overflow = "";
+      if (window.scrollY <= 50) header.classList.remove("scrolled");
+    }
   });
 
 });
@@ -264,9 +291,15 @@ document.addEventListener("DOMContentLoaded", function() {
   "name": "Luxury Header",
   "settings": [
     {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
       "type": "link_list",
       "id": "menu",
-      "label": "Main Menu"
+      "label": "Main Menu",
+      "default": "main-menu"
     }
   ],
   "presets": [
