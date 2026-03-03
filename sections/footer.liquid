@@ -3,13 +3,30 @@
   <div class="footer-wrapper">
 
     <!-- Brand -->
-    <h2 class="footer-logo">
-      {{ section.settings.brand_name }}
-    </h2>
+    <div class="footer-brand">
 
-    <span class="footer-subtitle">
-      {{ section.settings.brand_tagline }}
-    </span>
+      {% if section.settings.logo != blank %}
+        
+        <img 
+          src="{{ section.settings.logo | image_url: width: 600 }}"
+          alt="{{ section.settings.brand_name }}"
+          class="footer-logo-image"
+          loading="lazy"
+        >
+
+      {% else %}
+
+        <h2 class="footer-logo">
+          {{ section.settings.brand_name }}
+        </h2>
+
+        <span class="footer-subtitle">
+          {{ section.settings.brand_tagline }}
+        </span>
+
+      {% endif %}
+
+    </div>
 
     <!-- Menu 1 -->
     {% if section.settings.menu_1 != blank %}
@@ -34,9 +51,11 @@
     {% endif %}
 
     <!-- Address -->
-    <p class="footer-address">
-      {{ section.settings.address }}
-    </p>
+    {% if section.settings.address != blank %}
+      <p class="footer-address">
+        {{ section.settings.address }}
+      </p>
+    {% endif %}
 
   </div>
 
@@ -66,6 +85,12 @@
   margin: 0 auto;
 }
 
+/* Brand */
+
+.footer-brand {
+  margin-bottom: 60px;
+}
+
 .footer-logo {
   font-family: 'Cormorant Garamond', serif;
   font-size: 36px;
@@ -74,14 +99,23 @@
   margin-bottom: 6px;
 }
 
+.footer-logo-image {
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .footer-subtitle {
   display: block;
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   letter-spacing: 0.4em;
-  margin-bottom: 60px;
+  margin-top: 8px;
   opacity: 0.8;
 }
+
+/* Menus */
 
 .footer-menu {
   display: flex;
@@ -104,6 +138,8 @@
   opacity: 0.6;
 }
 
+/* Address */
+
 .footer-address {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
@@ -113,7 +149,9 @@
 }
 
 /* Responsive */
+
 @media (max-width: 768px) {
+
   .luxury-footer {
     padding: 70px 0;
   }
@@ -122,9 +160,14 @@
     font-size: 26px;
   }
 
+  .footer-logo-image {
+    max-width: 160px;
+  }
+
   .footer-subtitle {
     margin-bottom: 40px;
   }
+
 }
 
 {% endstylesheet %}
@@ -135,10 +178,10 @@
   "name": "Luxury Footer",
   "settings": [
     {
-  "type": "image_picker",
-  "id": "logo",
-  "label": "Footer Logo"
-},
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer Logo"
+    },
     {
       "type": "text",
       "id": "brand_name",
@@ -166,6 +209,11 @@
       "id": "address",
       "label": "Address",
       "default": "C. DE FERNANDO VI, 5, 28004 DUBAI, UAE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Footer"
     }
   ]
 }
