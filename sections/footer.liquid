@@ -3,28 +3,13 @@
   <div class="footer-wrapper">
 
     <!-- Brand -->
-    <a href="{{ routes.root_url }}">
+    <h2 class="footer-logo">
+      {{ section.settings.brand_name }}
+    </h2>
 
-        {% if section.settings.logo_image != blank %}
-          
-          <img 
-            src="{{ section.settings.logo_image | image_url: width: 500 }}"
-            alt="{{ shop.name }}"
-            class="logo-image"
-            loading="lazy">
-
-        {% else %}
-
-          <h1 class="logo-main">
-            {{ section.settings.logo_text }}
-          </h1>
-          <span class="logo-sub">
-            {{ section.settings.logo_subtext }}
-          </span>
-
-        {% endif %}
-
-      </a>
+    <span class="footer-subtitle">
+      {{ section.settings.brand_tagline }}
+    </span>
 
     <!-- Menu 1 -->
     {% if section.settings.menu_1 != blank %}
