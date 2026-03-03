@@ -17,27 +17,12 @@
 
     <!-- Center Logo -->
     <div class="header-logo">
-      <a href="{{ routes.root_url }}">
-
-        {% if section.settings.logo_image != blank %}
-          
-          <img 
-            src="{{ section.settings.logo_image | image_url: width: 500 }}"
-            alt="{{ shop.name }}"
-            class="logo-image"
-            loading="lazy">
-
-        {% else %}
-
-          <h1 class="logo-main">
-            {{ section.settings.logo_text }}
-          </h1>
-          <span class="logo-sub">
-            {{ section.settings.logo_subtext }}
-          </span>
-
-        {% endif %}
-
+      <a href="{{ routes.root_url }}" class="logo-link">
+        <img 
+          src="https://cdn.shopify.com/s/files/1/0668/0202/4491/files/rfj_logo.svg?v=1772525135"
+          alt="{{ shop.name }}"
+          class="logo-image"
+          loading="lazy">
       </a>
     </div>
 
@@ -96,6 +81,7 @@
   color: white;
 }
 
+/* When scrolled or hovered */
 .luxury-header.scrolled,
 .luxury-header.hovered {
   background: white;
@@ -119,21 +105,22 @@
 }
 
 /* Logo */
-.logo-main {
-  font-size: 20px;
-  letter-spacing: 5px;
-  font-weight: 500;
-}
-
-.logo-sub {
-  font-size: 10px;
-  letter-spacing: 3px;
-}
-
 .logo-image {
-  max-width: 180px;
+  max-width: 190px;
   height: auto;
   display: block;
+  transition: 0.4s ease;
+}
+
+/* White logo at top */
+.luxury-header .logo-image {
+  filter: brightness(0) invert(1);
+}
+
+/* Black logo when scrolled */
+.luxury-header.scrolled .logo-image,
+.luxury-header.hovered .logo-image {
+  filter: none;
 }
 
 /* Icons */
@@ -234,12 +221,12 @@
     display: flex;
   }
 
-  .logo-sub {
-    display: none;
-  }
-
   .header-inner {
     padding: 15px 20px;
+  }
+
+  .logo-image {
+    max-width: 140px;
   }
 
 }
@@ -289,23 +276,11 @@ document.addEventListener("DOMContentLoaded", function() {
       "type": "link_list",
       "id": "menu",
       "label": "Main Menu"
-    },
+    }
+  ],
+  "presets": [
     {
-      "type": "image_picker",
-      "id": "logo_image",
-      "label": "Logo Image (SVG / PNG)"
-    },
-    {
-      "type": "text",
-      "id": "logo_text",
-      "label": "Logo Text",
-      "default": "ROSETTA"
-    },
-    {
-      "type": "text",
-      "id": "logo_subtext",
-      "label": "Logo Subtext",
-      "default": "FINE JEWELLERY"
+      "name": "Luxury Header"
     }
   ]
 }
