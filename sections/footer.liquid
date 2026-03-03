@@ -2,30 +2,16 @@
 
   <div class="footer-wrapper">
 
-    <!-- Brand -->
+    <!-- Brand Logo -->
     <div class="footer-brand">
-
-      {% if section.settings.logo != blank %}
-        
+      <a href="{{ routes.root_url }}" class="footer-logo-link">
         <img 
-          src="{{ section.settings.logo | image_url: width: 600 }}"
-          alt="{{ section.settings.brand_name }}"
+          src="https://cdn.shopify.com/s/files/1/0668/0202/4491/files/rfj_logo.svg?v=1772525135"
+          alt="RFJ Logo"
           class="footer-logo-image"
           loading="lazy"
         >
-
-      {% else %}
-
-        <h2 class="footer-logo">
-          {{ section.settings.brand_name }}
-        </h2>
-
-        <span class="footer-subtitle">
-          {{ section.settings.brand_tagline }}
-        </span>
-
-      {% endif %}
-
+      </a>
     </div>
 
     <!-- Menu 1 -->
@@ -91,28 +77,22 @@
   margin-bottom: 60px;
 }
 
-.footer-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  letter-spacing: 0.3em;
-  font-weight: 300;
-  margin-bottom: 6px;
+.footer-logo-link {
+  display: inline-block;
 }
 
 .footer-logo-image {
-  max-width: 220px;
+  max-width: 240px;
+  width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+  filter: brightness(0) invert(1); /* makes black SVG white */
+  transition: opacity 0.3s ease;
 }
 
-.footer-subtitle {
-  display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.4em;
-  margin-top: 8px;
-  opacity: 0.8;
+.footer-logo-image:hover {
+  opacity: 0.75;
 }
 
 /* Menus */
@@ -156,16 +136,8 @@
     padding: 70px 0;
   }
 
-  .footer-logo {
-    font-size: 26px;
-  }
-
   .footer-logo-image {
     max-width: 160px;
-  }
-
-  .footer-subtitle {
-    margin-bottom: 40px;
   }
 
 }
@@ -177,23 +149,6 @@
 {
   "name": "Luxury Footer",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Footer Logo"
-    },
-    {
-      "type": "text",
-      "id": "brand_name",
-      "label": "Brand Name",
-      "default": "ROSETTA"
-    },
-    {
-      "type": "text",
-      "id": "brand_tagline",
-      "label": "Brand Tagline",
-      "default": "FINE JEWELLERY"
-    },
     {
       "type": "link_list",
       "id": "menu_1",
