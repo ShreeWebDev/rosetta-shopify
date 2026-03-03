@@ -43,20 +43,18 @@
 
   </div>
 
-  <!-- Desktop Expand Nav -->
+  <!-- Desktop Nav -->
   <nav class="desktop-nav">
     <ul>
       {% for link in section.settings.menu.links %}
       <li>
-        <a href="{{ link.url }}">
-          {{ link.title }}
-        </a>
+        <a href="{{ link.url }}">{{ link.title }}</a>
       </li>
       {% endfor %}
     </ul>
   </nav>
 
-  <!-- Mobile Fullscreen Menu -->
+  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
       {% for link in section.settings.menu.links %}
@@ -69,6 +67,11 @@
 
 {% stylesheet %}
 
+/* Remove Shopify wrapper background */
+.shopify-section-group-header-group {
+  background: transparent !important;
+}
+
 /* HEADER BASE */
 .luxury-header {
   position: fixed;
@@ -78,20 +81,6 @@
   z-index: 100;
   transition: all 0.4s ease;
   background: transparent;
-  color: black;
-}
-
-/* remove white background from Shopify wrapper */
-.shopify-section-group-header-group {
-  background: transparent !important;
-}
-
-/* When scrolled or hovered */
-.luxury-header.scrolled,
-.luxury-header.hovered {
-  background: white;
-  color: black;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 /* Layout */
@@ -108,35 +97,24 @@
   align-items: center;
   gap: 20px;
 }
+
+/* LOGO */
+/* Transparent header → WHITE logo */
 .logo-image {
+  max-width: 190px;
+  height: auto;
+  display: block;
+  transition: 0.4s ease;
   filter: brightness(0) invert(1);
 }
 
-/* Logo */
-.logo-image {
-  max-width: 190px;
-  height: auto;
-  display: block;
-  transition: 0.4s ease;
-}
-
-/* Logo default black */
-.logo-image {
-  max-width: 190px;
-  height: auto;
-  display: block;
-  transition: 0.4s ease;
-  filter: none;
-}
-
-/* When scrolled */
+/* When scrolled / hovered → WHITE BG + BLACK logo */
 .luxury-header.scrolled,
 .luxury-header.hovered {
   background: white;
-  color: black;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* Black logo when scrolled */
 .luxury-header.scrolled .logo-image,
 .luxury-header.hovered .logo-image {
   filter: none;
@@ -145,6 +123,7 @@
 /* Icons */
 .icon-btn svg {
   width: 20px;
+  fill: currentColor;
 }
 
 /* Desktop Nav */
@@ -174,7 +153,7 @@
   text-decoration: none;
   font-size: 13px;
   letter-spacing: 2px;
-  color: inherit;
+  color: black;
 }
 
 /* Hamburger */
@@ -224,12 +203,6 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .header-inner {
-    padding: 18px 25px;
-  }
-}
-
 @media (max-width: 768px) {
 
   .desktop-nav {
@@ -259,7 +232,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const toggle = document.getElementById("mobileToggle");
   const mobileMenu = document.getElementById("mobileMenu");
 
-  // Scroll effect
   document.addEventListener("scroll", function() {
     if (window.scrollY > 50) {
       header.classList.add("scrolled");
@@ -268,7 +240,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // Hover desktop
   header.addEventListener("mouseenter", function() {
     if (window.innerWidth > 768) {
       header.classList.add("hovered");
@@ -279,7 +250,6 @@ document.addEventListener("DOMContentLoaded", function() {
     header.classList.remove("hovered");
   });
 
-  // Mobile toggle
   toggle.addEventListener("click", function() {
     mobileMenu.classList.toggle("active");
   });
