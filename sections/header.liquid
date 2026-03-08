@@ -1,313 +1,369 @@
 <header class="luxury-header" id="luxury-header">
 
-  <div class="header-inner">
+<div class="header-inner">
 
-    <div class="header-left">
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+<!-- LEFT -->
+<div class="header-left">
 
-      <a href="{{ routes.search_url }}" class="icon-btn search-btn">
-        {{ 'icon-search.svg' | inline_asset_content }}
-      </a>
-    </div>
+<a href="/pages/book-appointment" class="header-tool">
+{{ 'icon-calendar.svg' | inline_asset_content }}
+<span>Book Appointment</span>
+</a>
 
-    <div class="header-logo">
-      <a href="{{ routes.root_url }}" class="logo-link">
-        {% if section.settings.logo != blank %}
-          {{ section.settings.logo | image_url: width: 400 | image_tag: class: 'logo-image', loading: 'lazy', alt: shop.name }}
-        {% else %}
-          <img 
-            src="https://cdn.shopify.com/s/files/1/0668/0202/4491/files/rfj_logo.svg?v=1772525135"
-            alt="{{ shop.name }}"
-            class="logo-image"
-            loading="lazy">
-        {% endif %}
-      </a>
-    </div>
+<a href="{{ routes.search_url }}" class="header-tool">
+{{ 'icon-search.svg' | inline_asset_content }}
+<span>Search</span>
+</a>
 
-    <div class="header-right">
-      {% if shop.customer_accounts_enabled %}
-        <a href="{{ routes.account_url }}" class="icon-btn">
-          {{ 'icon-account.svg' | inline_asset_content }}
-        </a>
-      {% endif %}
+</div>
 
-      <a href="{{ routes.cart_url }}" class="icon-btn">
-        {{ 'icon-cart.svg' | inline_asset_content }}
-      </a>
-    </div>
 
-  </div>
+<!-- LOGO -->
+<div class="header-logo">
+<a href="{{ routes.root_url }}">
+{% if section.settings.logo != blank %}
+{{ section.settings.logo | image_url: width: 400 | image_tag: class: 'logo-image', loading: 'lazy', alt: shop.name }}
+{% else %}
+<img
+src="https://cdn.shopify.com/s/files/1/0668/0202/4491/files/rfj_logo.svg?v=1772525135"
+alt="{{ shop.name }}"
+class="logo-image"
+loading="lazy">
+{% endif %}
+</a>
+</div>
 
-  <nav class="desktop-nav">
-    <ul>
-      {% for link in section.settings.menu.links %}
-        <li>
-          <a href="{{ link.url }}">{{ link.title }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  </nav>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-inner">
-      {% for link in section.settings.menu.links %}
-        <a href="{{ link.url }}">{{ link.title }}</a>
-      {% endfor %}
-    </div>
-  </div>
+<!-- RIGHT -->
+<div class="header-right">
+
+<a href="https://maps.google.com" class="header-tool icon-only">
+{{ 'icon-map-pin.svg' | inline_asset_content }}
+</a>
+
+<a href="tel:+971000000000" class="header-tool icon-only">
+{{ 'icon-phone.svg' | inline_asset_content }}
+</a>
+
+</div>
+
+</div>
+
+
+<!-- NAV -->
+<nav class="desktop-nav">
+<ul>
+{% for link in section.settings.menu.links %}
+<li>
+<a href="{{ link.url }}">{{ link.title }}</a>
+</li>
+{% endfor %}
+</ul>
+</nav>
+
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu-inner">
+{% for link in section.settings.menu.links %}
+<a href="{{ link.url }}">{{ link.title }}</a>
+{% endfor %}
+</div>
+</div>
 
 </header>
 
+
 {% stylesheet %}
+
 /* Remove Shopify wrapper background */
-.shopify-section-group-header-group {
-  background: transparent !important;
+
+.shopify-section-group-header-group{
+background:transparent!important;
 }
+
 
 /* HEADER BASE */
-.luxury-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  transition: all 0.4s ease;
-  background: transparent;
-  padding-top: 15px;
-  padding-bottom: 15px;
+
+.luxury-header{
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:100;
+transition:all .4s ease;
+background:transparent;
+color:white;
+padding:15px 0;
 }
 
-/* Layout */
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  position: relative; /* ✅ Fixed: Keep inner content above mobile menu */
-  z-index: 10;
-}
 
-.header-left,
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-/* LOGO */
-.logo-image {
-  max-width: 170px; /* ✅ Updated as per your debug */
-  width: 100%;      /* ✅ Added to fix the 0px collapse issue */
-  height: auto;
-  padding-bottom: 10px;
-  display: block;
-  margin: 0 auto;   /* ✅ Center alignment */
-  transition: all 0.4s ease;
-  filter: brightness(0) invert(1);
-}
+/* SCROLLED */
 
 .luxury-header.scrolled,
-.luxury-header.hovered {
-  background: white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+.luxury-header.hovered{
+background:white;
+color:black;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+
+/* GRID LAYOUT */
+
+.header-inner{
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+padding:0 40px;
+}
+
+
+/* LEFT RIGHT */
+
+.header-left,
+.header-right{
+display:flex;
+align-items:center;
+gap:25px;
+}
+
+
+/* TOOLS */
+
+.header-tool{
+display:flex;
+align-items:center;
+gap:8px;
+font-size:13px;
+letter-spacing:1px;
+text-decoration:none;
+color:currentColor;
+text-transform:uppercase;
+}
+
+.header-tool svg{
+width:18px;
+fill:currentColor;
+}
+
+
+/* ICON ONLY */
+
+.icon-only span{
+display:none;
+}
+
+
+/* LOGO */
+
+.header-logo{
+text-align:center;
+}
+
+.logo-image{
+max-width:170px;
+width:100%;
+height:auto;
+display:block;
+margin:auto;
+transition:all .4s ease;
+filter:brightness(0) invert(1);
 }
 
 .luxury-header.scrolled .logo-image,
-.luxury-header.hovered .logo-image {
-  filter: none;
+.luxury-header.hovered .logo-image{
+filter:none;
 }
 
-/* Icons */
-.icon-btn svg {
-  width: 20px;
-  color: black !important;
+
+/* DESKTOP NAV */
+
+.desktop-nav{
+max-height:0;
+opacity:0;
+overflow:hidden;
+transition:all .4s ease;
 }
 
-/* Desktop Nav */
-.desktop-nav {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: all 0.4s ease;
+.luxury-header.hovered .desktop-nav{
+max-height:80px;
+opacity:1;
 }
 
-.luxury-header.hovered .desktop-nav {
-  max-height: 80px;
-  opacity: 1;
+.desktop-nav ul{
+display:flex;
+justify-content:center;
+gap:40px;
+list-style:none;
+padding:0;
+margin:0;
 }
 
-.desktop-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.desktop-nav a{
+text-decoration:none;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:currentColor;
 }
 
-.desktop-nav a {
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 2px;
-  color: black;
-  text-transform: uppercase;
+
+/* MOBILE TOGGLE */
+
+.mobile-toggle{
+display:none;
+flex-direction:column;
+gap:5px;
+background:none;
+border:none;
+cursor:pointer;
 }
 
-/* Hamburger */
-.mobile-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 20;
+.mobile-toggle span{
+width:22px;
+height:2px;
+background:currentColor;
 }
 
-.mobile-toggle span {
-  width: 22px;
-  height: 2px;
-  background: currentColor;
-  transition: all 0.3s ease; /* ✅ Added for X animation */
+
+/* MOBILE MENU */
+
+.mobile-menu{
+position:fixed;
+inset:0;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+transform:translateY(-100%);
+transition:.4s ease;
+visibility:hidden;
 }
 
-/* Hamburger to X Animation */
-.mobile-toggle.active span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.mobile-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-.mobile-toggle.active span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+.mobile-menu.active{
+transform:translateY(0);
+visibility:visible;
 }
 
-/* Mobile Menu */
-.mobile-menu {
-  position: fixed;
-  inset: 0;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-100%);
-  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); /* Smoother animation */
-  z-index: 5; /* ✅ Fixed: Stays behind header-inner */
-  visibility: hidden;
+.mobile-menu-inner{
+display:flex;
+flex-direction:column;
+gap:25px;
+text-align:center;
 }
 
-.mobile-menu.active {
-  transform: translateY(0);
-  visibility: visible;
+.mobile-menu-inner a{
+font-size:18px;
+letter-spacing:3px;
+text-decoration:none;
+color:black;
+text-transform:uppercase;
 }
 
-.mobile-menu-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  text-align: center;
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.desktop-nav{
+display:none;
 }
 
-.mobile-menu-inner a {
-  font-size: 18px;
-  letter-spacing: 3px;
-  text-decoration: none;
-  color: black;
-  text-transform: uppercase;
+.header-tool span{
+display:none;
 }
 
-/* Responsive */
-@media (min-width: 769px) {
-  .mobile-menu {
-    display: none !important; /* ✅ Prevents mobile menu issues on desktop */
-  }
+.mobile-toggle{
+display:flex;
 }
 
-@media (max-width: 768px) {
-  .desktop-nav {
-    display: none;
-  }
-  .mobile-toggle {
-    display: flex;
-  }
-  .header-inner {
-    padding: 15px 20px;
-  }
-  .logo-image {
-    max-width: 140px;
-  }
+.header-inner{
+padding:0 20px;
 }
+
+.logo-image{
+max-width:140px;
+}
+
+}
+
 {% endstylesheet %}
 
+
 <script>
-document.addEventListener("DOMContentLoaded", function() {
 
-  const header = document.getElementById("luxury-header");
-  const toggle = document.getElementById("mobileToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
+document.addEventListener("DOMContentLoaded",function(){
 
-  // Scroll effect
-  document.addEventListener("scroll", function() {
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  });
+const header=document.getElementById("luxury-header");
+const toggle=document.getElementById("mobileToggle");
+const mobileMenu=document.getElementById("mobileMenu");
 
-  // Desktop Hover Dropdown
-  header.addEventListener("mouseenter", function() {
-    if (window.innerWidth > 768) {
-      header.classList.add("hovered");
-    }
-  });
 
-  header.addEventListener("mouseleave", function() {
-    header.classList.remove("hovered");
-  });
+document.addEventListener("scroll",function(){
 
-  // Mobile Menu Toggle
-  toggle.addEventListener("click", function() {
-    mobileMenu.classList.toggle("active");
-    toggle.classList.toggle("active"); // Animates Hamburger to X
-    
-    // ✅ Locks body scroll when menu is open
-    if (mobileMenu.classList.contains("active")) {
-      document.body.style.overflow = "hidden";
-      header.classList.add("scrolled"); // Ensure header is white when menu opens
-    } else {
-      document.body.style.overflow = "";
-      if (window.scrollY <= 50) header.classList.remove("scrolled");
-    }
-  });
+if(window.scrollY>50){
+header.classList.add("scrolled");
+}
+else{
+header.classList.remove("scrolled");
+}
 
 });
+
+
+header.addEventListener("mouseenter",function(){
+
+if(window.innerWidth>768){
+header.classList.add("hovered");
+}
+
+});
+
+
+header.addEventListener("mouseleave",function(){
+
+header.classList.remove("hovered");
+
+});
+
+
+if(toggle){
+
+toggle.addEventListener("click",function(){
+
+mobileMenu.classList.toggle("active");
+
+});
+
+}
+
+});
+
 </script>
 
+
 {% schema %}
+
 {
-  "name": "Luxury Header",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo Image"
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Main Menu",
-      "default": "main-menu"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Luxury Header"
-    }
-  ]
+"name":"Luxury Header",
+"settings":[
+{
+"type":"image_picker",
+"id":"logo",
+"label":"Logo"
+},
+{
+"type":"link_list",
+"id":"menu",
+"label":"Main Menu",
+"default":"main-menu"
 }
+],
+"presets":[
+{
+"name":"Luxury Header"
+}
+]
+}
+
 {% endschema %}
