@@ -14,8 +14,8 @@
       "name": "Luxury Video Hero",
       "settings": {
         "video_url": "https://cdn.shopify.com/videos/c/o/v/8771059feaa8429cb3833c403689de50.mp4",
-        "heading": "TIMELESS ELEGANCE",
-        "subtext": "DISCOVER THE ART OF REFINED LUXURY",
+        "heading": "",
+        "subtext": "",
         "button_label": "EXPLORE COLLECTIONS",
         "button_link": ""
       }
