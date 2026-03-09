@@ -85,6 +85,8 @@ aspect-ratio:4/5;
 overflow:hidden;
 }
 
+/* image */
+
 .rosetta-image img{
 width:100%;
 height:100%;
@@ -93,10 +95,14 @@ transform:scale(0.82);
 transition:transform 0.15s linear;
 }
 
-/* scroll zoom */
+/* zoom origin */
 
-.rosetta-card.zoomed img{
-transform:scale(1);
+.rosetta-card:nth-child(1) .rosetta-image img{
+transform-origin:left center;
+}
+
+.rosetta-card:nth-child(2) .rosetta-image img{
+transform-origin:right center;
 }
 
 /* gradient overlay */
@@ -185,11 +191,11 @@ const windowHeight = window.innerHeight;
 
 const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
 
-/* clamp between 0 → 1 */
+/* clamp */
 
 const clamped = Math.max(0, Math.min(progress, 1));
 
-/* scale range */
+/* scale */
 
 const scale = 0.82 + (clamped * 0.18);
 
