@@ -70,7 +70,7 @@ margin-bottom:80px;
 .rosetta-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:30px;
+gap:20px;
 }
 
 .rosetta-card{
@@ -92,17 +92,8 @@ width:100%;
 height:100%;
 object-fit:cover;
 transform:scale(0.82);
+transform-origin:center center;
 transition:transform 0.15s linear;
-}
-
-/* zoom origin */
-
-.rosetta-card:nth-child(1) .rosetta-image img{
-transform-origin:left center;
-}
-
-.rosetta-card:nth-child(2) .rosetta-image img{
-transform-origin:right center;
 }
 
 /* gradient overlay */
@@ -187,7 +178,7 @@ if(!section) return;
 const rect = section.getBoundingClientRect();
 const windowHeight = window.innerHeight;
 
-/* section scroll progress */
+/* scroll progress */
 
 const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
 
@@ -195,12 +186,28 @@ const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
 
 const clamped = Math.max(0, Math.min(progress, 1));
 
-/* scale */
+/* scale range */
 
 const scale = 0.82 + (clamped * 0.18);
 
-document.querySelectorAll(".rosetta-image img").forEach(img=>{
+/* apply transform */
+
+document.querySelectorAll(".rosetta-card").forEach((card,index)=>{
+
+const img = card.querySelector("img");
+
+/* change zoom direction */
+
+if(index === 0){
+img.style.transformOrigin = "left center";
+}
+
+if(index === 1){
+img.style.transformOrigin = "right center";
+}
+
 img.style.transform = `scale(${scale})`;
+
 });
 
 });
