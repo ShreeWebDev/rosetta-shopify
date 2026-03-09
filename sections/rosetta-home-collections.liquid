@@ -1,0 +1,202 @@
+<section class="rosetta-collections">
+
+<div class="page-width">
+
+<div class="rosetta-header">
+<h2>{{ section.settings.heading }}</h2>
+<p>{{ section.settings.text }}</p>
+</div>
+
+<div class="rosetta-grid">
+
+{% for block in section.blocks %}
+
+<a href="{{ block.settings.link }}" class="rosetta-card">
+
+<div class="rosetta-image">
+
+<img
+src="{{ block.settings.image | image_url: width: 800 }}"
+alt="{{ block.settings.title }}"
+>
+
+<div class="rosetta-overlay">
+
+<h3>{{ block.settings.title }}</h3>
+
+<p class="rosetta-desc">
+{{ block.settings.description }}
+</p>
+
+</div>
+
+</div>
+
+</a>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</section>
+
+<style>
+
+.rosetta-collections{
+padding:80px 20px;
+background:#f6f6f6;
+text-align:center;
+}
+
+.rosetta-header h2{
+font-size:28px;
+letter-spacing:3px;
+margin-bottom:20px;
+}
+
+.rosetta-header p{
+max-width:700px;
+margin:auto;
+margin-bottom:60px;
+}
+
+.rosetta-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+.rosetta-card{
+position:relative;
+overflow:hidden;
+display:block;
+}
+
+.rosetta-image{
+position:relative;
+overflow:hidden;
+}
+
+.rosetta-image img{
+width:100%;
+display:block;
+transition:transform .6s ease;
+}
+
+.rosetta-overlay{
+position:absolute;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+color:white;
+text-align:center;
+width:80%;
+}
+
+.rosetta-desc{
+opacity:0;
+max-height:0;
+transition:all .4s ease;
+}
+
+.rosetta-card:hover img{
+opacity:.7;
+}
+
+.rosetta-card:hover .rosetta-desc{
+opacity:1;
+max-height:200px;
+margin-top:10px;
+}
+
+/* scroll zoom */
+
+.rosetta-card.in-view img{
+transform:scale(1.08);
+}
+
+@media(max-width:768px){
+
+.rosetta-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+<script>
+
+document.addEventListener("scroll", function(){
+
+const cards = document.querySelectorAll(".rosetta-card");
+
+cards.forEach(card => {
+
+const rect = card.getBoundingClientRect();
+
+if(rect.top < window.innerHeight - 100){
+card.classList.add("in-view");
+}else{
+card.classList.remove("in-view");
+}
+
+});
+
+});
+
+</script>
+
+{% schema %}
+{
+"name": "Rosetta Collections",
+"settings":[
+{
+"type":"text",
+"id":"heading",
+"label":"Heading"
+},
+{
+"type":"textarea",
+"id":"text",
+"label":"Paragraph"
+}
+],
+"blocks":[
+{
+"type":"collection",
+"name":"Collection Card",
+"settings":[
+{
+"type":"image_picker",
+"id":"image",
+"label":"Image"
+},
+{
+"type":"text",
+"id":"title",
+"label":"Title"
+},
+{
+"type":"textarea",
+"id":"description",
+"label":"Description"
+},
+{
+"type":"url",
+"id":"link",
+"label":"Link"
+}
+]
+}
+],
+"max_blocks":2,
+"presets":[
+{
+"name":"Rosetta Collections"
+}
+]
+}
+{% endschema %}
