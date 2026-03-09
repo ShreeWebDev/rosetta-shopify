@@ -65,6 +65,38 @@
         "right_image": "shopify://shop_images/EARRING_000171.png"
       }
     },
+    "rosetta_home_collections_kFJf3L": {
+      "type": "rosetta-home-collections",
+      "blocks": {
+        "collection_we3Hpy": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/showcase-ear-ring.png",
+            "title": "CRYSTAL",
+            "description": "Light caught, colour held. The Crystal collection pairs the soft glow of rosecut diamonds with the vivid depth of brilliant sapphires — jewellery that shifts with the light and stays with you long after",
+            "link": ""
+          }
+        },
+        "collection_cD9tig": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/imgi_12_showcase-3-B460clHm.jpg",
+            "title": "LINKS",
+            "description": "Metal meets diamond in perfect harmony. The Links collection strips jewellery back to its essence — bold in structure, precise in detail, made to be worn and remembered.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_we3Hpy",
+        "collection_cD9tig"
+      ],
+      "name": "Rosetta Collections",
+      "settings": {
+        "heading": "A NEW <span>EXPRESSION</span> OF MODERN CULTURE",
+        "text": "Rosetta draws from the richness of modern culture to craft jewels of rare intention — pieces that hold meaning, signal belonging, and become the markers  by which you are known"
+      }
+    },
     "home_collections_KYNfU3": {
       "type": "home-collections",
       "blocks": {
@@ -79,6 +111,7 @@
       "block_order": [
         "collection_block_EfxpgE"
       ],
+      "disabled": true,
       "name": "Home Collections",
       "settings": {
         "subtitle": "Exclusive Pieces",
@@ -234,6 +267,7 @@
   "order": [
     "luxury_hero_TJ6BE7",
     "luxury_collection_split_HB6Dw9",
+    "rosetta_home_collections_kFJf3L",
     "home_collections_KYNfU3",
     "craftsmanship_Az6Mnp",
     "featured_showcase_FDQEAd",
