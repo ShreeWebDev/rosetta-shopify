@@ -16,7 +16,7 @@
 <div class="rosetta-image">
 
 <img
-src="{{ block.settings.image | image_url: width: 800 }}"
+src="{{ block.settings.image | image_url: width: 1200 }}"
 alt="{{ block.settings.title }}"
 >
 
@@ -50,6 +50,11 @@ background:#f6f6f6;
 text-align:center;
 }
 
+.page-width{
+max-width:1500px;
+margin:auto;
+}
+
 .rosetta-header h2{
 font-size:28px;
 letter-spacing:3px;
@@ -59,13 +64,13 @@ margin-bottom:20px;
 .rosetta-header p{
 max-width:700px;
 margin:auto;
-margin-bottom:60px;
+margin-bottom:80px;
 }
 
 .rosetta-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:40px;
+gap:30px;
 }
 
 .rosetta-card{
@@ -76,14 +81,37 @@ display:block;
 
 .rosetta-image{
 position:relative;
+height:520px;
 overflow:hidden;
 }
 
 .rosetta-image img{
 width:100%;
-display:block;
-transition:transform .6s ease;
+height:100%;
+object-fit:cover;
+transform:scale(0.88);
+transition:transform 1.2s cubic-bezier(.19,1,.22,1);
 }
+
+/* scroll zoom */
+
+.rosetta-card.zoomed img{
+transform:scale(1);
+}
+
+/* gradient overlay */
+
+.rosetta-image::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:100%;
+height:45%;
+background:linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+}
+
+/* text overlay */
 
 .rosetta-overlay{
 position:absolute;
@@ -93,16 +121,27 @@ transform:translateX(-50%);
 color:white;
 text-align:center;
 width:80%;
+z-index:2;
+}
+
+.rosetta-overlay h3{
+letter-spacing:3px;
+font-size:18px;
+margin-bottom:10px;
 }
 
 .rosetta-desc{
 opacity:0;
 max-height:0;
 transition:all .4s ease;
+font-size:14px;
+line-height:1.6;
 }
 
+/* hover reveal */
+
 .rosetta-card:hover img{
-opacity:.7;
+opacity:.75;
 }
 
 .rosetta-card:hover .rosetta-desc{
@@ -111,16 +150,21 @@ max-height:200px;
 margin-top:10px;
 }
 
-/* scroll zoom */
-
-.rosetta-card.in-view img{
-transform:scale(1.08);
-}
+/* responsive */
 
 @media(max-width:768px){
 
 .rosetta-grid{
 grid-template-columns:1fr;
+}
+
+.rosetta-image{
+height:420px;
+}
+
+.rosetta-desc{
+opacity:1;
+max-height:200px;
 }
 
 }
@@ -131,23 +175,30 @@ grid-template-columns:1fr;
 
 document.addEventListener("scroll", function(){
 
-const cards = document.querySelectorAll(".rosetta-card");
+const section = document.querySelector(".rosetta-collections");
+if(!section) return;
 
-cards.forEach(card => {
+const rect = section.getBoundingClientRect();
+const windowHeight = window.innerHeight;
 
-const rect = card.getBoundingClientRect();
+if(rect.top < windowHeight * 0.65){
 
-if(rect.top < window.innerHeight - 100){
-card.classList.add("in-view");
+document.querySelectorAll(".rosetta-card").forEach(card=>{
+card.classList.add("zoomed");
+});
+
 }else{
-card.classList.remove("in-view");
+
+document.querySelectorAll(".rosetta-card").forEach(card=>{
+card.classList.remove("zoomed");
+});
+
 }
 
 });
 
-});
-
 </script>
+
 
 {% schema %}
 {
