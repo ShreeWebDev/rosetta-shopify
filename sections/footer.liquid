@@ -1,8 +1,6 @@
 <footer class="luxury-footer">
-
   <div class="footer-wrapper">
-
-    <!-- Brand Logo -->
+    
     <div class="footer-brand">
       <a href="{{ routes.root_url }}" class="footer-logo-link">
         <img 
@@ -14,136 +12,201 @@
       </a>
     </div>
 
-    <!-- Menu 1 -->
-    {% if section.settings.menu_1 != blank %}
-      <div class="footer-menu">
-        {% for link in linklists[section.settings.menu_1].links %}
-          <a href="{{ link.url }}">
-            {{ link.title }}
-          </a>
-        {% endfor %}
+    <div class="footer-main-grid">
+      <div class="footer-column">
+        <h4 class="footer-heading">{{ linklists[section.settings.menu_1].title }}</h4>
+        <ul class="footer-links">
+          {% for link in linklists[section.settings.menu_1].links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
       </div>
-    {% endif %}
 
-    <!-- Menu 2 -->
-    {% if section.settings.menu_2 != blank %}
-      <div class="footer-menu">
-        {% for link in linklists[section.settings.menu_2].links %}
-          <a href="{{ link.url }}">
-            {{ link.title }}
-          </a>
-        {% endfor %}
+      <div class="footer-column">
+        <h4 class="footer-heading">{{ linklists[section.settings.menu_2].title }}</h4>
+        <ul class="footer-links">
+          {% for link in linklists[section.settings.menu_2].links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
       </div>
-    {% endif %}
 
-    <!-- Address -->
-    {% if section.settings.address != blank %}
-      <p class="footer-address">
-        {{ section.settings.address }}
-      </p>
-    {% endif %}
+      <div class="footer-column">
+        <h4 class="footer-heading">{{ linklists[section.settings.menu_3].title }}</h4>
+        <ul class="footer-links">
+          {% for link in linklists[section.settings.menu_3].links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="footer-column newsletter-col">
+        <h4 class="footer-heading">{{ section.settings.newsletter_heading }}</h4>
+        <p class="newsletter-text">{{ section.settings.newsletter_text }}</p>
+        {% form 'customer', id: 'footer-newsletter' %}
+          <div class="newsletter-form-group">
+            <input type="email" name="contact[email]" placeholder="YOUR EMAIL" required>
+            <button type="submit">JOIN</button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="social-links">
+        {% if section.settings.show_social %}
+          <a href="{{ settings.social_instagram_link }}" target="_blank">INSTAGRAM</a>
+          <a href="{{ settings.social_facebook_link }}" target="_blank">FACEBOOK</a>
+          <a href="{{ settings.social_snapchat_link }}" target="_blank">SNAPCHAT</a>
+        {% endif %}
+      </div>
+    </div>
 
   </div>
-
 </footer>
 
-
-{% stylesheet %}
-
+<style>
 .luxury-footer {
-  background: #8B5CF6;
+  background: #3b116b; /* Dark Purple as per image */
   color: #ffffff;
-  padding: 100px 0;
-  text-align: center;
-
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  padding: 80px 0 40px 0;
+  width: 100%;
   overflow: hidden;
 }
 
 .footer-wrapper {
   width: 90%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Brand */
-
+/* Logo Section */
 .footer-brand {
-  margin-bottom: 60px;
-}
-
-.footer-logo-link {
-  display: inline-block;
+  margin-bottom: 80px;
+  text-align: center;
 }
 
 .footer-logo-image {
-  max-width: 240px;
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  filter: brightness(0) invert(1); /* makes black SVG white */
-  transition: opacity 0.3s ease;
+  max-width: 120px;
+  filter: brightness(0) invert(1);
 }
 
-.footer-logo-image:hover {
-  opacity: 0.75;
+/* Grid Layout */
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: left;
+  margin-bottom: 60px;
 }
 
-/* Menus */
-
-.footer-menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px 40px;
-  margin-bottom: 40px;
+.footer-heading {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  font-weight: 500;
+  opacity: 0.9;
 }
 
-.footer-menu a {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.15em;
-  text-decoration: none;
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
   color: #ffffff;
-  transition: opacity 0.3s ease;
-}
-
-.footer-menu a:hover {
-  opacity: 0.6;
-}
-
-/* Address */
-
-.footer-address {
-  font-family: 'Inter', sans-serif;
+  text-decoration: none;
   font-size: 12px;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+/* Newsletter Section */
+.newsletter-text {
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.newsletter-form-group {
+  display: flex;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 5px;
+}
+
+.newsletter-form-group input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  width: 100%;
+  outline: none;
+}
+
+.newsletter-form-group button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+/* Bottom Social Section */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 40px;
+  text-align: left;
+}
+
+.social-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  margin-right: 30px;
   opacity: 0.8;
-  margin-top: 40px;
 }
 
 /* Responsive */
-
-@media (max-width: 768px) {
-
-  .luxury-footer {
-    padding: 70px 0;
+@media (max-width: 991px) {
+  .footer-main-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
   }
-
-  .footer-logo-image {
-    max-width: 160px;
-  }
-
 }
 
-{% endstylesheet %}
-
+@media (max-width: 768px) {
+  .footer-main-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .newsletter-form-group {
+    justify-content: center;
+  }
+  .footer-bottom {
+    text-align: center;
+  }
+  .social-links a {
+    margin: 0 15px;
+  }
+}
+</style>
 
 {% schema %}
 {
@@ -160,10 +223,27 @@
       "label": "Footer Menu 2"
     },
     {
+      "type": "link_list",
+      "id": "menu_3",
+      "label": "Footer Menu 3"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter Heading",
+      "default": "NEWSLETTER"
+    },
+    {
       "type": "textarea",
-      "id": "address",
-      "label": "Address",
-      "default": "C. DE FERNANDO VI, 5, 28004 DUBAI, UAE"
+      "id": "newsletter_text",
+      "label": "Newsletter Text",
+      "default": "Join our world for the latest updates."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show Social Links",
+      "default": true
     }
   ],
   "presets": [
