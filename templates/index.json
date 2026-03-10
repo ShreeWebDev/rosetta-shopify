@@ -61,7 +61,7 @@
       "name": "Luxury Collection Split",
       "settings": {
         "heading": "DISCOVER ANANAS",
-        "text": "Introducing Ananas- our summer collection inspired\nby the playful elegance of tropic pineapples.",
+        "text": "Introducing <span style=\"font-style: italic;\">Ananas</span>- our summer collection inspired\nby the playful elegance of tropic pineapples.",
         "right_image": "shopify://shop_images/EARRING_000171.png",
         "right_image_link": "shopify://collections"
       }
