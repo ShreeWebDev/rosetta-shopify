@@ -187,6 +187,7 @@
         "showcase_item_WrCece",
         "showcase_item_3cXwTz"
       ],
+      "disabled": true,
       "name": "Featured Showcase",
       "settings": {
         "subtitle": "Featured",
@@ -207,6 +208,7 @@
     },
     "home_blog_card_prFJnN": {
       "type": "home-blog-card",
+      "disabled": true,
       "name": "Home Blog Section",
       "settings": {
         "subtitle": "Stories & Insights",
