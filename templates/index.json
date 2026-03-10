@@ -60,9 +60,10 @@
       ],
       "name": "Luxury Collection Split",
       "settings": {
-        "heading": "DISCOVER THE LATEST COLLECTIONS",
-        "text": "Each Rosetta Fine Jewellery collection tells a story — of grace, strength, and timeless allure. From delicate everyday diamonds to statement masterpieces, every design reflects the art of refined luxury.",
-        "right_image": "shopify://shop_images/EARRING_000171.png"
+        "heading": "DISCOVER ANANAS",
+        "text": "Introducing Ananas- our summer collection inspired\nby the playful elegance of tropic pineapples.",
+        "right_image": "shopify://shop_images/EARRING_000171.png",
+        "right_image_link": ""
       }
     },
     "rosetta_home_collections_kFJf3L": {
