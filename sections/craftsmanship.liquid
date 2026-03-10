@@ -30,7 +30,7 @@
 
 </section>
 
-<style>
+{% stylesheet %}
 /* SECTION WRAPPER */
 .craftsmanship-section {
   position: relative;
@@ -141,4 +141,48 @@
   .craftsmanship-subtext { font-size: 14px; }
   .craftsmanship-btn { padding: 12px 35px; }
 }
-</style>
+
+{% endstylesheet %}
+
+
+
+{% schema %}
+{
+  "name": "Craftsmanship Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "THE ART OF CRAFTSMANSHIP"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Where tradition meets innovation"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "About Us"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Craftsmanship Banner"
+    }
+  ]
+}
+{% endschema %}
