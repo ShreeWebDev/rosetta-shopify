@@ -1,15 +1,9 @@
 <section id="collections" class="luxury-split">
-
   <div class="split-wrapper">
-
     <div class="split-grid">
 
-      <!-- LEFT SIDE -->
       <div class="split-left">
-
-        <!-- 2x2 COLLECTION GRID -->
         <div class="collection-grid">
-
           {% for block in section.blocks %}
             <div class="collection-item" {{ block.shopify_attributes }}>
               {% if block.settings.image != blank %}
@@ -21,39 +15,41 @@
               <div class="collection-overlay"></div>
             </div>
           {% endfor %}
-
         </div>
 
-        <!-- TEXT CONTENT -->
         <div class="split-text">
           <h3>{{ section.settings.heading }}</h3>
-          <p>{{ section.settings.text }}</p>
+          <div class="split-paragraph">
+            <p>{{ section.settings.text }}</p>
+          </div>
         </div>
-
       </div>
 
-      <!-- RIGHT SIDE LARGE IMAGE -->
       <div class="split-right">
+        {% if section.settings.right_image_link != blank %}
+          <a href="{{ section.settings.right_image_link }}" class="right-image-anchor">
+        {% endif %}
+
         {% if section.settings.right_image != blank %}
           <img 
             src="{{ section.settings.right_image | image_url: width: 1600 }}"
             alt="Luxury collection">
         {% endif %}
+
+        {% if section.settings.right_image_link != blank %}
+          </a>
+        {% endif %}
       </div>
 
     </div>
-
   </div>
-
 </section>
 
-
-{% stylesheet %}
-
+<style>
 /* ===== SECTION ===== */
 .luxury-split {
   padding: 120px 0;
-  background: var(--color-background);
+  background: #fff;
 }
 
 .split-wrapper {
@@ -65,7 +61,7 @@
 .split-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 100px; /* Slightly increased gap for luxury feel */
   align-items: center;
 }
 
@@ -81,96 +77,81 @@
   position: relative;
   aspect-ratio: 1/1;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .collection-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s ease;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .collection-item:hover img {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
-.collection-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0);
-  transition: background 0.5s ease;
+/* ===== UPDATED TEXT UI ===== */
+.split-text {
+  text-align: center; /* Design pramane center kela ahe */
 }
 
-.collection-item:hover .collection-overlay {
-  background: rgba(0,0,0,0.08);
-}
-
-/* ===== TEXT ===== */
 .split-text h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  letter-spacing: 0.12em;
-  margin-bottom: 20px;
+  font-size: 24px;
+  letter-spacing: 0.25em; /* Modern Tracking */
+  margin-bottom: 25px;
+  text-transform: uppercase;
 }
 
-.split-text p {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 1.8;
-  max-width: 520px;
+.split-paragraph p {
+  font-family: 'Cormorant Garamond', serif; /* Serif font for premium look */
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto;
+  color: #333;
 }
 
-/* ===== RIGHT IMAGE ===== */
+/* ===== RIGHT IMAGE WITH LINK ===== */
 .split-right {
   position: relative;
-  min-height: 600px;
   overflow: hidden;
+  aspect-ratio: 4/5; /* Maintain jewelry portrait ratio */
+}
+
+.right-image-anchor {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .split-right img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.split-right:hover img {
+  transform: scale(1.05);
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-
   .split-grid {
     grid-template-columns: 1fr;
     gap: 60px;
   }
-
-  .split-right {
-    min-height: 500px;
-  }
-
 }
 
 @media (max-width: 768px) {
-
-  .luxury-split {
-    padding: 80px 0;
-  }
-
-  .collection-grid {
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-
-  .split-text h3 {
-    font-size: 20px;
-  }
-
-  .split-text p {
-    font-size: 14px;
-  }
-
+  .luxury-split { padding: 80px 0; }
+  .collection-grid { gap: 16px; margin-bottom: 40px; }
+  .split-text h3 { font-size: 18px; letter-spacing: 0.15em; }
+  .split-paragraph p { font-size: 15px; }
 }
-
-{% endstylesheet %}
-
+</style>
 
 {% schema %}
 {
@@ -192,6 +173,11 @@
       "type": "image_picker",
       "id": "right_image",
       "label": "Right Large Image"
+    },
+    {
+      "type": "url",
+      "id": "right_image_link",
+      "label": "Right Image Link"
     }
   ],
   "blocks": [
