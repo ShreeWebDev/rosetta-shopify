@@ -53,11 +53,52 @@ loading="lazy">
 <!-- NAV -->
 <nav class="desktop-nav">
 <ul>
+
 {% for link in section.settings.menu.links %}
-<li>
+
+<li class="has-mega">
+
 <a href="{{ link.url }}">{{ link.title }}</a>
-</li>
+
+{% if link.links != blank %}
+
+<div class="mega-menu">
+
+<div class="mega-inner">
+
+<h3 class="mega-title">{{ link.title }}</h3>
+
+<div class="mega-grid">
+
+{% for child in link.links %}
+
+<a href="{{ child.url }}" class="mega-card">
+
+{% if child.object.featured_image %}
+<img
+src="{{ child.object.featured_image | image_url: width: 400 }}"
+alt="{{ child.title }}"
+loading="lazy">
+{% endif %}
+
+<span>{{ child.title }}</span>
+
+</a>
+
 {% endfor %}
+
+</div>
+
+</div>
+
+</div>
+
+{% endif %}
+
+</li>
+
+{% endfor %}
+
 </ul>
 </nav>
 
@@ -82,7 +123,6 @@ loading="lazy">
 background:transparent!important;
 }
 
-
 /* HEADER BASE */
 
 .luxury-header{
@@ -97,7 +137,6 @@ color:white;
 padding:15px 0;
 }
 
-
 /* SCROLLED */
 
 .luxury-header.scrolled,
@@ -107,8 +146,7 @@ color:black;
 box-shadow:0 10px 30px rgba(0,0,0,0.05);
 }
 
-
-/* GRID LAYOUT */
+/* GRID */
 
 .header-inner{
 display:grid;
@@ -116,7 +154,6 @@ grid-template-columns:1fr auto 1fr;
 align-items:center;
 padding:0 40px;
 }
-
 
 /* LEFT RIGHT */
 
@@ -126,8 +163,9 @@ display:flex;
 align-items:center;
 gap:25px;
 }
+
 .header-right{
-  justify-content: end;
+justify-content:end;
 }
 
 /* TOOLS */
@@ -148,13 +186,11 @@ width:25px;
 fill:currentColor;
 }
 
-
 /* ICON ONLY */
 
 .icon-only span{
 display:none;
 }
-
 
 /* LOGO */
 
@@ -177,8 +213,7 @@ filter:brightness(0) invert(1);
 filter:none;
 }
 
-
-/* DESKTOP NAV */
+/* NAV */
 
 .desktop-nav{
 max-height:0;
@@ -188,14 +223,14 @@ transition:all .4s ease;
 }
 
 .luxury-header.hovered .desktop-nav{
-max-height:80px;
+max-height:120px;
 opacity:1;
 }
 
 .desktop-nav ul{
 display:flex;
 justify-content:center;
-gap:20px;
+gap:25px;
 list-style:none;
 padding-top:15px;
 margin:0;
@@ -209,59 +244,77 @@ text-transform:uppercase;
 color:currentColor;
 }
 
+/* MEGA MENU */
 
-/* MOBILE TOGGLE */
-
-.mobile-toggle{
-display:none;
-flex-direction:column;
-gap:5px;
-background:none;
-border:none;
-cursor:pointer;
+.has-mega{
+position:relative;
 }
 
-.mobile-toggle span{
-width:22px;
-height:2px;
-background:currentColor;
-}
-
-
-/* MOBILE MENU */
-
-.mobile-menu{
-position:fixed;
-inset:0;
+.mega-menu{
+position:absolute;
+left:0;
+right:0;
+top:100%;
 background:white;
-display:flex;
-align-items:center;
-justify-content:center;
-transform:translateY(-100%);
-transition:.4s ease;
+padding:60px 40px;
+opacity:0;
 visibility:hidden;
+transform:translateY(20px);
+transition:.35s ease;
 }
 
-.mobile-menu.active{
-transform:translateY(0);
+.has-mega:hover .mega-menu{
+opacity:1;
 visibility:visible;
+transform:translateY(0);
 }
 
-.mobile-menu-inner{
-display:flex;
-flex-direction:column;
-gap:25px;
+.mega-inner{
+max-width:1100px;
+margin:auto;
 text-align:center;
 }
 
-.mobile-menu-inner a{
-font-size:18px;
+.mega-title{
+font-size:16px;
 letter-spacing:3px;
-text-decoration:none;
-color:black;
+margin-bottom:40px;
 text-transform:uppercase;
 }
 
+.mega-grid{
+display:flex;
+justify-content:center;
+gap:70px;
+flex-wrap:wrap;
+}
+
+.mega-card{
+text-decoration:none;
+color:black;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:15px;
+}
+
+.mega-card img{
+width:160px;
+height:160px;
+border-radius:50%;
+object-fit:cover;
+transition:.4s ease;
+}
+
+.mega-card:hover img{
+transform:scale(1.05);
+}
+
+.mega-card span{
+font-size:14px;
+letter-spacing:2px;
+text-transform:uppercase;
+}
 
 /* MOBILE */
 
@@ -273,10 +326,6 @@ display:none;
 
 .header-tool span{
 display:none;
-}
-
-.mobile-toggle{
-display:flex;
 }
 
 .header-inner{
@@ -297,9 +346,6 @@ max-width:140px;
 document.addEventListener("DOMContentLoaded",function(){
 
 const header=document.getElementById("luxury-header");
-const toggle=document.getElementById("mobileToggle");
-const mobileMenu=document.getElementById("mobileMenu");
-
 
 document.addEventListener("scroll",function(){
 
@@ -312,7 +358,6 @@ header.classList.remove("scrolled");
 
 });
 
-
 header.addEventListener("mouseenter",function(){
 
 if(window.innerWidth>768){
@@ -321,23 +366,11 @@ header.classList.add("hovered");
 
 });
 
-
 header.addEventListener("mouseleave",function(){
 
 header.classList.remove("hovered");
 
 });
-
-
-if(toggle){
-
-toggle.addEventListener("click",function(){
-
-mobileMenu.classList.toggle("active");
-
-});
-
-}
 
 });
 
