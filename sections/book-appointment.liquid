@@ -1,35 +1,36 @@
-<section class="book-appointment">
+<section class="book-appointment" id="appointment-section-{{ section.id }}">
 
-  <!-- Background -->
   {% if section.settings.background_image != blank %}
     <div class="appointment-bg">
       <img 
         src="{{ section.settings.background_image | image_url: width: 2000 }}"
-        alt="Private jewellery consultation">
+        alt="Private jewellery consultation"
+        class="premium-bg-img">
       <div class="appointment-overlay"></div>
     </div>
   {% endif %}
 
-  <!-- Content Wrapper -->
   <div class="appointment-wrapper">
-    <div class="appointment-card">
+    <div class="appointment-card premium-reveal">
 
-      <span class="appointment-subtitle">
+      <span class="appointment-subtitle premium-reveal-item delay-1">
         {{ section.settings.subtitle }}
       </span>
 
-      <h2 class="appointment-heading">
+      <h2 class="appointment-heading premium-reveal-item delay-2">
         {{ section.settings.heading }}
       </h2>
 
-      <p class="appointment-text">
+      <p class="appointment-text premium-reveal-item delay-3">
         {{ section.settings.text }}
       </p>
 
       {% if section.settings.button_label != blank %}
-        <a href="{{ section.settings.button_link }}" class="appointment-btn">
-          {{ section.settings.button_label }}
-        </a>
+        <div class="premium-reveal-item delay-4">
+          <a href="{{ section.settings.button_link }}" class="appointment-btn">
+            {{ section.settings.button_label }}
+          </a>
+        </div>
       {% endif %}
 
     </div>
@@ -52,16 +53,24 @@
   overflow: hidden;
 }
 
-/* BACKGROUND */
+/* BACKGROUND & PREMIUM ZOOM ANIMATION */
 .appointment-bg {
   position: absolute;
   inset: 0;
+  overflow: hidden;
 }
 
-.appointment-bg img {
+.premium-bg-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.1); /* Start slightly zoomed in */
+  transition: transform 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Image zooms out slightly when section is visible */
+.book-appointment.is-visible .premium-bg-img {
+  transform: scale(1);
 }
 
 .appointment-overlay {
@@ -93,6 +102,41 @@
   max-width: 500px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.1);
 }
+
+/* PREMIUM REVEAL ANIMATIONS */
+/* Parent Card Initial State */
+.premium-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Child Elements Initial State */
+.premium-reveal-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.21, 0.83, 0.26, 1), 
+              transform 0.8s cubic-bezier(0.21, 0.83, 0.26, 1);
+}
+
+/* Active State Triggered by JS */
+.book-appointment.is-visible .premium-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.book-appointment.is-visible .premium-reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Delays for elements inside the card */
+.delay-1 { transition-delay: 0.3s; }
+.delay-2 { transition-delay: 0.5s; }
+.delay-3 { transition-delay: 0.7s; }
+.delay-4 { transition-delay: 0.9s; }
+
 
 /* TEXT STYLES */
 .appointment-subtitle {
@@ -133,7 +177,8 @@
   letter-spacing: 0.3em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  border: 1px solid transparent;
 }
 
 .appointment-btn:hover {
@@ -147,11 +192,9 @@
   .appointment-wrapper {
     justify-content: center;
   }
-
   .appointment-card {
     padding: 40px;
   }
-
   .appointment-heading {
     font-size: 24px;
   }
@@ -161,17 +204,43 @@
   .book-appointment {
     min-height: 80vh;
   }
-
   .appointment-wrapper {
     padding: 0 5%;
   }
-
   .appointment-card {
     padding: 30px;
   }
 }
 
 {% endstylesheet %}
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const appointmentSection = document.getElementById('appointment-section-{{ section.id }}');
+  
+  if (!appointmentSection) return;
+
+  // Intersection Observer setup
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.25 // Trigger when 25% of the section is visible
+  };
+
+  const sectionObserver = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add class to trigger CSS animations
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target); // Run animation only once
+      }
+    });
+  }, observerOptions);
+
+  sectionObserver.observe(appointmentSection);
+});
+</script>
 
 
 {% schema %}
