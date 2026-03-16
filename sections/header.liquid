@@ -82,12 +82,32 @@ loading="lazy">
 
 <a href="{{ child.url }}" class="mega-card">
 
+<div class="mega-grid">
+
+<div class="mega-links">
+
+{% for child in link.links %}
+
+<a href="{{ child.url }}" class="mega-card">
+
 {% if child.object.featured_image %}
 <img
 src="{{ child.object.featured_image | image_url: width: 400 }}"
 alt="{{ child.title }}"
 loading="lazy">
 {% endif %}
+
+<span>{{ child.title }}</span>
+
+</a>
+
+{% endfor %}
+
+</div>
+
+<img class="mega-feature" src="FEATURE IMAGE">
+
+</div>
 
 <span>{{ child.title }}</span>
 
