@@ -193,7 +193,7 @@ box-shadow:0 10px 30px rgba(0,0,0,0.05);
 /* GRID */
 
 .header-inner{
-justify-content:flex-start
+display:grid;
 grid-template-columns:1fr auto 1fr;
 align-items:center;
 padding:0 40px;
@@ -279,8 +279,9 @@ position:relative;
 .mega-menu{
 position:absolute;
 top:100%;
-left:0;
-width:100%;
+left:50%;
+transform:translateX(-50%);
+width:100vw;
 background:#fff;
 padding:60px 0;
 opacity:0;
@@ -295,9 +296,10 @@ visibility:visible;
 }
 
 .mega-inner{
-max-width:1100px;
-margin:0 auto;
+max-width:1200px;
+margin:auto;
 padding:0 40px;
+text-align:center;
 }
 
 .mega-title{
