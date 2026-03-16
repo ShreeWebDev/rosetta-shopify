@@ -14,12 +14,12 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "logo": "shopify://shop_images/rosetta-logo-main.svg",
-        "brand_name": "",
-        "brand_tagline": "",
         "menu_1": "footer",
-        "menu_2": "",
-        "address": "C. DE FERNANDO VI, 5, 28004 DUBAI, UAE"
+        "menu_2": "about-rosetta",
+        "menu_3": "legal-mentions",
+        "newsletter_heading": "NEWSLETTER",
+        "newsletter_text": "Join our world for the latest updates.",
+        "show_social": true
       }
     }
   },
