@@ -203,7 +203,7 @@
         "heading": "BOOK YOUR PRIVATE APPOINTMENT",
         "text": "Experience the pinnacle of luxury with a private consultation at our boutique.",
         "button_label": "BOOK AN APPOINTMENT",
-        "button_link": ""
+        "button_link": "shopify://pages/book-appointment"
       }
     },
     "home_blog_card_prFJnN": {
