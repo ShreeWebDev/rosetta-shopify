@@ -5,12 +5,19 @@
 <!-- LEFT -->
 <div class="header-left">
 
-<a href="/pages/book-appointment" class="header-tool">
+<!-- HAMBURGER -->
+<button class="mobile-toggle" id="mobileToggle">
+<span></span>
+<span></span>
+<span></span>
+</button>
+
+<a href="/pages/book-appointment" class="header-tool desktop-only">
 {{ 'CalendarTimeIcon.svg' | inline_asset_content }}
 <span>Book Appointment</span>
 </a>
 
-<a href="{{ routes.search_url }}" class="header-tool">
+<a href="{{ routes.search_url }}" class="header-tool desktop-only">
 {{ 'SearchIcon.svg' | inline_asset_content }}
 <span>Search</span>
 </a>
@@ -107,11 +114,15 @@ loading="lazy">
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
+
 <div class="mobile-menu-inner">
+
 {% for link in section.settings.menu.links %}
 <a href="{{ link.url }}">{{ link.title }}</a>
 {% endfor %}
+
 </div>
+
 </div>
 
 </header>
@@ -284,7 +295,8 @@ letter-spacing:2px;
 text-transform:uppercase;
 }
 
-/* MOBILE */
+/* MOBILE MENU */
+
 .mobile-menu{
 display:none;
 position:fixed;
@@ -297,14 +309,29 @@ transition:.4s ease;
 visibility:hidden;
 }
 
-@media(max-width:768px){
-
-.mobile-menu{
-display:flex;
+.mobile-menu.active{
+transform:translateY(0);
+visibility:visible;
 }
 
+/* HAMBURGER */
+
+.mobile-toggle{
+display:none;
+flex-direction:column;
+gap:5px;
+background:none;
+border:none;
+cursor:pointer;
 }
 
+.mobile-toggle span{
+width:22px;
+height:2px;
+background:currentColor;
+}
+
+/* MOBILE */
 
 @media(max-width:768px){
 
@@ -312,7 +339,16 @@ display:flex;
 display:none;
 }
 
+.desktop-only{
+display:none;
+}
+
+.mobile-toggle{
+display:flex;
+}
+
 .header-inner{
+grid-template-columns:auto 1fr auto;
 padding:0 20px;
 }
 
@@ -320,9 +356,29 @@ padding:0 20px;
 max-width:140px;
 }
 
+.mobile-menu{
+display:flex;
+}
+
 }
 
 {% endstylesheet %}
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const toggle=document.getElementById("mobileToggle");
+const menu=document.getElementById("mobileMenu");
+
+toggle.addEventListener("click",function(){
+menu.classList.toggle("active");
+});
+
+});
+
+</script>
 
 
 {% schema %}
