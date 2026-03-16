@@ -285,6 +285,26 @@ text-transform:uppercase;
 }
 
 /* MOBILE */
+.mobile-menu{
+display:none;
+position:fixed;
+inset:0;
+background:white;
+align-items:center;
+justify-content:center;
+transform:translateY(-100%);
+transition:.4s ease;
+visibility:hidden;
+}
+
+@media(max-width:768px){
+
+.mobile-menu{
+display:flex;
+}
+
+}
+
 
 @media(max-width:768px){
 
