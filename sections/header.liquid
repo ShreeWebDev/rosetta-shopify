@@ -5,7 +5,6 @@
 <!-- LEFT -->
 <div class="header-left">
 
-<!-- HAMBURGER -->
 <button class="mobile-toggle" id="mobileToggle">
 <span></span>
 <span></span>
@@ -57,9 +56,8 @@ loading="lazy">
 </div>
 
 
-<!-- NAV -->
+<!-- DESKTOP NAV -->
 <nav class="desktop-nav">
-
 <ul>
 
 {% for link in section.settings.menu.links %}
@@ -108,18 +106,67 @@ loading="lazy">
 {% endfor %}
 
 </ul>
-
 </nav>
 
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
 
-<div class="mobile-menu-inner">
+<div class="mobile-drawer">
+
+<div class="mobile-top">
+
+<button class="mobile-close" id="mobileClose">✕</button>
+
+<span class="mobile-account">
+{{ 'AccountIcon.svg' | inline_asset_content }}
+</span>
+
+</div>
+
+
+<div class="mobile-links">
 
 {% for link in section.settings.menu.links %}
-<a href="{{ link.url }}">{{ link.title }}</a>
+
+<div class="mobile-item">
+
+<a href="{{ link.url }}" class="mobile-link">
+
+<span>{{ link.title }}</span>
+
+{% if link.links != blank %}
+<span class="arrow">›</span>
+{% endif %}
+
+</a>
+
+{% if link.links != blank %}
+
+<div class="mobile-submenu">
+
+{% for child in link.links %}
+
+<a href="{{ child.url }}">{{ child.title }}</a>
+
 {% endfor %}
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+<div class="mobile-footer">
+
+<span>India · INR</span>
+
+</div>
 
 </div>
 
@@ -166,36 +213,21 @@ gap:25px;
 justify-content:end;
 }
 
-/* TOOLS */
+/* HAMBURGER */
 
-.header-tool{
-display:flex;
-align-items:center;
-gap:8px;
-font-size:13px;
-letter-spacing:1px;
-text-decoration:none;
-color:currentColor;
-text-transform:uppercase;
+.mobile-toggle{
+display:none;
+flex-direction:column;
+gap:5px;
+background:none;
+border:none;
+cursor:pointer;
 }
 
-.header-tool svg{
-width:25px;
-fill:currentColor;
-}
-
-/* LOGO */
-
-.header-logo{
-text-align:center;
-}
-
-.logo-image{
-max-width:170px;
-width:100%;
-height:auto;
-display:block;
-margin:auto;
+.mobile-toggle span{
+width:22px;
+height:2px;
+background:black;
 }
 
 /* NAV */
@@ -214,121 +246,67 @@ margin:0;
 padding:0;
 }
 
-.desktop-nav a{
-text-decoration:none;
-font-size:13px;
-letter-spacing:2px;
-text-transform:uppercase;
-color:currentColor;
-}
-
-/* NAV ITEM */
-
-.nav-item{
-position:relative;
-}
-
-/* MEGA MENU */
-
-.mega-menu{
-position:absolute;
-top:40px;
-left:50%;
-transform:translateX(-50%);
-width:100vw;
-background:white;
-padding:60px 0;
-opacity:0;
-visibility:hidden;
-transition:.3s ease;
-box-shadow:0 20px 40px rgba(0,0,0,0.08);
-}
-
-.nav-item:hover .mega-menu{
-opacity:1;
-visibility:visible;
-}
-
-.mega-inner{
-max-width:1100px;
-margin:auto;
-text-align:center;
-}
-
-.mega-title{
-font-size:16px;
-letter-spacing:3px;
-margin-bottom:40px;
-text-transform:uppercase;
-}
-
-.mega-grid{
-display:flex;
-justify-content:center;
-gap:70px;
-}
-
-.mega-card{
-text-decoration:none;
-color:black;
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:15px;
-}
-
-.mega-card img{
-width:160px;
-height:160px;
-border-radius:50%;
-object-fit:cover;
-transition:.4s ease;
-}
-
-.mega-card:hover img{
-transform:scale(1.05);
-}
-
-.mega-card span{
-font-size:14px;
-letter-spacing:2px;
-text-transform:uppercase;
-}
-
 /* MOBILE MENU */
 
 .mobile-menu{
-display:none;
 position:fixed;
 inset:0;
 background:white;
-align-items:center;
-justify-content:center;
-transform:translateY(-100%);
+transform:translateX(-100%);
 transition:.4s ease;
-visibility:hidden;
+z-index:200;
 }
 
 .mobile-menu.active{
-transform:translateY(0);
-visibility:visible;
+transform:translateX(0);
 }
 
-/* HAMBURGER */
+.mobile-drawer{
+height:100%;
+padding:25px;
+display:flex;
+flex-direction:column;
+}
 
-.mobile-toggle{
+.mobile-top{
+display:flex;
+justify-content:space-between;
+margin-bottom:30px;
+}
+
+.mobile-links{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.mobile-link{
+display:flex;
+justify-content:space-between;
+text-decoration:none;
+font-size:14px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:black;
+}
+
+.mobile-submenu{
 display:none;
 flex-direction:column;
-gap:5px;
-background:none;
-border:none;
-cursor:pointer;
+gap:15px;
+padding-left:15px;
+margin-top:10px;
 }
 
-.mobile-toggle span{
-width:22px;
-height:2px;
-background:currentColor;
+.mobile-item.active .mobile-submenu{
+display:flex;
+}
+
+.mobile-footer{
+margin-top:auto;
+font-size:12px;
+letter-spacing:2px;
+color:#777;
 }
 
 /* MOBILE */
@@ -339,12 +317,12 @@ background:currentColor;
 display:none;
 }
 
-.desktop-only{
-display:none;
-}
-
 .mobile-toggle{
 display:flex;
+}
+
+.desktop-only{
+display:none;
 }
 
 .header-inner{
@@ -354,10 +332,6 @@ padding:0 20px;
 
 .logo-image{
 max-width:140px;
-}
-
-.mobile-menu{
-display:flex;
 }
 
 }
@@ -371,9 +345,28 @@ document.addEventListener("DOMContentLoaded",function(){
 
 const toggle=document.getElementById("mobileToggle");
 const menu=document.getElementById("mobileMenu");
+const close=document.getElementById("mobileClose");
 
 toggle.addEventListener("click",function(){
-menu.classList.toggle("active");
+menu.classList.add("active");
+});
+
+close.addEventListener("click",function(){
+menu.classList.remove("active");
+});
+
+document.querySelectorAll(".mobile-link").forEach(link=>{
+link.addEventListener("click",function(e){
+
+const parent=this.closest(".mobile-item");
+const submenu=parent.querySelector(".mobile-submenu");
+
+if(submenu){
+e.preventDefault();
+parent.classList.toggle("active");
+}
+
+});
 });
 
 });
