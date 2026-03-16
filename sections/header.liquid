@@ -20,7 +20,6 @@
       </a>
     </div>
   
-  
     <div class="header-logo">
       <a href="{{ routes.root_url }}">
         {% if section.settings.logo != blank %}
@@ -30,7 +29,6 @@
         {% endif %}
       </a>
     </div>
-  
   
     <div class="header-right">
       <a href="https://maps.google.com" class="header-tool icon-only">
@@ -43,10 +41,17 @@
   
   </div>
 
-
   <nav class="desktop-nav">
     <ul>
       {% for link in section.settings.menu.links %}
+        
+        {% assign mega_image = blank %}
+        {% for block in section.blocks %}
+          {% if block.settings.menu_item == link.title %}
+            {% assign mega_image = block.settings.featured_image %}
+          {% endif %}
+        {% endfor %}
+
         <li class="nav-item">
           <a href="{{ link.url }}">{{ link.title }}</a>
 
@@ -57,7 +62,7 @@
                 
                 <div class="mega-grid">
                   
-                  <div class="mega-links" style="display: flex; gap: 30px; flex-wrap: wrap;">
+                  <div class="mega-links">
                     {% for child in link.links %}
                       <a href="{{ child.url }}" class="mega-card">
                         
@@ -66,19 +71,25 @@
                         {% elsif child.type == 'product_link' and child.object.featured_image != blank %}
                           <img src="{{ child.object.featured_image | image_url: width: 160, height: 160, crop: 'center' }}" alt="{{ child.title }}" loading="lazy">
                         {% else %}
-                          <div style="width: 160px; height: 160px; background: #f4f4f4; border-radius: 50%;"></div>
+                          <div class="mega-empty-circle">
+                             <span>{{ child.title | slice: 0, 1 }}</span>
+                          </div>
                         {% endif %}
                         
-                        <span>{{ child.title }}</span>
+                        <span class="mega-link-title">{{ child.title }}</span>
                       </a>
                     {% endfor %}
                   </div>
 
                   <div class="mega-featured-column">
-                    {% if link.type == 'collection_link' and link.object.image != blank %}
-                      <img class="mega-feature" src="{{ link.object.image | image_url: width: 420 }}" alt="{{ link.title }}">
+                    {% if mega_image != blank %}
+                      <img class="mega-feature" src="{{ mega_image | image_url: width: 600 }}" alt="{{ link.title }}" loading="lazy">
+                    {% elsif link.type == 'collection_link' and link.object.image != blank %}
+                      <img class="mega-feature" src="{{ link.object.image | image_url: width: 600 }}" alt="{{ link.title }}" loading="lazy">
                     {% else %}
-                      <img class="mega-feature" src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png" alt="Featured">
+                      <div class="mega-feature-placeholder">
+                        {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
                     {% endif %}
                   </div>
 
@@ -90,7 +101,6 @@
       {% endfor %}
     </ul>
   </nav>
-
 
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-drawer">
@@ -130,9 +140,7 @@
 
 </header>
 
-
 {% stylesheet %}
-
 /* HEADER */
 .luxury-header{
   position:fixed;
@@ -224,7 +232,7 @@
   position:relative;
 }
 
-/* MEGA MENU */
+/* MEGA MENU FIXED LAYOUT */
 .mega-menu{
   position:absolute;
   top:100%;
@@ -248,7 +256,7 @@
   max-width:1200px;
   margin:auto;
   padding:0 40px;
-  text-align:center;
+  text-align:left; /* Fix for overlap */
 }
 
 .mega-title{
@@ -262,17 +270,57 @@
   display:grid;
   grid-template-columns:1fr 420px;
   gap:80px;
-  align-items:start;
+  align-items:stretch;
 }
 
-.mega-grid .mega-card{
-  justify-self:start;
+.mega-links{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  justify-content:flex-start;
+}
+
+.mega-featured-column{
+  width:100%;
+  height:420px;
 }
 
 .mega-feature{
   width:100%;
-  height:420px;
+  height:100%;
   object-fit:cover;
+}
+
+/* Fallback Styling for Missing Images */
+.mega-empty-circle{
+  width:160px;
+  height:160px;
+  background:#f7f7f7;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  color:#ccc;
+  font-family:serif;
+  transition:.4s ease;
+}
+
+.mega-feature-placeholder{
+  width:100%;
+  height:100%;
+  background:#fafafa;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.placeholder-svg{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0.3;
 }
 
 body{
@@ -296,14 +344,17 @@ body{
   transition:.4s ease;
 }
 
-.mega-card:hover img{
+.mega-card:hover img,
+.mega-card:hover .mega-empty-circle{
   transform:scale(1.05);
+  box-shadow:0 10px 20px rgba(0,0,0,0.05);
 }
 
-.mega-card span{
+.mega-link-title{
   font-size:14px;
   letter-spacing:2px;
   text-transform:uppercase;
+  text-align:center;
 }
 
 /* MOBILE MENU */
@@ -324,7 +375,6 @@ body{
   transform:translateX(0);
 }
 
-/* HAMBURGER */
 .mobile-toggle{
   display:none;
   flex-direction:column;
@@ -384,43 +434,18 @@ body{
   color:#777;
 }
 
-/* MOBILE */
+/* MOBILE RESPONSIVE */
 @media(max-width:768px){
-
-  .desktop-nav{
-    display:none;
-  }
-
-  .desktop-only{
-    display:none;
-  }
-
-  .mobile-toggle{
-    display:flex;
-  }
-
-  .header-inner{
-    grid-template-columns:auto 1fr auto;
-    padding:0 20px;
-  }
-
-  .logo-image{
-    max-width:140px;
-  }
-
-  .mobile-menu{
-    display:flex;
-  }
-
+  .desktop-nav, .desktop-only{ display:none; }
+  .mobile-toggle{ display:flex; }
+  .header-inner{ grid-template-columns:auto 1fr auto; padding:0 20px; }
+  .logo-image{ max-width:140px; }
+  .mobile-menu{ display:flex; }
 }
-
 {% endstylesheet %}
 
-
 <script>
-
 document.addEventListener("DOMContentLoaded",function(){
-
   const toggle=document.getElementById("mobileToggle");
   const menu=document.getElementById("mobileMenu");
   const close=document.getElementById("mobileClose");
@@ -436,34 +461,48 @@ document.addEventListener("DOMContentLoaded",function(){
       menu.classList.remove("active");
     });
   }
-
 });
-
 </script>
 
-
 {% schema %}
-
 {
-  "name":"Luxury Header",
-  "settings":[
+  "name": "Luxury Header",
+  "settings": [
     {
-      "type":"image_picker",
-      "id":"logo",
-      "label":"Logo"
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
     },
     {
-      "type":"link_list",
-      "id":"menu",
-      "label":"Main Menu",
-      "default":"main-menu"
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main Menu",
+      "default": "main-menu"
     }
   ],
-  "presets":[
+  "blocks": [
     {
-      "name":"Luxury Header"
+      "type": "mega_menu",
+      "name": "Mega Menu Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_item",
+          "label": "Menu Item Title",
+          "info": "Enter the exact name of the menu item (e.g., 'HIGH JEWELERY') to apply this image."
+        },
+        {
+          "type": "image_picker",
+          "id": "featured_image",
+          "label": "Right Column Featured Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Header"
     }
   ]
 }
-
 {% endschema %}
