@@ -37,15 +37,21 @@
     },
     "image2": {
       "type": "plume-center-image",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem_1.webp"
+      }
     },
     "image3": {
       "type": "plume-center-image",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem.webp"
+      }
     },
     "image4": {
       "type": "plume-full-image",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem.webp"
+      }
     },
     "explore": {
       "type": "plume-explore",
