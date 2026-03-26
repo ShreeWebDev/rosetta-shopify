@@ -30,7 +30,10 @@
     },
     "text": {
       "type": "plume-text-block",
-      "settings": {}
+      "settings": {
+        "heading": "FLORAL ARRANGEMENT",
+        "text": "AN ODE TO THE ETERNAL GARDEN. THIS NECKLACE UNITES ROSE CUT DIAMONDS IN A SWEEPING FLORAL COMPOSITION SET IN 18-KARAT WHITE GOLD. EACH STONE'S SOFTLY FACETED DOΜΕ ΕVΩΚΕS PETALS KISSED BY LOW WINTER LIGHT - WARM. ANCIENT. AND ENDLESSLY ALIVE."
+      }
     },
     "image2": {
       "type": "plume-center-image",

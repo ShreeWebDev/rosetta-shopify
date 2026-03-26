@@ -1,18 +1,20 @@
-<section class="plume-text-block">
-  <h2>{{ section.settings.heading }}</h2>
-  <p>{{ section.settings.text }}</p>
+<section class="plume-center-image">
+  <img src="{{ section.settings.image | image_url: width: 2000 }}" alt="">
 </section>
 
 {% stylesheet %}
 
 .plume-center-image{
-text-align:center;
-margin:120px 0;
-}
-
-.plume-center-image img{
-max-width:500px;
-width:100%;
+height:90vh;
 }
 
 {% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Plume center-image",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Plume center-image" }
+  ]
+}
+{% endschema %}
