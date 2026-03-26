@@ -4,12 +4,19 @@
 
 {% stylesheet %}
 
-.plume-center-image{
-height:90vh;
+.plume-full-image{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
 }
 
+.plume-full-image img{
+  height:100vh;
+  object-fit:cover;
+  display:block;
+  margin-top: 80px;
+  margin-bottom:80px;
+}
 {% endstylesheet %}
-
 {% schema %}
 {
   "name": "Plume center-image",
