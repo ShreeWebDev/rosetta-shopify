@@ -15,6 +15,10 @@
     },
     "plume_hero": {
       "type": "about-hero",
+      "custom_css": [
+        "/* Remove Dark Overlay */selector::before, selector::after, selector .overlay {display: none !important;}",
+        "/* Force Full Width (Remove Gaps) */selector {max-width: 100vw !important; width: 100vw !important; position: relative; left: 50%; right: 50%; margin-left: -50vw !important; margin-right: -50vw !important; padding: 0 !important;}"
+      ],
       "settings": {
         "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem.webp",
         "subheading": "",
