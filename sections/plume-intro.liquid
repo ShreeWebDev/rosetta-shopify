@@ -1,0 +1,36 @@
+<section class="plume-intro">
+  <h1>{{ section.settings.title }}</h1>
+  <p>{{ section.settings.text }}</p>
+</section>
+
+{% stylesheet %}
+
+.plume-intro{
+max-width:800px;
+margin:120px auto;
+text-align:center;
+}
+
+.plume-intro h1{
+font-size:40px;
+letter-spacing:4px;
+margin-bottom:20px;
+}
+
+.plume-intro p{
+font-size:16px;
+line-height:1.8;
+color:#555;
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Plume Intro",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title" },
+    { "type": "textarea", "id": "text", "label": "Description" }
+  ]
+}
+{% endschema %}
