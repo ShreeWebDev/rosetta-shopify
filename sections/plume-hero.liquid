@@ -1,0 +1,22 @@
+<section class="plume-hero">
+  <img src="{{ section.settings.image | image_url: width: 2000 }}" alt="">
+</section>
+
+{% stylesheet %}
+
+.plume-hero img{
+width:100%;
+height:90vh;
+object-fit:cover;
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Plume Hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Hero Image" }
+  ]
+}
+{% endschema %}

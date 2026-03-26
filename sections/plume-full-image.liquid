@@ -1,0 +1,12 @@
+<section class="plume-hero">
+  <img src="{{ section.settings.image | image_url: width: 2000 }}" alt="">
+</section>
+
+{% schema %}
+{
+  "name": "Plume Hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Hero Image" }
+  ]
+}
+{% endschema %}
