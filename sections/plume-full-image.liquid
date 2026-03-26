@@ -2,6 +2,22 @@
   <img src="{{ section.settings.image | image_url: width: 2000 }}">
 </section>
 
+{% stylesheet %}
+
+.plume-full-image{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+}
+
+.plume-full-image img{
+  width:100%;
+  height:90vh;
+  object-fit:cover;
+  display:block;
+}
+
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Plume full-image",
