@@ -11,15 +11,22 @@
   "sections": {
     "hero": {
       "type": "plume-hero",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem.webp"
+      }
     },
     "intro": {
       "type": "plume-intro",
-      "settings": {}
+      "settings": {
+        "title": "Plume",
+        "text": "A CASCADING FLORAL ARRANGEMENT OF ROSE CUT DIAMONDS SET IN 18-KARAT WHITE GOLD, EACH STONE CHOSEN FOR ITS SOFTLY DOMED SILHOUETTE AND GENTLE, CANDLELIT RADIANCE. THE DIAMONDS CLUSTER TOGETHER LIKE PETALS IN FULL BLOOM, THEIR FLAT BASES AND FACETED CROWNS CREATING A TAPESTRY OF WARM. DIFFUSED LIGHT THAT SHIFTS BEAUTIFULLY WITH EVERY MOVEMENT ROMANTIC, ETHEREAL, AND TIMELESSLY ELEGANT."
+      }
     },
     "image1": {
       "type": "plume-full-image",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem_1.webp"
+      }
     },
     "text": {
       "type": "plume-text-block",
@@ -39,7 +46,11 @@
     },
     "explore": {
       "type": "plume-explore",
-      "settings": {}
+      "settings": {
+        "left_image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem.webp",
+        "right_image": "shopify://shop_images/4.webp",
+        "link_title": "VENUS"
+      }
     }
   },
   "order": [
