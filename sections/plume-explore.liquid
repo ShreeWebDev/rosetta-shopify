@@ -1,0 +1,51 @@
+<section class="plume-explore">
+
+<div class="explore-left">
+  <img src="{{ section.settings.left_image | image_url: width: 1000 }}">
+</div>
+
+<div class="explore-right">
+  <h2>EXPLORE MORE</h2>
+
+  <img src="{{ section.settings.right_image | image_url: width: 1000 }}">
+
+  <h3>{{ section.settings.link_title }}</h3>
+</div>
+
+</section>
+
+{% stylesheet %}
+.plume-explore{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+padding:120px 80px;
+align-items:center;
+}
+
+.plume-explore img{
+width:100%;
+}
+
+.explore-right h2{
+margin-bottom:40px;
+letter-spacing:3px;
+}
+
+.explore-right h3{
+margin-top:20px;
+border-bottom:1px solid black;
+display:inline-block;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Plume Explore",
+  "settings": [
+    { "type": "image_picker", "id": "left_image", "label": "Left Image" },
+    { "type": "image_picker", "id": "right_image", "label": "Right Image" },
+    { "type": "text", "id": "link_title", "label": "Title" }
+  ]
+}
+{% endschema %}
