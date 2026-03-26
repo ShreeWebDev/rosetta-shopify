@@ -3,6 +3,28 @@
   <p>{{ section.settings.text }}</p>
 </section>
 
+{% stylesheet %}
+
+.plume-text-block{
+max-width:800px;
+margin:120px auto;
+text-align:center;
+}
+
+.plume-text-block h1{
+font-size:40px;
+letter-spacing:4px;
+margin-bottom:20px;
+}
+
+.plume-text-block p{
+font-size:16px;
+line-height:1.8;
+color:#555;
+}
+
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Plume text-block",
