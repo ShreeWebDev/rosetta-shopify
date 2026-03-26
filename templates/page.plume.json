@@ -16,9 +16,10 @@
     "plume_hero": {
       "type": "about-hero",
       "settings": {
-        "subheading": "ROSETTA HIGH JEWELLERY",
-        "heading": "Plume",
-        "text": "A CASCADING FLORAL ARRANGEMENT OF ROSE CUT DIAMONDS SET IN 18-KARAT WHITE GOLD, EACH STONE CHOSEN FOR ITS SOFTLY DOMED SILHOUETTE AND GENTLE, CANDLELIT RADIANCE. THE DIAMONDS CLUSTER TOGETHER LIKE PETALS IN FULL BLOOM."
+        "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem.webp",
+        "subheading": "",
+        "heading": "",
+        "text": ""
       }
     },
     "floral_arrangement": {
