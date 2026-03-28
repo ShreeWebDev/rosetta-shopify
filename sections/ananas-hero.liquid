@@ -1,0 +1,41 @@
+<section class="ananas-hero">
+  <img src="{{ section.settings.image | image_url: width: 2000 }}">
+</section>
+
+{% stylesheet %}
+.ananas-hero{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+
+.ananas-hero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero-overlay{
+  position:absolute;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  color:white;
+  letter-spacing:4px;
+}
+
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Ananas Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    }
+  ]
+}
+{% endschema %}
