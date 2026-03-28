@@ -11,31 +11,111 @@
   "sections": {
     "hero": {
       "type": "ananas-hero",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/Page_1.webp"
+      }
     },
     "intro": {
       "type": "ananas-intro",
-      "settings": {}
+      "settings": {
+        "heading": "ANANAS COLLECTION",
+        "subheading": "FEATURES OUR SIGNATURE REVERSE TECHNIQUE",
+        "text": "INTRODUCING ANANAS—OUR SUMMER COLLECTION INSPIRED BY THE PLAYFUL ELEGANCE OF TROPICAL PINEAPPLES.",
+        "bg_image": "shopify://shop_images/Page_2.webp"
+      }
     },
     "image1": {
       "type": "ananas-image",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/Page_3.webp",
+        "full_height": false
+      }
     },
     "image2": {
       "type": "ananas-image",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/Page_4.webp",
+        "full_height": false
+      }
     },
     "split": {
       "type": "ananas-split",
-      "settings": {}
+      "settings": {
+        "left_image": "shopify://shop_images/Page_5_1.webp",
+        "right_image": "shopify://shop_images/Page_5.webp",
+        "full_height": false
+      }
     },
     "image3": {
       "type": "ananas-image",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/Page_6.webp",
+        "full_height": false
+      }
     },
     "grid": {
       "type": "ananas-grid",
-      "settings": {}
+      "blocks": {
+        "item_dhjFq4": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Page_7_6.webp",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_na4qei": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Page_7_2.webp",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_RLgjKm": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Page_7_4.webp",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_9kjxRL": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Page_7_1.webp",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_TBqgc3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Page_7_3.webp",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_KfExVT": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Page_7_5.webp",
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_dhjFq4",
+        "item_na4qei",
+        "item_RLgjKm",
+        "item_9kjxRL",
+        "item_TBqgc3",
+        "item_KfExVT"
+      ],
+      "settings": {
+        "heading": "DISCOVER THE PIECES"
+      }
     }
   },
   "order": [
