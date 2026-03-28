@@ -1,0 +1,82 @@
+<section class="ananas-image">
+
+  <div class="image-wrap">
+
+    <img 
+      src="{{ section.settings.image | image_url: width: 2000 }}" 
+      alt="{{ section.settings.image.alt }}"
+      loading="lazy"
+    >
+
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+/* REMOVE GAP ISSUE */
+.ananas-image{
+  width:100%;
+  margin:0;
+  padding:0;
+}
+
+/* FULL WIDTH IMAGE */
+.ananas-image .image-wrap{
+  width:100%;
+  overflow:hidden;
+}
+
+.ananas-image img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
+  transition:0.6s ease;
+}
+
+/* LUXURY HOVER (SUBTLE) */
+.ananas-image:hover img{
+  transform:scale(1.02);
+}
+
+/* OPTIONAL HEIGHT CONTROL */
+.ananas-image.fixed-height img{
+  height:80vh;
+  object-fit:cover;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .ananas-image.fixed-height img{
+    height:60vh;
+  }
+
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Ananas Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_height",
+      "label": "Full screen height",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ananas Image"
+    }
+  ]
+}
+{% endschema %}
