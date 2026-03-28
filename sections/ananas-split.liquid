@@ -1,0 +1,100 @@
+<section class="ananas-split">
+
+  <div class="split-left">
+    <img 
+      src="{{ section.settings.left_image | image_url: width: 1200 }}" 
+      alt=""
+      loading="lazy"
+    >
+  </div>
+
+  <div class="split-right">
+    <img 
+      src="{{ section.settings.right_image | image_url: width: 1200 }}" 
+      alt=""
+      loading="lazy"
+    >
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+/* SECTION */
+.ananas-split{
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+/* IMAGES */
+.ananas-split img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:0.6s ease;
+}
+
+/* HOVER EFFECT */
+.split-left:hover img,
+.split-right:hover img{
+  transform:scale(1.03);
+}
+
+/* OPTIONAL HEIGHT */
+.ananas-split.fixed-height{
+  height:80vh;
+}
+
+.ananas-split.fixed-height img{
+  height:100%;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .ananas-split{
+    grid-template-columns:1fr;
+  }
+
+  .ananas-split.fixed-height{
+    height:auto;
+  }
+
+  .ananas-split img{
+    height:60vh;
+  }
+
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Ananas Split Images",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_height",
+      "label": "Full height section",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ananas Split"
+    }
+  ]
+}
+{% endschema %}
