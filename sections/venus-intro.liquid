@@ -1,0 +1,113 @@
+<section class="venus-intro">
+  
+  <div class="venus-intro-inner">
+    
+    <h2 class="venus-title">
+      {{ section.settings.heading }}
+    </h2>
+
+    <p class="venus-sub">
+      {{ section.settings.subheading }}
+    </p>
+
+    <p class="venus-desc">
+      {{ section.settings.description }}
+    </p>
+
+  </div>
+
+</section>
+
+{% stylesheet %}
+
+/* FULL WIDTH FIX */
+.venus-intro{
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
+  padding:120px 20px;
+  
+  /* GREEN LUXURY GRADIENT */
+  background: radial-gradient(circle at center, #0f3d2e 0%, #06251b 100%);
+  
+  color:#fff;
+  text-align:center;
+}
+
+/* INNER */
+.venus-intro-inner{
+  max-width:800px;
+  margin:auto;
+}
+
+/* HEADING */
+.venus-title{
+  font-family: 'Beth Ellen', cursive;
+  font-size:42px;
+  letter-spacing:4px;
+  margin-bottom:25px;
+}
+
+/* SUB */
+.venus-sub{
+  font-size:14px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  opacity:0.85;
+  margin-bottom:15px;
+}
+
+/* DESC */
+.venus-desc{
+  font-size:13px;
+  letter-spacing:2px;
+  line-height:1.8;
+  opacity:0.85;
+  max-width:700px;
+  margin:auto;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .venus-title{
+    font-size:28px;
+  }
+
+  .venus-intro{
+    padding:80px 20px;
+  }
+
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Venus Intro",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "VENUS"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub Heading",
+      "default": "LAYERS OF DIAMONDS, A STATEMENT OF EMERALD. TIMELESS."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "THE VENUS NECKLACE- AN ELEGANT LAYERED NECKLACE WITH A SUNFLOWER CUT EMERALD HIGHLIGHTED BY THE DIAMONDS."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Venus Intro"
+    }
+  ]
+}
+{% endschema %}
