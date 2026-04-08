@@ -11,31 +11,70 @@
   "sections": {
     "hero": {
       "type": "venus-hero",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/4_005040e7-3e78-4cd5-989b-ed2a8c1cb5dd.webp"
+      }
     },
     "intro": {
       "type": "venus-intro",
-      "settings": {}
+      "settings": {
+        "heading": "VENUS",
+        "subheading": "LAYERS OF DIAMONDS, A STATEMENT OF EMERALD. TIMELESS.",
+        "description": "THE VENUS NECKLACE- AN ELEGANT LAYERED NECKLACE WITH A SUNFLOWER CUT EMERALD HIGHLIGHTED BY THE DIAMONDS."
+      }
     },
     "image1": {
       "type": "venus-image",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/02-_Revised_-_C.webp"
+      }
     },
     "image2": {
       "type": "venus-image",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/1.webp"
+      }
     },
     "text": {
       "type": "venus-text",
-      "settings": {}
+      "settings": {
+        "heading": "VENUS EARRING",
+        "description": "DESIGNED AND HANDCRAFTED OVER MANY HOURS, A HYPNOTIC SUNFLOWER CUT EMERALD SET AS THE DRAMATIC CENTERPIECE, ILLUMINATED BY CURVES OF DIAMONDS THAT GRACEFULLY SHIMMER."
+      }
     },
     "image3": {
       "type": "venus-image",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/02-_Revised_-_B.webp"
+      }
     },
     "discover": {
       "type": "discover-section",
-      "settings": {}
+      "blocks": {
+        "item_aNM3jy": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem_2.webp",
+            "title": "ROSE",
+            "link": ""
+          }
+        },
+        "item_89e67E": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/imgi_17_blog-2-DDFNYmem_1.webp",
+            "title": "PLUME",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_aNM3jy",
+        "item_89e67E"
+      ],
+      "settings": {
+        "heading": "DISCOVER"
+      }
     }
   },
   "order": [
