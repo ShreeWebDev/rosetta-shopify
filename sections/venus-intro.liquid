@@ -1,16 +1,16 @@
 <section class="venus-intro">
-  
-  <div class="venus-intro-inner">
-    
-    <h2 class="venus-title">
+
+  <div class="venus-intro-inner reveal">
+
+    <h2 class="venus-title fade-up delay-1">
       {{ section.settings.heading }}
     </h2>
 
-    <p class="venus-sub">
+    <p class="venus-sub fade-up delay-2">
       {{ section.settings.subheading }}
     </p>
 
-    <p class="venus-desc">
+    <p class="venus-desc fade-up delay-3">
       {{ section.settings.description }}
     </p>
 
@@ -20,17 +20,15 @@
 
 {% stylesheet %}
 
-/* FULL WIDTH FIX */
+/* FULL WIDTH */
 .venus-intro{
   width:100vw;
   margin-left:calc(-50vw + 50%);
   padding:120px 20px;
-  
-  /* GREEN LUXURY GRADIENT */
   background: radial-gradient(circle at center, #0f3d2e 0%, #06251b 100%);
-  
   color:#fff;
   text-align:center;
+  overflow:hidden;
 }
 
 /* INNER */
@@ -39,15 +37,14 @@
   margin:auto;
 }
 
-/* HEADING */
+/* TEXT STYLES */
 .venus-title{
-  font-family: 'Beth Ellen', cursive;
+  font-family:'Beth Ellen', cursive;
   font-size:42px;
   letter-spacing:4px;
   margin-bottom:25px;
 }
 
-/* SUB */
 .venus-sub{
   font-size:14px;
   letter-spacing:3px;
@@ -56,7 +53,6 @@
   margin-bottom:15px;
 }
 
-/* DESC */
 .venus-desc{
   font-size:13px;
   letter-spacing:2px;
@@ -66,20 +62,49 @@
   margin:auto;
 }
 
+/* ANIMATION BASE */
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .8s ease;
+}
+
+/* WHEN VISIBLE */
+.reveal.active .fade-up{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* STAGGER DELAYS */
+.delay-1{ transition-delay:.2s; }
+.delay-2{ transition-delay:.4s; }
+.delay-3{ transition-delay:.6s; }
+
 /* MOBILE */
 @media(max-width:768px){
-
-  .venus-title{
-    font-size:28px;
-  }
-
-  .venus-intro{
-    padding:80px 20px;
-  }
-
+  .venus-title{ font-size:28px; }
+  .venus-intro{ padding:80px 20px; }
 }
 
 {% endstylesheet %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("active");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  reveals.forEach(el => observer.observe(el));
+
+});
+</script>
 
 {% schema %}
 {

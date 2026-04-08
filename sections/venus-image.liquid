@@ -1,0 +1,118 @@
+<section class="venus-image reveal-img">
+
+  {% if section.settings.image != blank %}
+    <div class="venus-img-wrapper">
+      <img 
+        src="{{ section.settings.image | image_url: width: 2000 }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        class="venus-img"
+        loading="lazy"
+      >
+    </div>
+  {% endif %}
+
+</section>
+
+{% stylesheet %}
+
+/* FULL WIDTH FIX */
+.venus-image{
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
+  overflow:hidden;
+}
+
+/* WRAPPER */
+.venus-img-wrapper{
+  overflow:hidden;
+  position:relative;
+}
+
+/* IMAGE */
+.venus-img{
+  width:100%;
+  height:auto;
+  display:block;
+  
+  transform:scale(1.08);
+  transition:transform 1.5s ease;
+}
+
+/* SCROLL ANIMATION */
+.reveal-img.active .venus-img{
+  transform:scale(1);
+}
+
+/* HOVER (DESKTOP ONLY) */
+@media(min-width:768px){
+  .venus-img-wrapper:hover .venus-img{
+    transform:scale(1.05);
+  }
+}
+
+/* PARALLAX EFFECT */
+.venus-img-wrapper{
+  will-change: transform;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .venus-img{
+    transform:scale(1.05);
+  }
+}
+
+{% endstylesheet %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const sections = document.querySelectorAll(".reveal-img");
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("active");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(el => observer.observe(el));
+
+});
+
+
+/* PARALLAX SCROLL */
+window.addEventListener("scroll", function(){
+
+  const images = document.querySelectorAll(".venus-img-wrapper");
+
+  images.forEach((img)=>{
+    let rect = img.getBoundingClientRect();
+    let speed = 0.05;
+
+    let offset = rect.top * speed;
+
+    img.style.transform = "translateY(" + offset + "px)";
+  });
+
+});
+</script>
+
+{% schema %}
+{
+  "name": "Venus Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Venus Image"
+    }
+  ]
+}
+{% endschema %}
