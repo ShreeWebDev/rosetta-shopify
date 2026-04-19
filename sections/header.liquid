@@ -237,6 +237,19 @@
   padding-top: 15px;
 }
 
+.desktop-nav {
+  padding-top: 15px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all .4s ease;
+}
+
+.luxury-header.hovered .desktop-nav {
+  max-height: 200px;
+  opacity: 1;
+}
+
 .desktop-nav ul {
   display: flex;
   justify-content: center;
