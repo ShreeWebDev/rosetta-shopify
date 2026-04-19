@@ -222,6 +222,15 @@
   display: block;
   margin: auto;
 }
+.logo-image {
+  filter: brightness(0) invert(1);
+  transition: .4s ease;
+}
+
+.luxury-header.scrolled .logo-image,
+.luxury-header.hovered .logo-image {
+  filter: none;
+}
 
 /* NAV */
 .desktop-nav {
