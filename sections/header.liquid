@@ -492,6 +492,26 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 });
+
+const header = document.getElementById("luxury-header");
+
+window.addEventListener("scroll", function(){
+  if(window.scrollY > 50){
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+header.addEventListener("mouseenter", function(){
+  if(window.innerWidth > 768){
+    header.classList.add("hovered");
+  }
+});
+
+header.addEventListener("mouseleave", function(){
+  header.classList.remove("hovered");
+});
 </script>
 
 {% schema %}
