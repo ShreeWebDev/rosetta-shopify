@@ -1,503 +1,320 @@
 <header class="luxury-header" id="luxury-header">
 
   <div class="header-inner">
-  
+
+    <!-- LEFT -->
     <div class="header-left">
+
       <button class="mobile-toggle" id="mobileToggle">
         <span></span>
         <span></span>
         <span></span>
       </button>
-  
+
       <a href="/pages/book-appointment" class="header-tool desktop-only">
         {{ 'CalendarTimeIcon.svg' | inline_asset_content }}
         <span>Book Appointment</span>
       </a>
-  
+
       <a href="{{ routes.search_url }}" class="header-tool desktop-only">
         {{ 'SearchIcon.svg' | inline_asset_content }}
         <span>Search</span>
       </a>
+
     </div>
-  
+
+    <!-- LOGO -->
     <div class="header-logo">
       <a href="{{ routes.root_url }}">
         {% if section.settings.logo != blank %}
           {{ section.settings.logo | image_url: width: 400 | image_tag: class: 'logo-image', loading: 'lazy', alt: shop.name }}
         {% else %}
-          <img src="https://cdn.shopify.com/s/files/1/0668/0202/4491/files/rfj_logo.svg?v=1772525135" alt="{{ shop.name }}" class="logo-image" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0668/0202/4491/files/rfj_logo.svg?v=1772525135" class="logo-image">
         {% endif %}
       </a>
     </div>
-  
+
+    <!-- RIGHT -->
     <div class="header-right">
-      <a href="https://maps.google.com" class="header-tool icon-only">
+      <a href="#" class="header-tool icon-only">
         {{ 'LocationIcon.svg' | inline_asset_content }}
       </a>
       <a href="tel:+971000000000" class="header-tool icon-only">
         {{ 'PhoneIcon.svg' | inline_asset_content }}
       </a>
     </div>
-  
+
   </div>
 
+  <!-- NAV -->
   <nav class="desktop-nav">
     <ul>
       {% for link in section.settings.menu.links %}
-        
-        {% assign mega_image = blank %}
-        {% for block in section.blocks %}
-          {% if block.settings.menu_item == link.title %}
-            {% assign mega_image = block.settings.featured_image %}
-          {% endif %}
-        {% endfor %}
+      <li class="nav-item">
+        <a href="{{ link.url }}">{{ link.title }}</a>
 
-        <li class="nav-item">
-          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% if link.links != blank %}
+        <div class="mega-menu">
+          <div class="mega-inner">
 
-          {% if link.links != blank %}
-            
-            {% assign has_right_image = false %}
-            {% if mega_image != blank %}
-              {% assign has_right_image = true %}
-            {% elsif link.type == 'collection_link' and link.object.image != blank %}
-              {% assign has_right_image = true %}
-            {% endif %}
+            <h3 class="mega-title">{{ link.title }}</h3>
 
-            <div class="mega-menu">
-              <div class="mega-inner">
-                <h3 class="mega-title">{{ link.title }}</h3>
-                
-                <div class="mega-grid {% if has_right_image == false %}center-mega-grid{% endif %}">
-                  
-                  <div class="mega-links">
-                    {% for child in link.links %}
-                      <a href="{{ child.url }}" class="mega-card">
-                        
-                        {% if child.type == 'collection_link' and child.object.image != blank %}
-                          <img src="{{ child.object.image | image_url: width: 160, height: 160, crop: 'center' }}" alt="{{ child.title }}" loading="lazy">
-                        {% elsif child.type == 'product_link' and child.object.featured_image != blank %}
-                          <img src="{{ child.object.featured_image | image_url: width: 160, height: 160, crop: 'center' }}" alt="{{ child.title }}" loading="lazy">
-                        {% else %}
-                          <div class="mega-empty-circle">
-                             <span>{{ child.title | slice: 0, 1 }}</span>
-                          </div>
-                        {% endif %}
-                        
-                        <span class="mega-link-title">{{ child.title }}</span>
-                      </a>
-                    {% endfor %}
-                  </div>
+            <div class="mega-grid">
+              {% for child in link.links %}
+              <a href="{{ child.url }}" class="mega-card">
 
-                  {% if has_right_image %}
-                    <div class="mega-featured-column">
-                      {% if mega_image != blank %}
-                        <img class="mega-feature" src="{{ mega_image | image_url: width: 600 }}" alt="{{ link.title }}" loading="lazy">
-                      {% else %}
-                        <img class="mega-feature" src="{{ link.object.image | image_url: width: 600 }}" alt="{{ link.title }}" loading="lazy">
-                      {% endif %}
-                    </div>
-                  {% endif %}
+                {% if child.object.featured_image %}
+                <img src="{{ child.object.featured_image | image_url: width: 300 }}">
+                {% endif %}
 
-                </div>
-              </div>
+                <span>{{ child.title }}</span>
+              </a>
+              {% endfor %}
             </div>
-          {% endif %}
-        </li>
+
+          </div>
+        </div>
+        {% endif %}
+
+      </li>
       {% endfor %}
     </ul>
   </nav>
 
+  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-drawer">
+
       <div class="mobile-top">
-        <button class="mobile-close" id="mobileClose">✕</button>
-        <span class="mobile-account">
-          {{ 'AccountIcon.svg' | inline_asset_content }}
-        </span>
+        <button id="mobileClose">✕</button>
       </div>
 
       <div class="mobile-links">
         {% for link in section.settings.menu.links %}
-          <a href="{{ link.url }}" class="mobile-link">
-            <span>{{ link.title }}</span>
-            {% if link.links != blank %}
-              <span class="arrow">›</span>
-            {% endif %}
-          </a>
+        <a href="{{ link.url }}">{{ link.title }}</a>
         {% endfor %}
       </div>
 
-      <div class="mobile-divider"></div>
-
-      <div class="mobile-links">
-        <a href="/pages/contact-us">Contact Us</a>
-        <a href="/pages/store">Find Store</a>
-        <a href="/pages/book-appointment">Book an Appointment</a>
-        <a href="/pages/wishlist">Wishlist</a>
-        <a href="/account">My Account</a>
-      </div>
-
-      <div class="mobile-footer">
-        <span>India · INR</span>
-      </div>
     </div>
   </div>
 
 </header>
 
 {% stylesheet %}
-/* HEADER */
-.luxury-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: white;
-  color: black;
-  padding: 15px 0;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+/* HEADER BASE */
+.luxury-header{
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:999;
+background:transparent;
+color:white;
+padding:15px 0;
+transition:.4s;
+}
+
+/* SCROLL */
+.luxury-header.scrolled{
+background:white;
+color:black;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* HOVER */
+.luxury-header.hovered{
+background:white;
+color:black;
 }
 
 /* GRID */
-.header-inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  padding: 0 40px;
+.header-inner{
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+padding:0 40px;
 }
 
 /* LEFT RIGHT */
 .header-left,
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 25px;
+.header-right{
+display:flex;
+align-items:center;
+gap:25px;
 }
+.header-right{justify-content:end;}
 
-.header-right {
-  justify-content: end;
-}
-
-/* TOOLS */
-.header-tool {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-decoration: none;
-  color: currentColor;
-  text-transform: uppercase;
-}
-
-.header-tool svg {
-  width: 25px;
-  fill: currentColor;
+/* TOOL */
+.header-tool{
+display:flex;
+gap:8px;
+font-size:13px;
+letter-spacing:1px;
+text-decoration:none;
+color:currentColor;
+text-transform:uppercase;
 }
 
 /* LOGO */
-.header-logo {
-  text-align: center;
+.logo-image{
+max-width:170px;
+filter:brightness(0) invert(1);
+transition:.4s;
 }
 
-.logo-image {
-  max-width: 170px;
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: auto;
+.luxury-header.scrolled .logo-image,
+.luxury-header.hovered .logo-image{
+filter:none;
 }
 
 /* NAV */
-.desktop-nav {
-  padding-top: 15px;
+.desktop-nav{
+max-height:0;
+opacity:0;
+overflow:hidden;
+transition:.4s;
 }
 
-.desktop-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 35px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.luxury-header.hovered .desktop-nav{
+max-height:120px;
+opacity:1;
 }
 
-.desktop-nav a {
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: currentColor;
+.desktop-nav ul{
+display:flex;
+justify-content:center;
+gap:35px;
+list-style:none;
 }
 
-/* MEGA MENU FIXED LAYOUT */
-.mega-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  padding: 60px 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: .3s ease;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+/* MEGA MENU */
+.mega-menu{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:white;
+padding:60px 0;
+opacity:0;
+visibility:hidden;
+transition:.3s;
 }
 
-.nav-item:hover .mega-menu {
-  opacity: 1;
-  visibility: visible;
+.nav-item:hover .mega-menu{
+opacity:1;
+visibility:visible;
 }
 
-.mega-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 40px;
-  text-align: center; /* Center main title */
+.mega-inner{
+max-width:1200px;
+margin:auto;
+text-align:center;
 }
 
-.mega-title {
-  font-size: 16px;
-  letter-spacing: 3px;
-  margin-bottom: 40px;
-  text-transform: uppercase;
+.mega-grid{
+display:flex;
+justify-content:center;
+gap:60px;
 }
 
-/* Default Grid (With Image) */
-.mega-grid {
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 80px;
-  align-items: stretch;
+/* MOBILE */
+.mobile-toggle{display:none;}
+
+.mobile-menu{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+transform:translateX(-100%);
+transition:.3s;
 }
 
-/* Centered Grid (Without Image) */
-.mega-grid.center-mega-grid {
-  grid-template-columns: 1fr;
-  justify-items: center;
+.mobile-menu.active{
+transform:translateX(0);
 }
 
-.mega-links {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
+@media(max-width:768px){
+
+.desktop-nav{display:none;}
+.desktop-only{display:none;}
+.mobile-toggle{display:flex;}
+
+.header-inner{
+grid-template-columns:auto 1fr auto;
+padding:0 20px;
 }
 
-/* Center sub-links when no right image */
-.center-mega-grid .mega-links {
-  justify-content: center;
+.logo-image{max-width:140px;}
+
 }
 
-.mega-featured-column {
-  width: 100%;
-  height: 420px;
-}
-
-.mega-feature {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Fallback Styling for Missing Images */
-.mega-empty-circle {
-  width: 160px;
-  height: 160px;
-  background: #f7f7f7;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  color: #ccc;
-  font-family: serif;
-  transition: .4s ease;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-.mega-card {
-  text-decoration: none;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-.mega-card img {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  transition: .4s ease;
-}
-
-.mega-card:hover img,
-.mega-card:hover .mega-empty-circle {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-}
-
-.mega-link-title {
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-/* MOBILE MENU */
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  transform: translateX(-100%);
-  transition: .35s ease;
-  z-index: 200;
-}
-
-.mobile-menu.active {
-  transform: translateX(0);
-}
-
-.mobile-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.mobile-toggle span {
-  width: 22px;
-  height: 2px;
-  background: currentColor;
-}
-
-.mobile-drawer {
-  width: 100%;
-  height: 100%;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-}
-
-.mobile-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.mobile-links {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-.mobile-link {
-  display: flex;
-  justify-content: space-between;
-  text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: black;
-}
-
-.mobile-divider {
-  height: 1px;
-  background: #e5e5e5;
-  margin: 30px 0;
-}
-
-.mobile-footer {
-  margin-top: auto;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #777;
-}
-
-/* MOBILE RESPONSIVE */
-@media(max-width: 768px) {
-  .desktop-nav, .desktop-only { display: none; }
-  .mobile-toggle { display: flex; }
-  .header-inner { grid-template-columns: auto 1fr auto; padding: 0 20px; }
-  .logo-image { max-width: 140px; }
-  .mobile-menu { display: flex; }
-}
 {% endstylesheet %}
 
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-  const toggle = document.getElementById("mobileToggle");
-  const menu = document.getElementById("mobileMenu");
-  const close = document.getElementById("mobileClose");
 
-  if(toggle){
-    toggle.addEventListener("click", function(){
-      menu.classList.add("active");
-    });
-  }
+document.addEventListener("DOMContentLoaded",function(){
 
-  if(close){
-    close.addEventListener("click", function(){
-      menu.classList.remove("active");
-    });
-  }
+const header=document.getElementById("luxury-header");
+const toggle=document.getElementById("mobileToggle");
+const menu=document.getElementById("mobileMenu");
+const close=document.getElementById("mobileClose");
+
+/* SCROLL */
+window.addEventListener("scroll",function(){
+if(window.scrollY>50){
+header.classList.add("scrolled");
+}else{
+header.classList.remove("scrolled");
+}
 });
+
+/* HOVER */
+header.addEventListener("mouseenter",function(){
+if(window.innerWidth>768){
+header.classList.add("hovered");
+}
+});
+
+header.addEventListener("mouseleave",function(){
+header.classList.remove("hovered");
+});
+
+/* MOBILE */
+toggle.addEventListener("click",function(){
+menu.classList.add("active");
+});
+
+close.addEventListener("click",function(){
+menu.classList.remove("active");
+});
+
+});
+
 </script>
 
 {% schema %}
 {
-  "name": "Luxury Header",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo"
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Main Menu",
-      "default": "main-menu"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "mega_menu",
-      "name": "Mega Menu Image",
-      "settings": [
-        {
-          "type": "text",
-          "id": "menu_item",
-          "label": "Menu Item Title",
-          "info": "Enter the exact name of the menu item (e.g., 'HIGH JEWELERY') to apply this image."
-        },
-        {
-          "type": "image_picker",
-          "id": "featured_image",
-          "label": "Right Column Featured Image"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Luxury Header"
-    }
-  ]
+"name":"Luxury Header",
+"settings":[
+{
+"type":"image_picker",
+"id":"logo",
+"label":"Logo"
+},
+{
+"type":"link_list",
+"id":"menu",
+"label":"Main Menu",
+"default":"main-menu"
+}
+],
+"presets":[
+{
+"name":"Luxury Header"
+}
+]
 }
 {% endschema %}
